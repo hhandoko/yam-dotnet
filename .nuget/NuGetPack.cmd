@@ -1,0 +1,1 @@
+NuGet pack YamNet.Client\YamNet.Client.nuspec
