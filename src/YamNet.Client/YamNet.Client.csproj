@@ -48,6 +48,7 @@
     <Compile Include="DomainObjects\Group\GroupStat.cs" />
     <Compile Include="DomainObjects\User\CompanyInfo.cs" />
     <Compile Include="DomainObjects\Group\GroupUser.cs" />
+    <Compile Include="DomainObjects\User\UserBasicInfo.cs" />
     <Compile Include="DomainObjects\User\SchoolInfo.cs" />
     <Compile Include="DomainObjects\User\Treatments.cs" />
     <Compile Include="DomainObjects\User\User.cs" />

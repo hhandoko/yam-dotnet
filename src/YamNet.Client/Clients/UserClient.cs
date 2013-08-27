@@ -109,12 +109,23 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Delete a user by his/her id.
+        /// Suspend a user by his/her id (i.e. soft-delete).
+        /// </summary>
+        /// <param name="id">The id.</param>
+        public void SuspendById(int id)
+        {
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id), string.Empty);
+
+            this.Client.DeleteAsync(url);
+        }
+
+        /// <summary>
+        /// Delete a user by his/her id (i.e. hard / permanent deletion).
         /// </summary>
         /// <param name="id">The id.</param>
         public void DeleteById(int id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id), string.Empty);
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json?delete=true", BaseUri, id), string.Empty);
 
             this.Client.DeleteAsync(url);
         }

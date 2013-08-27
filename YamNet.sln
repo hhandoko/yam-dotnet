@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Resources", "1 - Resour
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Manifest", "Manifest", "{83350A6A-D29C-4A37-B057-D8B84E63E434}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\YamNet.Core\YamNet.Client.nuspec = .nuget\YamNet.Core\YamNet.Client.nuspec
+		.nuget\YamNet.Client\YamNet.Client.nuspec = .nuget\YamNet.Client\YamNet.Client.nuspec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Sources", "2 - Sources", "{F7F6989B-D530-4CCD-AB04-F1959A8F3E1B}"

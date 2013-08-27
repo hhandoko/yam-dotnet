@@ -61,8 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ConsoleHelper.cs" />
+    <Compile Include="Utilities\LoadingSpinner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
