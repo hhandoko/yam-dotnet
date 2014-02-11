@@ -60,7 +60,7 @@ namespace YamNet.Client.ConsoleTest
                 i++;
             }
 
-            Console.WriteLine("\n{0}. Get first five sent messages", j++);
+            Console.WriteLine("\n{0}. Get first five sent inbox messages", j++);
             i = 1;
             foreach (var message in client.Messages.GetSent().Take(5))
             {
@@ -68,7 +68,7 @@ namespace YamNet.Client.ConsoleTest
                 i++;
             }
 
-            Console.WriteLine("\n{0}. Get first five private messages", j++);
+            Console.WriteLine("\n{0}. Get first five private inbox messages", j++);
             i = 1;
             foreach (var message in client.Messages.GetPrivate().Take(5))
             {
@@ -76,7 +76,7 @@ namespace YamNet.Client.ConsoleTest
                 i++;
             }
 
-            Console.WriteLine("\n{0}. Get first five messages", j++);
+            Console.WriteLine("\n{0}. Get first five inbox messages", j++);
             i = 1;
             foreach (var message in client.Messages.GetReceived().Take(5))
             {

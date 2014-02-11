@@ -69,26 +69,30 @@
     <Compile Include="Clients\Interfaces\IGroupClient.cs" />
     <Compile Include="Clients\Interfaces\IUserClient.cs" />
     <Compile Include="Clients\UserClient.cs" />
-    <Compile Include="DomainObjects\Group\Group.cs" />
-    <Compile Include="DomainObjects\Group\GroupStat.cs" />
-    <Compile Include="DomainObjects\Message\MessageBody.cs" />
-    <Compile Include="DomainObjects\Message\Like.cs" />
-    <Compile Include="DomainObjects\Message\LikedBy.cs" />
-    <Compile Include="DomainObjects\Message\Message.cs" />
-    <Compile Include="DomainObjects\Message\MessageEnvelope.cs" />
-    <Compile Include="DomainObjects\Reference\Interface\IReference.cs" />
-    <Compile Include="DomainObjects\User\CompanyInfo.cs" />
-    <Compile Include="DomainObjects\Group\GroupUser.cs" />
-    <Compile Include="DomainObjects\User\UserBasicInfo.cs" />
-    <Compile Include="DomainObjects\User\SchoolInfo.cs" />
-    <Compile Include="DomainObjects\User\Treatments.cs" />
-    <Compile Include="DomainObjects\User\User.cs" />
-    <Compile Include="DomainObjects\User\UserContact.cs" />
-    <Compile Include="DomainObjects\User\UserEmailAddress.cs" />
-    <Compile Include="DomainObjects\User\UserIm.cs" />
-    <Compile Include="DomainObjects\User\UserPhoneNumber.cs" />
-    <Compile Include="DomainObjects\User\UserSettings.cs" />
-    <Compile Include="DomainObjects\User\UserStat.cs" />
+    <Compile Include="DTOs\Group\Group.cs" />
+    <Compile Include="DTOs\Group\GroupStat.cs" />
+    <Compile Include="DTOs\Message\MessageBody.cs" />
+    <Compile Include="DTOs\Message\Like.cs" />
+    <Compile Include="DTOs\Message\LikedBy.cs" />
+    <Compile Include="DTOs\Message\Message.cs" />
+    <Compile Include="DTOs\Message\MessageEnvelope.cs" />
+    <Compile Include="DTOs\Message\MessageThread.cs" />
+    <Compile Include="DTOs\Meta\YModule.cs" />
+    <Compile Include="DTOs\Meta\Realtime.cs" />
+    <Compile Include="DTOs\Meta\Meta.cs" />
+    <Compile Include="DTOs\Reference\Interface\IReference.cs" />
+    <Compile Include="DTOs\User\CompanyInfo.cs" />
+    <Compile Include="DTOs\Group\GroupUser.cs" />
+    <Compile Include="DTOs\User\UserBasicInfo.cs" />
+    <Compile Include="DTOs\User\SchoolInfo.cs" />
+    <Compile Include="DTOs\User\Treatments.cs" />
+    <Compile Include="DTOs\User\User.cs" />
+    <Compile Include="DTOs\User\UserContact.cs" />
+    <Compile Include="DTOs\User\UserEmailAddress.cs" />
+    <Compile Include="DTOs\User\UserIm.cs" />
+    <Compile Include="DTOs\User\UserPhoneNumber.cs" />
+    <Compile Include="DTOs\User\UserSettings.cs" />
+    <Compile Include="DTOs\User\UserStat.cs" />
     <Compile Include="Errors\Error.cs" />
     <Compile Include="Errors\ErrorToExceptionTranslator.cs" />
     <Compile Include="Errors\Interfaces\IErrorToExceptionTranslator.cs" />
@@ -124,7 +128,13 @@
       <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.165\lib\portable-net40+sl4+win8+wp71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.8\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.1\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\..\packages\Nito.AsyncEx.2.1.3\lib\portable-net40+win8+sl4+wp71+MonoTouch+MonoAndroid\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable">
+      <HintPath>..\..\packages\FubarCoder.RestSharp.Portable.1.4.1.0\lib\portable-net4+sl5+wp8+win8\RestSharp.Portable.dll</HintPath>
     </Reference>
     <Reference Include="System.IO">
       <HintPath>..\..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+sl5+win8+wp8\System.IO.dll</HintPath>
@@ -147,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientExtensions\" />
+    <Folder Include="DomainObjects\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

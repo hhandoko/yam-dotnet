@@ -42,7 +42,7 @@ namespace YamNet.Client
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
-
+            
             return this.Client.GetAsync<MessageEnvelope>(url).Result.Content.Messages.AsQueryable();
         }
 
@@ -134,6 +134,39 @@ namespace YamNet.Client
             var url = this.GetFinalUrl(string.Format("{0}/received.json", BaseUri), query.SerializeQueryString());
 
             return this.Client.GetAsync<MessageEnvelope>(url).Result.Content.Messages.AsQueryable();
+        }
+
+        /// <summary>
+        /// Marks the specified message as liked by the current user.
+        /// </summary>
+        /// <param name="id">The message id to like.</param>
+        public void LikeById(long id)
+        {
+            var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", BaseUri, id));
+
+            this.Client.PostAsync(url);
+        }
+
+        /// <summary>
+        /// Removes the like mark from the specified message.
+        /// </summary>
+        /// <param name="id">The message id to unlike.</param>
+        public void UnlikeById(long id)
+        {
+            var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", BaseUri, id));
+
+            this.Client.DeleteAsync(url);
+        }
+
+        /// <summary>
+        /// Remove a message by its id. The message must be owned by the current user.
+        /// </summary>
+        /// <param name="id">The message id.</param>
+        public void DeleteById(long id)
+        {
+            var url = this.GetFinalUrl(string.Format("{0}/{1}", BaseUri, id));
+
+            this.Client.DeleteAsync(url);
         }
     }
 

@@ -76,5 +76,23 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="IQueryable"/>.</returns>
         IQueryable<Message> GetReceived(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+
+        /// <summary>
+        /// Marks the specified message as liked by the current user.
+        /// </summary>
+        /// <param name="id">The message id to like.</param>
+        void LikeById(long id);
+
+        /// <summary>
+        /// Removes the like mark from the specified message.
+        /// </summary>
+        /// <param name="id">The message id to unlike.</param>
+        void UnlikeById(long id);
+        
+        /// <summary>
+        /// Remove a message by its id. The message must be owned by the current user.
+        /// </summary>
+        /// <param name="id">The message id.</param>
+        void DeleteById(long id);
     }
 }

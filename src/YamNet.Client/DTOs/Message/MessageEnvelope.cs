@@ -30,18 +30,18 @@ namespace YamNet.Client
 //        [JsonConverter(typeof(ReferenceJsonConverter))]
 //        public IReference[] References { get; set; }
 
-//        /// <summary>
-//        /// Gets or sets the meta.
-//        /// </summary>
-//        /// <value>The meta.</value>
-//        [JsonProperty("meta")]
-//        public Meta Meta { get; set; }
+        /// <summary>
+        /// Gets or sets the meta.
+        /// </summary>
+        /// <value>The meta.</value>
+        [JsonProperty("meta")]
+        public Meta Meta { get; set; }
 
-//        /// <summary>
-//        /// Gets or sets the thread messages.
-//        /// </summary>
-//        /// <value>The thread messages.</value>
-//        [JsonProperty("threaded_extended")]
-//        public ThreadMessagesDictionary ThreadMessages { get; set; }
+        /// <summary>
+        /// Gets or sets the threaded messages.
+        /// </summary>
+        /// <value>The threaded messages.</value>
+        [JsonProperty("threaded_extended")]
+        public MessageThread MessageThreads { get; set; }
     }
 }

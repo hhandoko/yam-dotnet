@@ -32,7 +32,7 @@ namespace YamNet.Client
         /// Join the group specified by the numeric Id.
         /// </summary>
         /// <param name="id">The group id.</param>
-        public void Join(int id)
+        public void JoinById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", BaseUri, id));
 
@@ -43,7 +43,7 @@ namespace YamNet.Client
         /// Leave the group specified by the numeric Id.
         /// </summary>
         /// <param name="id">The group id.</param>
-        public void Leave(int id)
+        public void LeaveById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", BaseUri, id));
 

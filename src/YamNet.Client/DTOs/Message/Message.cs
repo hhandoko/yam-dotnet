@@ -29,7 +29,6 @@ namespace YamNet.Client
         /// <value>The created at.</value>
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
-
         #endregion
 
         /// <summary>

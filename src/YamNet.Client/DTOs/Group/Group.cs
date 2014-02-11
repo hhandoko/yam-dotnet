@@ -55,7 +55,7 @@ namespace YamNet.Client
         /// </summary>
         /// <value>The id.</value>
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets or sets the mugshot id.

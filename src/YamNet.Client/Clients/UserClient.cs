@@ -53,7 +53,7 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         /// <param name="page">The page.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        public IQueryable<User> GetByGroupId(int id, int page = 0)
+        public IQueryable<User> GetByGroupId(long id, int page = 0)
         {
             var query = new UserQuery(page, string.Empty, UserQuerySort.NoSort, false, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}/in_group/{1}.json", BaseUri, id), query.SerializeQueryString());
@@ -69,7 +69,7 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        public User GetById(int id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
+        public User GetById(long id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id), query.SerializeQueryString());
@@ -112,9 +112,9 @@ namespace YamNet.Client
         /// Suspend a user by his/her id (i.e. soft-delete).
         /// </summary>
         /// <param name="id">The id.</param>
-        public void SuspendById(int id)
+        public void SuspendById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id), string.Empty);
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id));
 
             this.Client.DeleteAsync(url);
         }
@@ -123,9 +123,9 @@ namespace YamNet.Client
         /// Delete a user by his/her id (i.e. hard / permanent deletion).
         /// </summary>
         /// <param name="id">The id.</param>
-        public void DeleteById(int id)
+        public void DeleteById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json?delete=true", BaseUri, id), string.Empty);
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json?delete=true", BaseUri, id));
 
             this.Client.DeleteAsync(url);
         }

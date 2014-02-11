@@ -57,7 +57,8 @@ namespace YamNet.Client
                 UseProxy = true,
                 Proxy = proxy,
                 UseDefaultCredentials = false,
-                Credentials = credentials
+                Credentials = credentials,
+                PreAuthenticate = true
             };
 
             this.Init(token);
@@ -160,6 +161,8 @@ namespace YamNet.Client
         {
             return await TaskEx.Run(async () =>
             {
+                const int Retry = 5;
+
                 var tryAgain = true;
                 var counter = 0;
 
@@ -168,25 +171,46 @@ namespace YamNet.Client
 
                 try
                 {
+                    // Create the HTTP Request object based on HttpClient PCL
                     var request = new HttpRequestObject(this.Serializer);
 
-                    while (tryAgain && counter++ < 3)
+                    while (tryAgain && counter++ < Retry)
                     {
                         try
                         {
-                            response =
-                                await
-                                request.ExecuteRequestAsync<T>(this.client, method, this.Endpoint, uri, parameters);
-                            tryAgain = false;
+                            // Send the HttpRequest asynchronously
+                            response = await request.ExecuteRequestAsync<T>(this.client, method, this.Endpoint, uri, parameters);
+                            
+                            // Check if response was a success
+                            // i.e. HTTP 200 OK
+                            // TODO: Need refactor, this flag may not belong here
+                            tryAgain = !response.IsSuccessStatusCode;
                         }
                         catch (RateLimitExceededException)
                         {
+                            // Immediately fails the request if the
+                            // API rate limit has been exceeded
+                            // Reference:
+                            // https://developer.yammer.com/restapi/#rest-ratelimits
+                            // TODO: Create specified delay based on docs
                             Debug.WriteLine("Rate Limit Exceeded");
                         }
 
                         if (tryAgain)
                         {
-                            await TaskEx.Delay(TimeSpan.FromSeconds(10));
+                            // Immediately retry on first and second request.
+                            // If auth is required, sometimes two request are
+                            // required, first one to determine which scheme
+                            // are being used.
+                            // Reference:
+                            // http://stackoverflow.com/a/17025435/1615437
+                            var delay =
+                                counter <= 1
+                                    ? TimeSpan.FromMilliseconds(1)
+                                    : TimeSpan.FromSeconds(10);
+
+                            // Retry request with a specified delay
+                            await TaskEx.Delay(delay);
                         }
                     }
 

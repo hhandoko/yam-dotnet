@@ -12,15 +12,15 @@ namespace YamNet.Client
     public interface IGroupClient
     {
         /// <summary>
-        /// Join a group.
+        /// Join a group by its id.
         /// </summary>
         /// <param name="id">The group id.</param>
-        void Join(int id);
+        void JoinById(long id);
 
         /// <summary>
-        /// Leave a group.
+        /// Leave a group by its id.
         /// </summary>
         /// <param name="id">The id.</param>
-        void Leave(int id);
+        void LeaveById(long id);
     }
 }

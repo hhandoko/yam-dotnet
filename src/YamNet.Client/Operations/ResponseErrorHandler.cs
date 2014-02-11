@@ -57,6 +57,13 @@ namespace YamNet.Client
                 return new ServerErrorException();
             }
 
+            // Yammer API rate limit exceeded
+            // Reference: https://developer.yammer.com/restapi/#rest-ratelimits
+            if ((int)response.StatusCode == 429)
+            {
+                return new RateLimitExceededException();
+            }
+
             // No valuable information in the content.
             if (response.StatusCode == HttpStatusCode.GatewayTimeout
                 || response.StatusCode == HttpStatusCode.ServiceUnavailable

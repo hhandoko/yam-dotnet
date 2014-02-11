@@ -39,7 +39,7 @@ namespace YamNet.Client
 
             this.Init(token);
         }
-
+        
         /// <summary>
         /// Gets or sets the users REST API endpoint.
         /// </summary>

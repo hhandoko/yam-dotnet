@@ -8,6 +8,7 @@ namespace YamNet.Client.ConsoleTest
 {
     using System;
     using System.Configuration;
+    using System.Net;
 
     /// <summary>
     /// The console program.
@@ -29,7 +30,7 @@ namespace YamNet.Client.ConsoleTest
                 token = Console.ReadLine();
                 Console.Clear();
             }
-
+            
             // Get the Yammer API client, and pass in the access token
             using (var client = new Client(token))
             {

@@ -29,7 +29,7 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         /// <param name="page">The page.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        IQueryable<User> GetByGroupId(int id, int page);
+        IQueryable<User> GetByGroupId(long id, int page);
 
         /// <summary>
         /// Get a user by their id.
@@ -39,7 +39,7 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        User GetById(int id, bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
+        User GetById(long id, bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
 
         /// <summary>
         /// Get a user by their email.
@@ -59,5 +59,17 @@ namespace YamNet.Client
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
         User Current(bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
+        
+        /// <summary>
+        /// Suspend a user by his/her id (i.e. soft-delete).
+        /// </summary>
+        /// <param name="id">The id.</param>
+        void SuspendById(long id);
+
+        /// <summary>
+        /// Delete a user by his/her id (i.e. hard / permanent deletion).
+        /// </summary>
+        /// <param name="id">The id.</param>
+        void DeleteById(long id);
     }
 }
