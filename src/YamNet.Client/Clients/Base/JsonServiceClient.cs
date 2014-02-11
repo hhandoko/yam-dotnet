@@ -84,16 +84,40 @@ namespace YamNet.Client
         internal Uri Endpoint { get; set; }
 
         /// <summary>
+        /// Post via async.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
+        internal async Task<IBaseEnvelope<object>> PostAsync(string uri, object parameters = null)
+        {
+            return await this.PostAsync<object>(uri, parameters);
+        }
+
+        /// <summary>
+        /// Post via async.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <typeparam name="T">The class type.</typeparam>
+        /// <returns>The <see cref="Task"/>.</returns>
+        internal async Task<IBaseEnvelope<T>> PostAsync<T>(string uri, object parameters = null)
+            where T : class
+        {
+            return await this.ExecuteAsync<T>(HttpMethod.Post, uri, parameters);
+        }
+
+        /// <summary>
         /// Get via async.
         /// </summary>
         /// <param name="uri">The uri.</param>
         /// <param name="parameters">The parameters.</param>
         /// <typeparam name="T">The class type.</typeparam>
         /// <returns>The <see cref="Task"/>.</returns>
-        internal Task<IBaseEnvelope<T>> GetAsync<T>(string uri, object parameters = null)
+        internal async Task<IBaseEnvelope<T>> GetAsync<T>(string uri, object parameters = null)
             where T : class
         {
-            return this.ExecuteAsync<T>(HttpMethod.Get, uri, parameters);
+            return await this.ExecuteAsync<T>(HttpMethod.Get, uri, parameters);
         }
 
         /// <summary>
@@ -102,9 +126,9 @@ namespace YamNet.Client
         /// <param name="uri">The uri.</param>
         /// <param name="parameters">The parameters.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        internal Task<IBaseEnvelope<object>> DeleteAsync(string uri, object parameters = null)
+        internal async Task<IBaseEnvelope<object>> DeleteAsync(string uri, object parameters = null)
         {
-            return this.DeleteAsync<object>(uri, parameters);
+            return await this.DeleteAsync<object>(uri, parameters);
         }
 
         /// <summary>
@@ -114,10 +138,10 @@ namespace YamNet.Client
         /// <param name="parameters">The parameters.</param>
         /// <typeparam name="T">The class type.</typeparam>
         /// <returns>The <see cref="Task"/>.</returns>
-        internal Task<IBaseEnvelope<T>> DeleteAsync<T>(string uri, object parameters = null)
+        internal async Task<IBaseEnvelope<T>> DeleteAsync<T>(string uri, object parameters = null)
             where T : class
         {
-            return this.ExecuteAsync<T>(HttpMethod.Delete, uri, parameters);
+            return await this.ExecuteAsync<T>(HttpMethod.Delete, uri, parameters);
         }
 
         /// <summary>
@@ -128,13 +152,13 @@ namespace YamNet.Client
         /// <param name="parameters">The parameters.</param>
         /// <typeparam name="T">The class type.</typeparam>
         /// <returns>The <see cref="Task"/>.</returns>
-        protected Task<IBaseEnvelope<T>> ExecuteAsync<T>(
+        protected async Task<IBaseEnvelope<T>> ExecuteAsync<T>(
             HttpMethod method,
             string uri,
             object parameters)
             where T : class
         {
-            return TaskEx.Run(async () =>
+            return await TaskEx.Run(async () =>
             {
                 var tryAgain = true;
                 var counter = 0;

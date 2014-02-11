@@ -15,7 +15,7 @@ namespace YamNet.Client
     /// </summary>
     public class UserBasicInfo //: IAutoCompleteValueEx
     {
-        #region Account
+        #region System
         /// <summary>
         /// Gets or sets the account activation date + time.
         /// </summary>

@@ -27,12 +27,6 @@ namespace YamNet.Client
         public Guid? Guid { get; set; }
 
         /// <summary>
-        /// Gets or sets the network domains.
-        /// </summary>
-        [JsonProperty("network_domains")]
-        public string[] NetworkDomains { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether the user is an admin.
         /// </summary>
         [JsonProperty("admin")]
@@ -99,9 +93,15 @@ namespace YamNet.Client
         /// </summary>
         [JsonProperty("contact")]
         public UserContact ContactInfo { get; set; }
+
+        /// <summary>
+        /// Gets or sets the external urls.
+        /// </summary>
+        [JsonProperty("external_urls")]
+        public string[] ExternalUrls { get; set; } // TODO: Safe to use Uri even though these values are user entered?
         #endregion
 
-        #region Work, School, and Network
+        #region Network
         /// <summary>
         /// Gets or sets the home network id.
         /// </summary>
@@ -109,11 +109,19 @@ namespace YamNet.Client
         public int NetworkId { get; set; }
 
         /// <summary>
-        /// Gets or sets the homenetwork name.
+        /// Gets or sets the home network name.
         /// </summary>
         [JsonProperty("network_name")]
         public string NetworkName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the network domains.
+        /// </summary>
+        [JsonProperty("network_domains")]
+        public string[] NetworkDomains { get; set; }
+        #endregion
+
+        #region Work and Education
         /// <summary>
         /// Gets or sets the department.
         /// </summary>
@@ -149,18 +157,22 @@ namespace YamNet.Client
         /// </summary>
         [JsonProperty("schools")]
         public SchoolInfo[] Schools { get; set; }
+        #endregion
 
+        #region Groups
         /// <summary>
         /// Gets or sets the group memberships.
         /// </summary>
         [JsonProperty("group_memberships")]
         public Group[] GroupMemberships { get; set; }
+        #endregion
 
+        #region Graph
         /// <summary>
         /// Gets or sets the user's subscription (e.g. followed tags, followed users).
         /// </summary>
         [JsonProperty("subscriptions")]
-        public UserBasicInfo[] Subscription { get; set; }
+        internal UserBasicInfo[] Subscription { get; set; }
 
         /// <summary>
         /// Gets the followed users.
@@ -170,12 +182,6 @@ namespace YamNet.Client
             get { return this.Subscription.Where(x => x.Type == "user").ToArray(); }
         }
         #endregion
-
-        /// <summary>
-        /// Gets or sets the external urls.
-        /// </summary>
-        [JsonProperty("external_urls")]
-        public string[] ExternalUrls { get; set; } // TODO: Safe to use Uri even though these values are user entered?
 
         /// <summary>
         /// Gets or sets the settings.

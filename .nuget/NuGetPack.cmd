@@ -1,1 +1,1 @@
-NuGet pack YamNet.Client\YamNet.Client.nuspec
+NuGet pack YamNet.Client\YamNet.Client.nuspec -OutputDirectory ".\YamNet.Client"

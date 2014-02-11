@@ -17,9 +17,7 @@ namespace YamNet.Client.ConsoleTest
         /// <summary>
         /// The main method.
         /// </summary>
-        /// <param name="args">
-        /// The args.
-        /// </param>
+        /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
             var token = ConfigurationManager.AppSettings["access_token"];
@@ -33,10 +31,13 @@ namespace YamNet.Client.ConsoleTest
             }
 
             // Get the Yammer API client, and pass in the access token
-            var client = new Client(token);
-
-            // Run Tests
-            client.RunUserTest();
+            using (var client = new Client(token))
+            {
+                // Run Tests
+                client.RunUserTest();
+                Console.WriteLine("\n");
+                client.RunMessageTest();
+            }
 
             // Finish!
             Console.WriteLine("\nCompleted. Press any key to finish...");

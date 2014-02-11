@@ -11,7 +11,7 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Class Group
+    /// The group domain object.
     /// </summary>
     public sealed class Group //: IAutoCompleteValueEx
     {

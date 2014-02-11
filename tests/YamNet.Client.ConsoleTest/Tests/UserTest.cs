@@ -17,9 +17,7 @@ namespace YamNet.Client.ConsoleTest
         /// <summary>
         /// Test UserClient APIs.
         /// </summary>
-        /// <param name="client">
-        /// The client.
-        /// </param>
+        /// <param name="client">The client.</param>
         public static void RunUserTest(this Client client)
         {
             ConsoleHelper.WriteHeader("User");

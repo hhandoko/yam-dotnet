@@ -132,7 +132,7 @@ namespace YamNet.Client
     }
 
     /// <summary>
-    /// The user client query.
+    /// The UserClient query helper.
     /// </summary>
     internal class UserQuery
     {

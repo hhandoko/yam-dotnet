@@ -18,9 +18,7 @@ namespace YamNet.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="ClientBase"/> class.
         /// </summary>
-        /// <param name="client">
-        /// The client.
-        /// </param>
+        /// <param name="client">The Yammer REST client.</param>
         public ClientBase(Client client)
         {
             this.Client = client.Proxy == null
@@ -44,7 +42,7 @@ namespace YamNet.Client
         /// <param name="baseUri">The base uri.</param>
         /// <param name="urlParams">The url parameters.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        public string GetFinalUrl(string baseUri, string urlParams)
+        public string GetFinalUrl(string baseUri, string urlParams = "")
         {
             var result = string.Empty;
 

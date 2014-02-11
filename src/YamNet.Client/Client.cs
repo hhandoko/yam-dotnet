@@ -6,12 +6,13 @@
 
 namespace YamNet.Client
 {
+    using System;
     using System.Net;
 
     /// <summary>
     /// The Yammer web client.
     /// </summary>
-    public class Client
+    public class Client : IDisposable
     {
         /// <summary>
         /// The default Yammer REST API endpoint.
@@ -45,6 +46,16 @@ namespace YamNet.Client
         public UserClient Users { get; set; }
 
         /// <summary>
+        /// Gets or sets the group memberships REST API endpoint.
+        /// </summary>
+        public GroupClient Groups { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the messages REST API endpoint.
+        /// </summary>
+        public MessageClient Messages { get; set; }
+
+        /// <summary>
         /// Gets or sets the REST API endpoint.
         /// </summary>
         internal string Endpoint { get; set; }
@@ -60,6 +71,27 @@ namespace YamNet.Client
         internal IWebProxy Proxy { get; set; }
 
         /// <summary>
+        /// The dispose.
+        /// </summary>
+        public void Dispose()
+        {
+            if (this.Users.Client != null)
+            {
+                this.Users.Client.Dispose();
+            }
+
+            if (this.Groups.Client != null)
+            {
+                this.Groups.Client.Dispose();
+            }
+
+            if (this.Messages.Client != null)
+            {
+                this.Messages.Client.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Initialise the base client.
         /// </summary>
         /// <param name="token">The access token.</param>
@@ -69,6 +101,8 @@ namespace YamNet.Client
             this.BearerToken = token;
 
             this.Users = new UserClient(this);
+            this.Groups = new GroupClient(this);
+            this.Messages = new MessageClient(this);
         }
     }
 }
