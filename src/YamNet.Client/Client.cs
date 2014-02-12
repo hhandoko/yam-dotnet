@@ -9,6 +9,8 @@ namespace YamNet.Client
     using System;
     using System.Net;
 
+    using YamNet.Client.Clients;
+
     /// <summary>
     /// The Yammer web client.
     /// </summary>
@@ -46,6 +48,11 @@ namespace YamNet.Client
         public UserClient Users { get; set; }
 
         /// <summary>
+        /// Gets or sets the user's relationship REST API endpoint.
+        /// </summary>
+        public RelationshipClient Relationships { get; set; }
+
+        /// <summary>
         /// Gets or sets the group memberships REST API endpoint.
         /// </summary>
         public GroupClient Groups { get; set; }
@@ -80,6 +87,11 @@ namespace YamNet.Client
                 this.Users.Client.Dispose();
             }
 
+            if (this.Relationships.Client != null)
+            {
+                this.Relationships.Client.Dispose();
+            }
+
             if (this.Groups.Client != null)
             {
                 this.Groups.Client.Dispose();
@@ -101,6 +113,7 @@ namespace YamNet.Client
             this.BearerToken = token;
 
             this.Users = new UserClient(this);
+            this.Relationships = new RelationshipClient(this);
             this.Groups = new GroupClient(this);
             this.Messages = new MessageClient(this);
         }

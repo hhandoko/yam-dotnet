@@ -83,12 +83,14 @@ namespace YamNet.Client
                 RequestUri = endpoint.Uri
             };
 
+            // Queryparams only apply to GET
             if (!IncludeParametersInUri(method))
             {
                 var content = this.serializer.SerializeToByteArray(parameters);
                 request.Content = new ByteArrayContent(content);
             }
 
+            // If request has body, use the correct MIME type
             if (request.Content != null)
             {
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue(this.serializer.ContentType);

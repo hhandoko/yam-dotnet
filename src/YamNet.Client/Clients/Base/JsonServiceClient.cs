@@ -173,42 +173,54 @@ namespace YamNet.Client
                 {
                     // Create the HTTP Request object based on HttpClient PCL
                     var request = new HttpRequestObject(this.Serializer);
+                    var defaultDelay = TimeSpan.FromSeconds(10);
 
                     while (tryAgain && counter++ < Retry)
                     {
-                        try
-                        {
-                            // Send the HttpRequest asynchronously
-                            response = await request.ExecuteRequestAsync<T>(this.client, method, this.Endpoint, uri, parameters);
-                            
-                            // Check if response was a success
-                            // i.e. HTTP 200 OK
-                            // TODO: Need refactor, this flag may not belong here
-                            tryAgain = !response.IsSuccessStatusCode;
-                        }
-                        catch (RateLimitExceededException)
-                        {
-                            // Immediately fails the request if the
-                            // API rate limit has been exceeded
-                            // Reference:
-                            // https://developer.yammer.com/restapi/#rest-ratelimits
-                            // TODO: Create specified delay based on docs
-                            Debug.WriteLine("Rate Limit Exceeded");
-                        }
+                        var delay = defaultDelay;
+
+                        // Send the HttpRequest asynchronously
+                        response =
+                            await
+                            request.ExecuteRequestAsync<T>(this.client, method, this.Endpoint, uri, parameters);
+
+                        // Check if response was a success
+                        // i.e. HTTP 200 OK
+                        // TODO: Need refactor, this flag may not belong here
+                        tryAgain = !response.IsSuccessStatusCode;
 
                         if (tryAgain)
                         {
-                            // Immediately retry on first and second request.
-                            // If auth is required, sometimes two request are
-                            // required, first one to determine which scheme
-                            // are being used.
-                            // Reference:
-                            // http://stackoverflow.com/a/17025435/1615437
-                            var delay =
-                                counter <= 1
-                                    ? TimeSpan.FromMilliseconds(1)
-                                    : TimeSpan.FromSeconds(10);
+                            switch ((int)response.StatusCode)
+                            {
+                                case 401:
+                                    // 401 Unauthorised Exception.
+                                    // Immediately retry on first and second request.
+                                    // If auth is required, sometimes two request are
+                                    // required, first one to determine which scheme
+                                    // are being used.
+                                    // Reference:
+                                    // http://stackoverflow.com/a/17025435/1615437
+                                    delay =
+                                        counter <= 1
+                                            ? TimeSpan.FromMilliseconds(1)
+                                            : defaultDelay;
+                                    break;
 
+                                case 429:
+                                    // 429 Too Many Requests.
+                                    // Log the exception if the API rate limit
+                                    // has been exceeded.
+                                    // Reference:
+                                    // https://developer.yammer.com/restapi/#rest-ratelimits
+                                    // TODO: Create specified delay based on docs
+                                    Debug.WriteLine("Rate Limit Exceeded");
+
+                                    // Wait 10 seconds before trying again
+                                    delay = defaultDelay;
+                                    break;
+                            }
+                            
                             // Retry request with a specified delay
                             await TaskEx.Delay(delay);
                         }
@@ -224,8 +236,10 @@ namespace YamNet.Client
                 }
                 catch (AggregateException ae)
                 {
+                    // Catch Yammer aggregate exception
                     ae.Flatten().Handle(e =>
                     {
+                        // Return all exception other than Rate Limit Exceeded type
                         if (e.GetType() != typeof(RateLimitExceededException))
                         {
                             result = new BaseEnvelope<T> { Exception = e.InnerException ?? e };
@@ -236,6 +250,7 @@ namespace YamNet.Client
                 }
                 catch (HttpRequestException httpEx)
                 {
+                    // Catch other HTTP exception
                     if (httpEx.InnerException is WebException)
                     {
                         var webEx = httpEx.InnerException as WebException;
@@ -268,8 +283,9 @@ namespace YamNet.Client
                 ? new HttpClient()
                 : new HttpClient(this.handler);
 
+            // Add the bearer token and set timeout to 60 seconds
             this.client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            this.client.Timeout = TimeSpan.FromMinutes(1);
+            this.client.Timeout = TimeSpan.FromSeconds(60);
         }
 
         #region Disposable

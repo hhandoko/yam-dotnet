@@ -146,7 +146,14 @@ namespace YamNet.Client
         /// <param name="includeFollowed">The include followed users flag.</param>
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include group memberships flag.</param>
-        public UserQuery(int page, string letter, UserQuerySort sort, bool reverse, bool includeFollowed, bool includeSubscribedTags, bool includeGroups)
+        public UserQuery(
+            int page,
+            string letter,
+            UserQuerySort sort,
+            bool reverse,
+            bool includeFollowed,
+            bool includeSubscribedTags,
+            bool includeGroups)
         {
             if (page > 0)
             {

@@ -11,7 +11,7 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The message domain object.
+    /// The message DTO.
     /// </summary>
     public sealed class Message
     {

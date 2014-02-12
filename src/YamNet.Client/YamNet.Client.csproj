@@ -63,11 +63,13 @@
     <Compile Include="Client.cs" />
     <Compile Include="Clients\Base\ClientBase.cs" />
     <Compile Include="Clients\Base\JsonServiceClient.cs" />
+    <Compile Include="Clients\Interfaces\IRelationshipClient.cs" />
     <Compile Include="Clients\MessageClient.cs" />
     <Compile Include="Clients\GroupClient.cs" />
     <Compile Include="Clients\Interfaces\IMessageClient.cs" />
     <Compile Include="Clients\Interfaces\IGroupClient.cs" />
     <Compile Include="Clients\Interfaces\IUserClient.cs" />
+    <Compile Include="Clients\RelationshipClient.cs" />
     <Compile Include="Clients\UserClient.cs" />
     <Compile Include="DTOs\Group\Group.cs" />
     <Compile Include="DTOs\Group\GroupStat.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="DTOs\Meta\Realtime.cs" />
     <Compile Include="DTOs\Meta\Meta.cs" />
     <Compile Include="DTOs\Reference\Interface\IReference.cs" />
+    <Compile Include="DTOs\Relationship\Relationship.cs" />
     <Compile Include="DTOs\User\CompanyInfo.cs" />
     <Compile Include="DTOs\Group\GroupUser.cs" />
     <Compile Include="DTOs\User\UserBasicInfo.cs" />

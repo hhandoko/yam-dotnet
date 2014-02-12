@@ -87,6 +87,21 @@ namespace YamNet.Client.ConsoleTest
                 Console.WriteLine("   {0} - {1}", i, followed.FullName);
                 i++;
             }
+            
+            Console.WriteLine("\n{0}. Get the user's org chart relationship", j++);
+            var currentRelations = client.Relationships.GetCurrent();
+            Console.WriteLine("   Superior    : {0}", string.Join(", ", (from r in currentRelations.Superiors.ToList() select r.FullName).ToArray()).ConsoleTrim(69));
+            Console.WriteLine("   Colleagues  : {0}", string.Join(", ", (from r in currentRelations.Colleagues.ToList() select r.FullName).ToArray()).ConsoleTrim(69));
+            Console.WriteLine("   Subordinates: {0}", string.Join(", ", (from r in currentRelations.Subordinates.ToList() select r.FullName).ToArray()).ConsoleTrim(69));
+
+            if (currentRelations.Superiors.Any())
+            {
+                Console.WriteLine("\n{0}. Get the user's manager org chart relationship", j++);
+                var managerRelations = client.Relationships.GetById(currentRelations.Superiors.First().Id);
+                Console.WriteLine("   Superior    : {0}", string.Join(", ", (from r in managerRelations.Superiors.ToList() select r.FullName).ToArray()).ConsoleTrim(69));
+                Console.WriteLine("   Colleagues  : {0}", string.Join(", ", (from r in managerRelations.Colleagues.ToList() select r.FullName).ToArray()).ConsoleTrim(69));
+                Console.WriteLine("   Subordinates: {0}", string.Join(", ", (from r in managerRelations.Subordinates.ToList() select r.FullName).ToArray()).ConsoleTrim(69));
+            }
 
             Console.WriteLine("\n{0}. Get the groups the user a member of", j++);
             i = 1;
