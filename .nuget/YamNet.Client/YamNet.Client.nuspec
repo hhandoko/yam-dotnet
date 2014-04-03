@@ -2,21 +2,21 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>YamNet.Client</id>
-        <version>0.1.1</version>
+        <version>$version$</version>
         <title>Yammer .Net Unofficial SDK</title>
         <authors>Herdy Handoko</authors>
         <owners>Herdy Handoko</owners>
         <licenseUrl>https://github.com/hhandoko/yam-dotnet/blob/master/License.txt?raw=true</licenseUrl>
         <projectUrl>https://github.com/hhandoko/yam-dotnet</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>An unofficial .Net 4.0+ async SDK for Yammer REST API. This library is built using Portable Class Libraries targeting .Net 4.0+, Silverlight 4+, and WP7.5+.</description>
-        <copyright>YamNet 2013 and Contributors</copyright>
+        <description>An unofficial .Net 4.0+ async SDK for Yammer REST API. This library is built using Portable Class Libraries targeting .Net 4.0+, Silverlight 5+, WP8+, Xamarin.iOS, and Xamarin.Android.</description>
+        <copyright>2013 - 2014 YamNet contributors</copyright>
         <language>en-AU</language>
         <tags>Yammer</tags>
         <dependencies>
-            <dependency id="Microsoft.Bcl.Async" version="1.0.16" />
-            <dependency id="Microsoft.Net.Http" version="2.2.13" />
-            <dependency id="Newtonsoft.Json" version="5.0.6" />
+            <dependency id="Microsoft.Bcl.Async" version="1.0.165" />
+            <dependency id="Microsoft.Net.Http" version="2.2.18" />
+            <dependency id="Newtonsoft.Json" version="6.0.1" />
         </dependencies>
     </metadata>
     <files>
