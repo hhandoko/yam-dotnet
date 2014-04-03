@@ -6,7 +6,6 @@
 
 namespace YamNet.Client
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -44,7 +43,7 @@ namespace YamNet.Client
         {
             var query = new UserQuery(page, letter, sort, reverse, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<List<User>>(url);
+            var result = await this.Client.GetAsync<User[]>(url);
 
             return result.Content.AsQueryable();
         }
@@ -93,7 +92,7 @@ namespace YamNet.Client
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/by_email.json?email={1}", BaseUri, email), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<List<User>>(url);
+            var result = await this.Client.GetAsync<User[]>(url);
 
             return result.Content.FirstOrDefault();
         }

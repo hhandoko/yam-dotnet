@@ -12,11 +12,14 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The user.
+    /// The user DTO.
     /// </summary>
+    /// <remarks>
+    /// DTO last checked: 2014/03/04
+    /// </remarks>
     public sealed class User : UserBasicInfo //: IAutoCompleteValueEx
     {
-        #region Account 
+        #region Account
         /// <summary>
         /// Gets or sets the guid.
         /// </summary>
@@ -119,6 +122,12 @@ namespace YamNet.Client
         /// </summary>
         [JsonProperty("network_domains")]
         public string[] NetworkDomains { get; set; }
+
+        /// <summary>
+        /// Gets or sets the canonical network name.
+        /// </summary>
+        [JsonProperty("canonical_network_name")]
+        public string CanonicalNetworkName { get; set; }
         #endregion
 
         #region Work and Education
@@ -183,6 +192,19 @@ namespace YamNet.Client
         }
         #endregion
 
+        #region Display, Settings and Preferences
+        /// <summary>
+        /// Gets or sets a value indicating whether prompt should be displayed asking to update photo.
+        /// </summary>
+        [JsonProperty("show_ask_for_photo")]
+        public bool ShowAskForPhoto { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to follow general messages.
+        /// </summary>
+        [JsonProperty("follow_general_messages")]
+        public bool FollowGeneralMessages { get; set; }
+
         /// <summary>
         /// Gets or sets the settings.
         /// </summary>
@@ -190,9 +212,22 @@ namespace YamNet.Client
         public UserSettings Settings { get; set; }
 
         /// <summary>
+        /// Gets or sets the web preferences.
+        /// </summary>
+        [JsonProperty("web_preferences")]
+        public UserWebPreferences WebPreferences { get; set; }
+        #endregion
+
+        /// <summary>
         /// Gets or sets the treatments.
         /// </summary>
         [JsonProperty("treatments")]
         public Treatments Treatments { get; set; }
+
+        /// <summary>
+        /// Gets or sets the web OAuth access token.
+        /// </summary>
+        [JsonProperty("web_oauth_access_token")]
+        public string WebOAuthAccessToken { get; set; }
     }
 }

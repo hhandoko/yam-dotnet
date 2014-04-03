@@ -63,6 +63,8 @@
     <Compile Include="Client.cs" />
     <Compile Include="Clients\Base\ClientBase.cs" />
     <Compile Include="Clients\Base\JsonServiceClient.cs" />
+    <Compile Include="Clients\NetworkClient.cs" />
+    <Compile Include="Clients\Interfaces\INetworkClient.cs" />
     <Compile Include="Clients\Interfaces\IRelationshipClient.cs" />
     <Compile Include="Clients\MessageClient.cs" />
     <Compile Include="Clients\GroupClient.cs" />
@@ -82,6 +84,9 @@
     <Compile Include="DTOs\Meta\YModule.cs" />
     <Compile Include="DTOs\Meta\Realtime.cs" />
     <Compile Include="DTOs\Meta\Meta.cs" />
+    <Compile Include="DTOs\Network\NetworkProfileFieldsConfiguration.cs" />
+    <Compile Include="DTOs\Network\NetworkGroupCount.cs" />
+    <Compile Include="DTOs\Network\Network.cs" />
     <Compile Include="DTOs\Reference\Interface\IReference.cs" />
     <Compile Include="DTOs\Relationship\Relationship.cs" />
     <Compile Include="DTOs\User\CompanyInfo.cs" />
@@ -94,6 +99,7 @@
     <Compile Include="DTOs\User\UserEmailAddress.cs" />
     <Compile Include="DTOs\User\UserIm.cs" />
     <Compile Include="DTOs\User\UserPhoneNumber.cs" />
+    <Compile Include="DTOs\User\UserWebPreferences.cs" />
     <Compile Include="DTOs\User\UserSettings.cs" />
     <Compile Include="DTOs\User\UserStat.cs" />
     <Compile Include="Errors\Error.cs" />
@@ -125,7 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientExtensions\" />
-    <Folder Include="DomainObjects\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

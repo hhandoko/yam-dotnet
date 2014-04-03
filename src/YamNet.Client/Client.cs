@@ -63,6 +63,11 @@ namespace YamNet.Client
         public MessageClient Messages { get; set; }
 
         /// <summary>
+        /// Gets or sets the network REST API endpoint.
+        /// </summary>
+        public NetworkClient Networks { get; set; }
+
+        /// <summary>
         /// Gets or sets the REST API endpoint.
         /// </summary>
         internal string Endpoint { get; set; }
@@ -101,6 +106,11 @@ namespace YamNet.Client
             {
                 this.Messages.Client.Dispose();
             }
+
+            if (this.Networks.Client != null)
+            {
+                this.Networks.Client.Dispose();
+            }
         }
 
         /// <summary>
@@ -116,6 +126,7 @@ namespace YamNet.Client
             this.Relationships = new RelationshipClient(this);
             this.Groups = new GroupClient(this);
             this.Messages = new MessageClient(this);
+            this.Networks = new NetworkClient(this);
         }
     }
 }

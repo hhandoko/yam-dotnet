@@ -36,19 +36,16 @@ namespace YamNet.Client
         /// <summary>
         /// Gets or sets the text encoding.
         /// </summary>
-        /// <value>The text encoding.</value>
         public Encoding TextEncoding { get; protected set; }
 
         /// <summary>
         /// Gets or sets the converters.
         /// </summary>
-        /// <value>The converters.</value>
         public IList<JsonConverter> Converters { get; protected set; }
 
         /// <summary>
         /// Gets the type of the content.
         /// </summary>
-        /// <value>The type of the content.</value>
         public string ContentType
         {
             get { return "application/json"; }
