@@ -29,7 +29,7 @@ namespace YamNet.Client.ConsoleTest
 
             Console.WriteLine("{0}. Get first five \"All\" messages", j++);
             i = 1;
-            foreach (var message in client.Messages.GetAll().Take(5))
+            foreach (var message in client.Messages.GetAll().Result.Take(5))
             {
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;
@@ -37,7 +37,7 @@ namespace YamNet.Client.ConsoleTest
 
             Console.WriteLine("\n{0}. Get first five \"Feed\" messages", j++);
             i = 1;
-            foreach (var message in client.Messages.GetFeed().Take(5))
+            foreach (var message in client.Messages.GetFeed().Result.Take(5))
             {
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;
@@ -45,7 +45,7 @@ namespace YamNet.Client.ConsoleTest
 
             Console.WriteLine("\n{0}. Get first five \"Top\" messages", j++);
             i = 1;
-            foreach (var message in client.Messages.GetTop().Take(5))
+            foreach (var message in client.Messages.GetTop().Result.Take(5))
             {
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;
@@ -53,7 +53,7 @@ namespace YamNet.Client.ConsoleTest
 
             Console.WriteLine("\n{0}. Get first five \"Following\" messages", j++);
             i = 1;
-            foreach (var message in client.Messages.GetFollowing().Take(5))
+            foreach (var message in client.Messages.GetFollowing().Result.Take(5))
             {
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;
@@ -61,7 +61,7 @@ namespace YamNet.Client.ConsoleTest
 
             Console.WriteLine("\n{0}. Get first five sent inbox messages", j++);
             i = 1;
-            foreach (var message in client.Messages.GetSent().Take(5))
+            foreach (var message in client.Messages.GetSent().Result.Take(5))
             {
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;
@@ -69,7 +69,7 @@ namespace YamNet.Client.ConsoleTest
 
             Console.WriteLine("\n{0}. Get first five private inbox messages", j++);
             i = 1;
-            foreach (var message in client.Messages.GetPrivate().Take(5))
+            foreach (var message in client.Messages.GetPrivate().Result.Take(5))
             {
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;
@@ -77,7 +77,7 @@ namespace YamNet.Client.ConsoleTest
 
             Console.WriteLine("\n{0}. Get first five inbox messages", j++);
             i = 1;
-            foreach (var message in client.Messages.GetReceived().Take(5))
+            foreach (var message in client.Messages.GetReceived().Result.Take(5))
             {
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;

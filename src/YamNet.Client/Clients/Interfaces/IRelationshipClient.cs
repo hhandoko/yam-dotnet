@@ -7,6 +7,7 @@
 namespace YamNet.Client
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     using YamNet.Client.Clients;
 
@@ -19,14 +20,14 @@ namespace YamNet.Client
         /// Get current user's relationship.
         /// </summary>
         /// <returns>The <see cref="Relationship"/>.</returns>
-        Relationship GetCurrent();
+        Task<Relationship> GetCurrent();
 
         /// <summary>
         /// Get the user's relationship given the id.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <returns>The <see cref="Relationship"/>.</returns>
-        Relationship GetById(long userId);
+        Task<Relationship> GetById(long userId);
 
         /// <summary>
         /// Add a relationship to the current user.

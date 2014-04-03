@@ -8,6 +8,7 @@ namespace YamNet.Client
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Yammer users' client.
@@ -39,12 +40,13 @@ namespace YamNet.Client
         /// <param name="sort">The sort.</param>
         /// <param name="reverse">The reverse.</param>
         /// <returns>The <see cref="IQueryable"/>.</returns>
-        public IQueryable<User> Get(int page = 0, string letter = "", UserQuerySort sort = UserQuerySort.NoSort, bool reverse = false)
+        public async Task<IQueryable<User>> Get(int page = 0, string letter = "", UserQuerySort sort = UserQuerySort.NoSort, bool reverse = false)
         {
             var query = new UserQuery(page, letter, sort, reverse, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var result = await this.Client.GetAsync<List<User>>(url);
 
-            return this.Client.GetAsync<List<User>>(url).Result.Content.AsQueryable();
+            return result.Content.AsQueryable();
         }
 
         /// <summary>
@@ -53,12 +55,13 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         /// <param name="page">The page.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        public IQueryable<User> GetByGroupId(long id, int page = 0)
+        public async Task<IQueryable<User>> GetByGroupId(long id, int page = 0)
         {
             var query = new UserQuery(page, string.Empty, UserQuerySort.NoSort, false, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}/in_group/{1}.json", BaseUri, id), query.SerializeQueryString());
+            var result = await this.Client.GetAsync<GroupUser>(url);
 
-            return this.Client.GetAsync<GroupUser>(url).Result.Content.Users.AsQueryable();
+            return result.Content.Users.AsQueryable();
         }
 
         /// <summary>
@@ -69,12 +72,13 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        public User GetById(long id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
+        public async Task<User> GetById(long id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id), query.SerializeQueryString());
+            var result = await this.Client.GetAsync<User>(url);
 
-            return this.Client.GetAsync<User>(url).Result.Content;
+            return result.Content;
         }
 
         /// <summary>
@@ -85,12 +89,13 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        public User GetByEmail(string email, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
+        public async Task<User> GetByEmail(string email, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/by_email.json?email={1}", BaseUri, email), query.SerializeQueryString());
+            var result = await this.Client.GetAsync<List<User>>(url);
 
-            return this.Client.GetAsync<List<User>>(url).Result.Content.FirstOrDefault();
+            return result.Content.FirstOrDefault();
         }
 
         /// <summary>
@@ -100,34 +105,35 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        public User Current(bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
+        public async Task<User> Current(bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/current.json", BaseUri), query.SerializeQueryString());
+            var result = await this.Client.GetAsync<User>(url);
 
-            return this.Client.GetAsync<User>(url).Result.Content;
+            return result.Content;
         }
 
         /// <summary>
         /// Suspend a user by his/her id (i.e. soft-delete).
         /// </summary>
         /// <param name="id">The id.</param>
-        public void SuspendById(long id)
+        public async void SuspendById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id));
 
-            this.Client.DeleteAsync(url);
+            await this.Client.DeleteAsync(url);
         }
 
         /// <summary>
         /// Delete a user by his/her id (i.e. hard / permanent deletion).
         /// </summary>
         /// <param name="id">The id.</param>
-        public void DeleteById(long id)
+        public async void DeleteById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json?delete=true", BaseUri, id));
 
-            this.Client.DeleteAsync(url);
+            await this.Client.DeleteAsync(url);
         }
     }
 

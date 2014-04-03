@@ -8,6 +8,7 @@ namespace YamNet.Client.Clients
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Yammer user's relationship / org chart client.
@@ -35,12 +36,13 @@ namespace YamNet.Client.Clients
         /// Get current user's relationship.
         /// </summary>
         /// <returns>The <see cref="Relationship"/>.</returns>
-        public Relationship GetCurrent()
+        public async Task<Relationship> GetCurrent()
         {
             var query = new RelationshipQuery(null, null);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var result = await this.Client.GetAsync<Relationship>(url);
 
-            return this.Client.GetAsync<Relationship>(url).Result.Content;
+            return result.Content;
         }
 
         /// <summary>
@@ -48,24 +50,25 @@ namespace YamNet.Client.Clients
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <returns>The <see cref="Relationship"/>.</returns>
-        public Relationship GetById(long userId)
+        public async Task<Relationship> GetById(long userId)
         {
             var query = new RelationshipQuery(userId, null);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var result = await this.Client.GetAsync<Relationship>(url);
 
-            return this.Client.GetAsync<Relationship>(url).Result.Content;
+            return result.Content;
         }
 
         /// <summary>
         /// Add a relationship to the current user.
         /// </summary>
         /// <param name="relations">The relations.</param>
-        public void AddCurrent(Dictionary<string, RelationshipType> relations)
+        public async void AddCurrent(Dictionary<string, RelationshipType> relations)
         {
-            var query = this.GetRelationsQueryParams(null, relations);
+            var query = GetRelationsQueryParams(null, relations);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query);
 
-            this.Client.PostAsync(url);
+            await this.Client.PostAsync(url);
         }
 
         /// <summary>
@@ -73,12 +76,12 @@ namespace YamNet.Client.Clients
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relations">The relations.</param>
-        public void AddById(long userId, Dictionary<string, RelationshipType> relations)
+        public async void AddById(long userId, Dictionary<string, RelationshipType> relations)
         {
-            var query = this.GetRelationsQueryParams(userId, relations);
+            var query = GetRelationsQueryParams(userId, relations);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query);
             
-            this.Client.PostAsync(url);
+            await this.Client.PostAsync(url);
         }
 
         /// <summary>
@@ -86,12 +89,12 @@ namespace YamNet.Client.Clients
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relationshipType">The relationship type.</param>
-        public void DeleteById(long userId, RelationshipType relationshipType)
+        public async void DeleteById(long userId, RelationshipType relationshipType)
         {
             var query = new RelationshipQuery(null, relationshipType);
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, userId), query.SerializeQueryString());
 
-            this.Client.DeleteAsync(url);
+            await this.Client.DeleteAsync(url);
         }
 
         /// <summary>
@@ -100,7 +103,7 @@ namespace YamNet.Client.Clients
         /// <param name="userId">The user id.</param>
         /// <param name="relations">The relations.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        private string GetRelationsQueryParams(long? userId, Dictionary<string, RelationshipType> relations)
+        private static string GetRelationsQueryParams(long? userId, Dictionary<string, RelationshipType> relations)
         {
             var queryParams = string.Empty;
             

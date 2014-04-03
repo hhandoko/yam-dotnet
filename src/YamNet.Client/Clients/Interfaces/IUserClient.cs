@@ -7,6 +7,7 @@
 namespace YamNet.Client
 {
     using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The UserClient interface.
@@ -21,7 +22,7 @@ namespace YamNet.Client
         /// <param name="sort">The sort.</param>
         /// <param name="reverse">The reverse.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        IQueryable<User> Get(int page, string letter, UserQuerySort sort, bool reverse);
+        Task<IQueryable<User>> Get(int page, string letter, UserQuerySort sort, bool reverse);
 
         /// <summary>
         /// Get users who belong to a group.
@@ -29,7 +30,7 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         /// <param name="page">The page.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        IQueryable<User> GetByGroupId(long id, int page);
+        Task<IQueryable<User>> GetByGroupId(long id, int page);
 
         /// <summary>
         /// Get a user by their id.
@@ -39,7 +40,7 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        User GetById(long id, bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
+        Task<User> GetById(long id, bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
 
         /// <summary>
         /// Get a user by their email.
@@ -49,7 +50,7 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        User GetByEmail(string email, bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
+        Task<User> GetByEmail(string email, bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
 
         /// <summary>
         /// Get the current user.
@@ -58,7 +59,7 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
         /// <param name="includeGroups">The include groups membership flag.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        User Current(bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
+        Task<User> Current(bool includeFollowed, bool includeSubscribedTags, bool includeGroups);
         
         /// <summary>
         /// Suspend a user by his/her id (i.e. soft-delete).
