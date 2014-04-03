@@ -14,16 +14,32 @@
 :: Set the variables
 SET PackageName=
 SET VersionNo=
-SET NuGetDir=
+SET CurrentDir=%~dp0
+SET WorkingDir=
+SET NuGetDir=.nuget
+SET OutputDir=nuget
+
+:: Could currently be in .nuget directory
 IF EXIST "%CD%\NuGet.exe" (
-    ::Use current directory
-    SET NuGetDir=%CD%
-) ELSE (
-    ::Must currently be in Project Directory,
-    ::set the path to the correct location.
-    SET NuGetDir=..\..\.nuget
+    CD ..
+    GOTO :ArgsLoop
 )
-GOTO :ArgsLoop
+
+:: Could currently be in nuget or src directory
+IF EXIST "%CD%\..\.nuget\NuGet.exe" (
+    CD ..
+    GOTO :ArgsLoop
+)
+
+:: Could currently be in project directory
+IF EXIST "%CD%\..\..\.nuget\NuGet.exe" (
+    CD ..\..
+    GOTO :ArgsLoop
+)
+
+:: Cannot find NuGet.exe
+ECHO Error, unable to find NuGet.exe
+GOTO :IsPause
 
 
 
@@ -52,9 +68,11 @@ ECHO ----------------------------------------
 ECHO  NuGet Pack
 ECHO ----------------------------------------
 IF NOT [%PackageName%]==[] (
-    ECHO Package Name  : %PackageName%
+    ECHO Package Name    : %PackageName%
 )
-ECHO Version Number: %VersionNo%
+ECHO Version Number  : %VersionNo%
+ECHO NuGet Directory : %NuGetDir%
+ECHO Output Directory: %OutputDir%
 ECHO.
 GOTO :PackMain
 
@@ -87,7 +105,12 @@ GOTO :IsPause
 :: Pack the DLL(s)
 SET _PackageName=%1
 SET _VersionNo=%2
-CALL "%NuGetDir%\NuGet.exe" pack "%NuGetDir%\%_PackageName%\%_PackageName%.nuspec" -OutputDirectory "%NuGetDir%\%_PackageName%" -Version %_VersionNo%
+
+:: Create output directory if it doesn't exist, otherwise NuGet will throw an error
+IF NOT EXIST "%OutputDir%\%_PackageName%" MKDIR "%OutputDir%\%_PackageName%"
+
+:: Package it!
+CALL "%NuGetDir%\NuGet.exe" pack "%OutputDir%\%_PackageName%.nuspec" -OutputDirectory "%OutputDir%\%_PackageName%" -Version %_VersionNo%
 ECHO.
 GOTO :EOF
 
@@ -103,3 +126,5 @@ GOTO :BatchEnd
 
 
 :BatchEnd ----------------------------------------------------------------
+:: Make sure we return to the original directory
+CD %CurrentDir%

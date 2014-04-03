@@ -20,6 +20,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\..\release\latest\YamNet.Client\lib\YamNet.Client.dll" target="lib\YamNet.Client.dll" />
+        <file src="..\release\latest\YamNet.Client\lib\YamNet.Client.dll" target="lib\portable-net40+sl50+wp80+win+MonoAndroid10+MonoTouch10\YamNet.Client.dll" />
     </files>
 </package>
