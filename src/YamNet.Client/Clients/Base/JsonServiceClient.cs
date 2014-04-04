@@ -87,21 +87,21 @@ namespace YamNet.Client
         /// <summary>
         /// Post via async.
         /// </summary>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <param name="uri">The full uri.</param>
+        /// <param name="parameters">The query parameters.</param>
+        /// <returns>The <see cref="Task{BaseEnvelope{object}}"/>.</returns>
         internal async Task<IBaseEnvelope<object>> PostAsync(string uri, object parameters = null)
         {
             return await this.PostAsync<object>(uri, parameters);
         }
 
         /// <summary>
-        /// Post via async.
+        /// Post via HTTP async.
         /// </summary>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="uri">The full uri.</param>
+        /// <param name="parameters">The query parameters.</param>
         /// <typeparam name="T">The class type.</typeparam>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <returns>The <see cref="Task{BaseEnvelope{T}}"/>.</returns>
         internal async Task<IBaseEnvelope<T>> PostAsync<T>(string uri, object parameters = null)
             where T : class
         {
@@ -109,12 +109,12 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Get via async.
+        /// Get via HTTP async.
         /// </summary>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="uri">The full uri.</param>
+        /// <param name="parameters">The query parameters.</param>
         /// <typeparam name="T">The class type.</typeparam>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <returns>The <see cref="Task{BaseEnvelope{T}}"/>.</returns>
         internal async Task<IBaseEnvelope<T>> GetAsync<T>(string uri, object parameters = null)
             where T : class
         {
@@ -122,23 +122,23 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Delete via async.
+        /// Delete via HTTP async.
         /// </summary>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <param name="uri">The full uri.</param>
+        /// <param name="parameters">The query parameters.</param>
+        /// <returns>The <see cref="Task{BaseEnvelope{object}}"/>.</returns>
         internal async Task<IBaseEnvelope<object>> DeleteAsync(string uri, object parameters = null)
         {
             return await this.DeleteAsync<object>(uri, parameters);
         }
 
         /// <summary>
-        /// Delete via async.
+        /// Delete via HTTP async.
         /// </summary>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="uri">The full uri.</param>
+        /// <param name="parameters">The query parameters.</param>
         /// <typeparam name="T">The class type.</typeparam>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <returns>The <see cref="Task{BaseEnvelope{T}}"/>.</returns>
         internal async Task<IBaseEnvelope<T>> DeleteAsync<T>(string uri, object parameters = null)
             where T : class
         {
@@ -146,13 +146,13 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Execute via async.
+        /// Execute via HTTP async.
         /// </summary>
-        /// <param name="method">The method.</param>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="uri">The full uri.</param>
+        /// <param name="parameters">The query parameters.</param>
         /// <typeparam name="T">The class type.</typeparam>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <returns>The <see cref="Task{BaseEnvelope{T}}"/>.</returns>
         protected async Task<IBaseEnvelope<T>> ExecuteAsync<T>(
             HttpMethod method,
             string uri,
@@ -179,8 +179,12 @@ namespace YamNet.Client
 
                     // Send the HttpRequest asynchronously
                     response =
-                        await
-                        request.ExecuteRequestAsync<T>(this.client, method, this.Endpoint, uri, parameters);
+                        await request.ExecuteRequestAsync<T>(
+                            this.client,
+                            method,
+                            this.Endpoint,
+                            uri,
+                            parameters);
 
                     // Check if response was a success
                     // i.e. HTTP 200 OK
@@ -199,10 +203,9 @@ namespace YamNet.Client
                                 // are being used.
                                 // Reference:
                                 // http://stackoverflow.com/a/17025435/1615437
-                                delay =
-                                    counter <= 1
-                                        ? TimeSpan.FromMilliseconds(1)
-                                        : defaultDelay;
+                                delay = counter <= 1
+                                    ? TimeSpan.FromMilliseconds(1)
+                                    : defaultDelay;
                                 break;
 
                             case 429:
@@ -226,7 +229,10 @@ namespace YamNet.Client
 
                 if (!tryAgain)
                 {
-                    var responseHandler = new HttpResponseHandler(this.Deserializer, this.ResponseErrorHandler);
+                    var responseHandler =
+                        new HttpResponseHandler(
+                            this.Deserializer,
+                            this.ResponseErrorHandler);
 
                     result = await responseHandler.HandleResponseAsync<T>(response);
                     response.Dispose();
@@ -236,15 +242,19 @@ namespace YamNet.Client
             {
                 // Catch Yammer aggregate exception
                 ae.Flatten().Handle(e =>
-                {
-                    // Return all exception other than Rate Limit Exceeded type
-                    if (e.GetType() != typeof(RateLimitExceededException))
                     {
-                        result = new BaseEnvelope<T> { Exception = e.InnerException ?? e };
-                    }
+                        // Return all exception other than Rate Limit Exceeded type
+                        if (e.GetType() != typeof(RateLimitExceededException))
+                        {
+                            result =
+                                new BaseEnvelope<T>
+                                    {
+                                        Exception = e.InnerException ?? e
+                                    };
+                        }
 
-                    return true;
-                });
+                        return true;
+                    });
             }
             catch (HttpRequestException httpEx)
             {
@@ -276,9 +286,10 @@ namespace YamNet.Client
         /// <param name="token">The access token.</param>
         private void Init(string token)
         {
-            this.client = this.handler == null
-                ? new HttpClient()
-                : new HttpClient(this.handler);
+            this.client =
+                this.handler == null
+                    ? new HttpClient()
+                    : new HttpClient(this.handler);
 
             // Add the bearer token and set timeout to 60 seconds
             this.client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -305,9 +316,7 @@ namespace YamNet.Client
         /// <summary>
         /// Release managed and, optionally, unmanaged resources.
         /// </summary>
-        /// <param name="disposing">
-        /// <c>true</c> to release both managed and unmanaged resources.
-        /// </param>
+        /// <param name="disposing">Set <c>true</c> to release both managed and unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (this.disposed)

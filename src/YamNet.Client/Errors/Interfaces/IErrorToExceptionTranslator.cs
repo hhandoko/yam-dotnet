@@ -10,7 +10,7 @@ namespace YamNet.Client.Errors
     using System.Net;
 
     /// <summary>
-    /// The ResponseErrorHandler interface.
+    /// The ErrorToException interface.
     /// </summary>
     public interface IErrorToExceptionTranslator
     {

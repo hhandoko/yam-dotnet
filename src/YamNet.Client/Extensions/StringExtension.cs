@@ -21,7 +21,9 @@ namespace YamNet.Client
         /// <returns>The <see cref="bool"/>.</returns>
         public static bool IsUri(this string value, UriKind uriKind = UriKind.Absolute)
         {
-            return !string.IsNullOrWhiteSpace(value) && Uri.IsWellFormedUriString(value, uriKind);
+            return
+                !string.IsNullOrWhiteSpace(value)
+                && Uri.IsWellFormedUriString(value, uriKind);
         }
 
         /// <summary>

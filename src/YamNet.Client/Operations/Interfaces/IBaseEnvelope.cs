@@ -25,7 +25,7 @@ namespace YamNet.Client
         Exception Exception { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether is faulted.
+        /// Gets a value indicating whether the response is faulted.
         /// </summary>
         bool IsFaulted { get; }
 

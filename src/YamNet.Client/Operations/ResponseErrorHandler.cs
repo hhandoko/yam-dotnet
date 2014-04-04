@@ -15,7 +15,7 @@ namespace YamNet.Client
     using YamNet.Client.Exceptions;
 
     /// <summary>
-    /// Class ResponseErrorHandler
+    /// The HTTP response error handler.
     /// </summary>
     public class ResponseErrorHandler : IResponseErrorHandler
     {
@@ -25,7 +25,7 @@ namespace YamNet.Client
         private readonly IDeserializer deserializer;
 
         /// <summary>
-        /// The translator.
+        /// The exception translator.
         /// </summary>
         private readonly IErrorToExceptionTranslator translator;
 
@@ -45,7 +45,7 @@ namespace YamNet.Client
         /// so they can be handled properly, if desired.
         /// </summary>
         /// <param name="response">The HTTP response.</param>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <returns>The <see cref="Task{Exception}"/>.</returns>
         /// <exception cref="ServerErrorException">Server error exception.</exception>
         /// <exception cref="ConnectionFailureException">Connection failure exception.</exception>
         public async Task<Exception> HandleAsync(HttpResponseMessage response)
@@ -91,12 +91,14 @@ namespace YamNet.Client
                 return new ForbiddenException(msg, response.StatusCode);
             }
 
+            // Check message body for errors.
             var errorResponse = await response.Content.ReadAsByteArrayAsync();
             if (errorResponse == null || errorResponse.Length <= 0)
             {
                 return null;
             }
 
+            // Deserialise error in the message body, if found.
             Error err;
             try
             {
@@ -120,6 +122,7 @@ namespace YamNet.Client
                 return ex;
             }
 
+            // Translate any exception found into error codes.
             var exception = this.translator.Translate(response.StatusCode, err);
 
             return exception;

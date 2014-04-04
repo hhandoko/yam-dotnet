@@ -11,12 +11,12 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The privacy json converter.
+    /// The Privacy JSON converter.
     /// </summary>
     internal class PrivacyJsonConverter : JsonConverter
     {
         /// <summary>
-        /// Gets a value indicating whether can read.
+        /// Gets a value indicating whether the converter can read.
         /// </summary>
         public override bool CanRead
         {
@@ -49,7 +49,11 @@ namespace YamNet.Client
         /// <param name="existingValue">The existing value.</param>
         /// <param name="serializer">The serializer.</param>
         /// <returns>The <see cref="object"/>.</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, Object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            Object existingValue,
+            JsonSerializer serializer)
         {
             var value = reader.Value;
 
@@ -62,7 +66,10 @@ namespace YamNet.Client
         /// <param name="writer">The writer.</param>
         /// <param name="value">The value.</param>
         /// <param name="serializer">The serializer.</param>
-        public override void WriteJson(JsonWriter writer, Object value, JsonSerializer serializer)
+        public override void WriteJson(
+            JsonWriter writer,
+            Object value,
+            JsonSerializer serializer)
         {
             throw new NotImplementedException("This converter cannot write.");
         }

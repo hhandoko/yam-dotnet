@@ -19,8 +19,8 @@ namespace YamNet.Client
         /// Throws exceptions for known error types
         /// so they can be handled properly, if desired.
         /// </summary>
-        /// <param name="response">The response.</param>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <param name="response">The HTTP response message.</param>
+        /// <returns>The <see cref="Task{Exception}"/>.</returns>
         Task<Exception> HandleAsync(HttpResponseMessage response);
     }
 }

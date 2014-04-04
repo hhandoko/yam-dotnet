@@ -26,7 +26,7 @@ namespace YamNet.Client
         JsonSerializerSettings DeserializerSettings { get; }
 
         /// <summary>
-        /// Deserialize bytes content.
+        /// Deserialize byte array content.
         /// </summary>
         /// <param name="content">The content.</param>
         /// <typeparam name="T">The object type.</typeparam>

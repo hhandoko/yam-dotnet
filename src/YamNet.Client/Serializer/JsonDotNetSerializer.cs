@@ -25,12 +25,13 @@ namespace YamNet.Client
         {
             this.TextEncoding = encoding ?? Encoding.UTF8;
             this.Converters = converters;
-            this.Settings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-                Converters = this.Converters
-            };
+            this.Settings =
+                new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore,
+                        ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+                        Converters = this.Converters
+                    };
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace YamNet.Client
         public Encoding TextEncoding { get; protected set; }
 
         /// <summary>
-        /// Gets or sets the converters.
+        /// Gets or sets the JSON converters.
         /// </summary>
         public IList<JsonConverter> Converters { get; protected set; }
 
@@ -58,20 +59,20 @@ namespace YamNet.Client
         protected JsonSerializerSettings Settings { get; set; }
 
         /// <summary>
-        /// Serializes the specified object.
+        /// Serializes the specified object to a byte array.
         /// </summary>
-        /// <param name="obj">The object.</param>
-        /// <returns>The result as byte[].</returns>
+        /// <param name="obj">The object to serialize.</param>
+        /// <returns>The <see cref="byte[]" />.</returns>
         public byte[] SerializeToByteArray(object obj)
         {
             return this.TextEncoding.GetBytes(this.Serialize(obj));
         }
 
         /// <summary>
-        /// Serializes the specified <see cref="object"/>
+        /// Serializes the specified object to string.
         /// </summary>
-        /// <param name="obj">The <see cref="object"/> to serialize</param>
-        /// <returns>The result as string.</returns>
+        /// <param name="obj">The object to serialize</param>
+        /// <returns>The <see cref="string"/>.</returns>
         public string Serialize(object obj)
         {
             return JsonConvert.SerializeObject(obj, Formatting.None, this.Settings);

@@ -12,7 +12,7 @@ namespace YamNet.Client
     using System.Threading.Tasks;
 
     /// <summary>
-    /// The http request object.
+    /// The HTTP request object.
     /// </summary>
     internal class HttpRequestObject
     {
@@ -31,13 +31,13 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// The execute request async.
+        /// Execute HTTP request asynchronously.
         /// </summary>
-        /// <param name="client">The client.</param>
-        /// <param name="method">The method.</param>
-        /// <param name="baseUri">The base uri.</param>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="client">The HTTP client.</param>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="baseUri">The base uri (protocol, host, and port).</param>
+        /// <param name="uri">The relative uri.</param>
+        /// <param name="parameters">The query string parameters.</param>
         /// <typeparam name="T">The class.</typeparam>
         /// <returns>The <see cref="Task"/>.</returns>
         public virtual async Task<HttpResponseMessage> ExecuteRequestAsync<T>(
@@ -48,26 +48,22 @@ namespace YamNet.Client
             object parameters)
             where T : class
         {
-            HttpResponseMessage response = null;
-
             using (var request = this.CreateRequestMessage(method, baseUri, uri, parameters))
             {
-                if (request != null)
-                {
-                    response = await client.SendAsync(request);
-                }
+                return
+                    request == null
+                        ? null
+                        : await client.SendAsync(request, HttpCompletionOption.ResponseContentRead);
             }
-
-            return response;
         }
 
         /// <summary>
-        /// The create request message.
+        /// Create a new HTTP request message.
         /// </summary>
-        /// <param name="method">The method.</param>
-        /// <param name="baseUri">The base uri.</param>
-        /// <param name="uri">The uri.</param>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="baseUri">The base uri (protocol, host, and port).</param>
+        /// <param name="uri">The relative uri.</param>
+        /// <param name="parameters">The query string parameters.</param>
         /// <returns>The <see cref="HttpRequestMessage"/>.</returns>
         protected virtual HttpRequestMessage CreateRequestMessage(
             HttpMethod method,
@@ -75,13 +71,14 @@ namespace YamNet.Client
             string uri,
             object parameters)
         {
+            // Get the full endpoint URL and create a HTTP request message
             var endpoint = new UriBuilder(uri.IsUri() ? uri : baseUri + uri);
-
-            var request = new HttpRequestMessage
-            {
-                Method = method,
-                RequestUri = endpoint.Uri
-            };
+            var request =
+                new HttpRequestMessage
+                    {
+                        Method = method,
+                        RequestUri = endpoint.Uri
+                    };
 
             // Queryparams only apply to GET
             if (!IncludeParametersInUri(method))
@@ -100,15 +97,18 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Checks if parameters need to be included in the URI (only for GET)
+        /// Checks if parameters need to be included in the URI.
+        /// Query params only applicable for GET,
+        /// otherwise it must be passed along in the form-body.
         /// </summary>
-        /// <param name="method">The method.</param>
+        /// <param name="method">The HTTP method.</param>
         /// <returns>The <see cref="bool"/>.</returns>
         private static bool IncludeParametersInUri(HttpMethod method)
         {
-            return method != HttpMethod.Post
-                   && method != HttpMethod.Put
-                   && method != HttpMethod.Delete;
+            return
+                method != HttpMethod.Post
+                && method != HttpMethod.Put
+                && method != HttpMethod.Delete;
         }
     }
 }

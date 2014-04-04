@@ -17,14 +17,14 @@ namespace YamNet.Client
         string ContentType { get; }
 
         /// <summary>
-        /// The serialize to byte array.
+        /// Serialize to byte array.
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns>The <see cref="byte[]"/>.</returns>
         byte[] SerializeToByteArray(object obj);
 
         /// <summary>
-        /// The serialize.
+        /// Serialize to string. 
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns>The <see cref="string"/>.</returns>
