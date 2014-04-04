@@ -13,7 +13,7 @@ namespace YamNet.Client
     /// <summary>
     /// The network group count DTO.
     /// </summary>
-    public sealed class NetworkGroupCount //: IAutoCompleteValueEx
+    public sealed class NetworkGroupCount
     {
         /// <summary>
         /// Gets or sets the unseen general thread count.

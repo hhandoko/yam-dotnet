@@ -11,7 +11,7 @@ namespace YamNet.Client
     /// <summary>
     /// The network profile field configuration DTO.
     /// </summary>
-    public sealed class NetworkProfileFieldsConfiguration //: IAutoCompleteValueEx
+    public sealed class NetworkProfileFieldsConfiguration
     {
         /// <summary>
         /// Gets or sets the enable job title display option.

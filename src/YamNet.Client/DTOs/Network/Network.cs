@@ -14,8 +14,8 @@ namespace YamNet.Client
     /// The user's network DTO.
     /// </summary>
     /// <remarks> 
-    /// DTO last checked     : 2014/03/04
-    /// Sample last retrieved: 2014/03/04
+    /// DTO last checked     : 2014/04/03
+    /// Sample last retrieved: 2014/04/03
     /// 
     /// GET: https://www.yammer.com/api/v1/networks/current.json
     /// {
@@ -50,20 +50,9 @@ namespace YamNet.Client
     ///     unseen_notification_count: 0
     /// }
     /// </remarks>
-    public sealed class Network //: IAutoCompleteValueEx
+    public sealed class Network
     {
-        /// <summary>
-        /// Gets or sets the id.
-        /// </summary>
-        [JsonProperty("id")]
-        public long Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
+        #region Details
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
@@ -75,42 +64,15 @@ namespace YamNet.Client
         /// </summary>
         [JsonProperty("permalink")]
         public string Permalink { get; set; }
+        #endregion
 
+        #region URL Links
         /// <summary>
         /// Gets or sets the network web url.
         /// </summary>
         [JsonProperty("web_url")]
         public Uri WebUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets the creation date.
-        /// </summary>
-        [JsonProperty("created_at")]
-        public DateTimeOffset? CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating a paid network.
-        /// </summary>
-        [JsonProperty("paid")]
-        public bool IsPaid { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating a moderated network.
-        /// </summary>
-        [JsonProperty("moderated")]
-        public bool IsModerated { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the network is a community network.
-        /// </summary>
-        [JsonProperty("community")]
-        public bool IsCommunity { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this network is the user's primary network.
-        /// </summary>
-        [JsonProperty("is_primary")]
-        public bool IsPrimary { get; set; }
+        #endregion
 
         #region Notifications and Messages
         /// <summary>
@@ -143,7 +105,7 @@ namespace YamNet.Client
         [JsonProperty("unseen_notification_count")]
         public int? UnseenNotificationCount { get; set; }
 
-        // TODO: Check if this is still current, does not appear in response at 2014/03/04
+        // TODO: Deprecated? 2014/03/04
         /// <summary>
         /// Gets or sets the network group count.
         /// </summary>
@@ -183,7 +145,7 @@ namespace YamNet.Client
         public NetworkProfileFieldsConfiguration ProfileFieldsConfig { get; set; }
         #endregion
 
-        #region Feature Options
+        #region Options / Configuration
         /// <summary>
         /// Gets or sets a value indicating whether chat feature is enabled.
         /// </summary>
@@ -213,6 +175,50 @@ namespace YamNet.Client
         /// </summary>
         [JsonProperty("show_upgrade_banner")]
         public bool ShowUpgradeBanner { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating a paid network.
+        /// </summary>
+        [JsonProperty("paid")]
+        public bool IsPaid { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating a moderated network.
+        /// </summary>
+        [JsonProperty("moderated")]
+        public bool IsModerated { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the network is a community network.
+        /// </summary>
+        [JsonProperty("community")]
+        public bool IsCommunity { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this network is the user's primary network.
+        /// </summary>
+        [JsonProperty("is_primary")]
+        public bool IsPrimary { get; set; }
+        #endregion
+
+        #region System
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        [JsonProperty("id")]
+        public long Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the creation date.
+        /// </summary>
+        [JsonProperty("created_at")]
+        public DateTimeOffset? CreatedAt { get; set; }
         #endregion
     }
 }
