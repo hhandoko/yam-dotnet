@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="Program.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -8,7 +8,6 @@ namespace YamNet.Client.ConsoleTest
 {
     using System;
     using System.Configuration;
-    using System.Net;
 
     /// <summary>
     /// The console program.
@@ -36,6 +35,8 @@ namespace YamNet.Client.ConsoleTest
             {
                 // Run Tests
                 client.RunUserTest();
+                Console.WriteLine("\n");
+                client.RunNetworkTest();
                 Console.WriteLine("\n");
                 client.RunMessageTest();
             }

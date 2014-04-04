@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="BaseEnvelope.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -9,7 +9,7 @@ namespace YamNet.Client
     using System;
 
     /// <summary>
-    /// The base envelope.
+    /// The HTTP response message base envelope.
     /// </summary>
     /// <typeparam name="T">The class type.</typeparam>
     public class BaseEnvelope<T> : IBaseEnvelope<T>
@@ -25,7 +25,7 @@ namespace YamNet.Client
         public Exception Exception { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether is faulted.
+        /// Gets a value indicating whether the response is faulted.
         /// </summary>
         public bool IsFaulted
         {

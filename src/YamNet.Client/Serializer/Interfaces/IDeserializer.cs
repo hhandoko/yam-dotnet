@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="IDeserializer.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ namespace YamNet.Client
         JsonSerializerSettings DeserializerSettings { get; }
 
         /// <summary>
-        /// Deserialize bytes content.
+        /// Deserialize byte array content.
         /// </summary>
         /// <param name="content">The content.</param>
         /// <typeparam name="T">The object type.</typeparam>

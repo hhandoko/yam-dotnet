@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="GroupClient.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -32,22 +32,22 @@ namespace YamNet.Client
         /// Join the group specified by the numeric Id.
         /// </summary>
         /// <param name="id">The group id.</param>
-        public void JoinById(long id)
+        public async void JoinById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", BaseUri, id));
 
-            this.Client.PostAsync(url);
+            await this.Client.PostAsync(url);
         }
 
         /// <summary>
         /// Leave the group specified by the numeric Id.
         /// </summary>
         /// <param name="id">The group id.</param>
-        public void LeaveById(long id)
+        public async void LeaveById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", BaseUri, id));
 
-            this.Client.DeleteAsync(url);
+            await this.Client.DeleteAsync(url);
         }
     }
 }

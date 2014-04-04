@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="IReference.cs" company="YamNet">
-//   Copyright (c) YamNet 2014 and Contributors
+//   Copyright (c) 2014 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 

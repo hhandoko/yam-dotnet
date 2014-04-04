@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>YamNet.Client</id>
+        <version>$version$</version>
+        <title>(Unofficial) Yammer REST API .Net Wrapper</title>
+        <authors>Herdy Handoko</authors>
+        <owners>Herdy Handoko</owners>
+        <licenseUrl>https://github.com/hhandoko/yam-dotnet/blob/master/License.txt?raw=true</licenseUrl>
+        <projectUrl>https://github.com/hhandoko/yam-dotnet</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>An unofficial .Net async wrapper for Yammer REST API. This library is built using Portable Class Libraries targeting .Net 4.0+, Silverlight 5+, WP8+, Xamarin.iOS, and Xamarin.Android.</description>
+        <copyright>2013 - 2014 YamNet contributors</copyright>
+        <language>en-AU</language>
+        <tags>Yammer</tags>
+        <dependencies>
+            <dependency id="Microsoft.Bcl.Async" version="1.0.165" />
+            <dependency id="Microsoft.Net.Http" version="2.2.18" />
+            <dependency id="Newtonsoft.Json" version="6.0.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\release\latest\YamNet.Client\lib\YamNet.Client.dll" target="lib\portable-net40+sl50+wp80+win+MonoAndroid10+MonoTouch10\YamNet.Client.dll" />
+    </files>
+</package>

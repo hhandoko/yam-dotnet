@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="IBaseEnvelope.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ namespace YamNet.Client
         Exception Exception { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether is faulted.
+        /// Gets a value indicating whether the response is faulted.
         /// </summary>
         bool IsFaulted { get; }
 

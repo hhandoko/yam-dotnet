@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="HttpResponseHandler.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ namespace YamNet.Client
     using System.Threading.Tasks;
 
     /// <summary>
-    /// The http response handler.
+    /// The HTTP response handler.
     /// </summary>
     public class HttpResponseHandler
     {
@@ -37,11 +37,11 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// The handle response async.
+        /// Handle HTTP response asynchronously.
         /// </summary>
-        /// <param name="response">The response.</param>
-        /// <typeparam name="T">The class type.</typeparam>
-        /// <returns>The <see cref="Task"/>.</returns>
+        /// <param name="response">The HTTP response.</param>
+        /// <typeparam name="T">The response class type.</typeparam>
+        /// <returns>The <see cref="Task{BaseEnvelope}"/>.</returns>
         public async Task<IBaseEnvelope<T>> HandleResponseAsync<T>(HttpResponseMessage response)
             where T : class
         {

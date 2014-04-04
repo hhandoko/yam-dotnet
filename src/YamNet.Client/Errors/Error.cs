@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="Error.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ namespace YamNet.Client.Errors
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The error.
+    /// The error DTO.
     /// </summary>
     /// <remarks>
     /// For serializing API response, like:
@@ -55,7 +55,7 @@ namespace YamNet.Client.Errors
         protected Dictionary<string, object> Response { get; set; }
 
         /// <summary>
-        /// Denotes whether the it is a valid response.
+        /// Denotes whether the response is a valid response.
         /// </summary>
         /// <returns>The <see cref="bool"/>.</returns>
         public bool IsValid()

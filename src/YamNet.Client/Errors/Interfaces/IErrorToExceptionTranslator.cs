@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="IErrorToExceptionTranslator.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ namespace YamNet.Client.Errors
     using System.Net;
 
     /// <summary>
-    /// The ResponseErrorHandler interface.
+    /// The ErrorToException interface.
     /// </summary>
     public interface IErrorToExceptionTranslator
     {

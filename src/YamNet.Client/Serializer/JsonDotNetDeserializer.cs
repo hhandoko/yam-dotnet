@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="JsonDotNetDeserializer.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -22,11 +22,11 @@ namespace YamNet.Client
         public JsonDotNetDeserializer(Encoding encoding = null)
         {
             this.TextEncoding = encoding ?? Encoding.UTF8;
-
-            this.DeserializerSettings = new JsonSerializerSettings()
-            {
-                NullValueHandling = NullValueHandling.Ignore
-            };
+            this.DeserializerSettings =
+                new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore
+                    };
         }
 
         /// <summary>
@@ -40,25 +40,25 @@ namespace YamNet.Client
         public JsonSerializerSettings DeserializerSettings { get; protected set; }
 
         /// <summary>
-        /// Deserializes the specified content.
+        /// Deserializes byte array content.
         /// </summary>
         /// <typeparam name="T">The object type.</typeparam>
         /// <param name="content">The content.</param>
-        /// <returns>The deserialized object</returns>
-        public T Deserialize<T>(string content)
-        {
-            return JsonConvert.DeserializeObject<T>(content, this.DeserializerSettings);
-        }
-
-        /// <summary>
-        /// Deserializes the async.
-        /// </summary>
-        /// <typeparam name="T">The object type.</typeparam>
-        /// <param name="content">The content.</param>
-        /// <returns>The deserialized object</returns>
+        /// <returns>The <see cref="T"/>.</returns>
         public T Deserialize<T>(byte[] content)
         {
             return this.Deserialize<T>(this.TextEncoding.GetString(content, 0, content.Length));
+        }
+
+        /// <summary>
+        /// Deserializes string content.
+        /// </summary>
+        /// <typeparam name="T">The object type.</typeparam>
+        /// <param name="content">The content.</param>
+        /// <returns>The <see cref="T"/>.</returns>
+        public T Deserialize<T>(string content)
+        {
+            return JsonConvert.DeserializeObject<T>(content, this.DeserializerSettings);
         }
     }
 }

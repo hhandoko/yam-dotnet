@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="Message.cs" company="YamNet">
-//   Copyright (c) YamNet 2013 and Contributors
+//   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The message domain object.
+    /// The message DTO.
     /// </summary>
     public sealed class Message
     {
