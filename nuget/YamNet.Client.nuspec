@@ -3,13 +3,13 @@
     <metadata>
         <id>YamNet.Client</id>
         <version>$version$</version>
-        <title>Yammer .Net Unofficial SDK</title>
+        <title>(Unofficial) Yammer REST API .Net Wrapper</title>
         <authors>Herdy Handoko</authors>
         <owners>Herdy Handoko</owners>
         <licenseUrl>https://github.com/hhandoko/yam-dotnet/blob/master/License.txt?raw=true</licenseUrl>
         <projectUrl>https://github.com/hhandoko/yam-dotnet</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>An unofficial .Net 4.0+ async SDK for Yammer REST API. This library is built using Portable Class Libraries targeting .Net 4.0+, Silverlight 5+, WP8+, Xamarin.iOS, and Xamarin.Android.</description>
+        <description>An unofficial .Net async wrapper for Yammer REST API. This library is built using Portable Class Libraries targeting .Net 4.0+, Silverlight 5+, WP8+, Xamarin.iOS, and Xamarin.Android.</description>
         <copyright>2013 - 2014 YamNet contributors</copyright>
         <language>en-AU</language>
         <tags>Yammer</tags>
