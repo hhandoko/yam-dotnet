@@ -9,6 +9,8 @@ namespace YamNet.Client
     using System;
     using System.Net;
 
+//    using YamNet.Client.Clients;
+
     /// <summary>
     /// The Yammer web client.
     /// </summary>

@@ -32,9 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AsyncBridge.Net35">
+      <HintPath>..\..\packages\AsyncBridge.Net35.0.2.0\lib\net35-Client\AsyncBridge.Net35.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\packages\RestSharp.104.4.0\lib\net35\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,12 +48,26 @@
     <Reference Include="System.Threading">
       <HintPath>..\..\packages\TaskParallelLibrary.1.0.2856.0\lib\Net35\System.Threading.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
+    <Compile Include="Clients\Base\ClientBase.cs" />
+    <Compile Include="Clients\Base\JsonServiceClient.cs" />
+    <Compile Include="Clients\GroupClient.cs" />
+    <Compile Include="Clients\Interfaces\IGroupClient.cs" />
+    <Compile Include="Clients\Interfaces\IMessageClient.cs" />
+    <Compile Include="Clients\Interfaces\INetworkClient.cs" />
+    <Compile Include="Clients\Interfaces\IRelationshipClient.cs" />
+    <Compile Include="Clients\Interfaces\IUserClient.cs" />
+    <Compile Include="Clients\MessageClient.cs" />
+    <Compile Include="Clients\NetworkClient.cs" />
+    <Compile Include="Clients\RelationshipClient.cs" />
+    <Compile Include="Clients\UserClient.cs" />
     <Compile Include="DTOs\Group\Group.cs" />
     <Compile Include="DTOs\Group\GroupStat.cs" />
     <Compile Include="DTOs\Group\GroupUser.cs" />
@@ -90,7 +110,14 @@
     <Compile Include="Exceptions\TokenNotFoundException.cs" />
     <Compile Include="Exceptions\UnauthorizedException.cs" />
     <Compile Include="Extensions\QueryExtension.cs" />
+    <Compile Include="Extensions\RestResponseExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Net\HttpRequestObject.cs" />
+    <Compile Include="Net\HttpResponseHandler.cs" />
+    <Compile Include="Operations\BaseEnvelope.cs" />
+    <Compile Include="Operations\Interfaces\IBaseEnvelope.cs" />
+    <Compile Include="Operations\Interfaces\IResponseErrorHandler.cs" />
+    <Compile Include="Operations\ResponseErrorHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializer\Converter\PrivacyJsonConverter.cs" />
     <Compile Include="Serializer\Interfaces\IDeserializer.cs" />
