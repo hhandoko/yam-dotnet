@@ -1,9 +1,9 @@
-YamNet is an unofficial .Net Yammer REST API wrapper based on the the CodePlex [ContractMeow](http://yammercontractmeow.codeplex.com/) project. The goal is to provide a ready-to-use portable client library available via NuGet.
+YamNet is an unofficial Yammer REST API .Net (async) wrapper based on the the CodePlex [ContractMeow](http://yammercontractmeow.codeplex.com/) project. The goal is to provide a ready-to-use client library available via NuGet.
 
 ## Prerequisites and Installation
-YamNet is a Portable Class Library (PCL) project, available for the following build targets:
+YamNet is available as a .Net 3.5 and Portable Class Library (PCL) binaries, which makes it available for the following build targets:
 
-  * .Net 4+
+  * .Net 3.5+
   * Silverlight 5+
   * Windows Phone 8+
   * Xamarin.iOS
@@ -15,7 +15,14 @@ It is available from NuGet, either via the GUI or running the following command 
 PM> Install-Package YamNet.Client
 ```
 
-**Dependencies:**
+**Dependencies (.Net 3.5):**
+
+  * AsyncBridge
+  * Newtonsoft.Json
+  * RestSharp
+  * TaskParallelLibrary
+
+**Dependencies (PCL):**
 
   * Microsoft.Bcl
   * Microsoft.Bcl.Async
@@ -46,7 +53,7 @@ using (var yammerClient = new Client(token))
 
 **Note:** For usage in ASP.Net applications, it is recommended to chain the method with ```ConfigureAwait(false)``` to prevent async deadlock. More information is available on the following StackOverflow article: [An async/await example that causes a deadlock](http://stackoverflow.com/a/15022170).
 
-Most clients have support for various optional parameters, utilising C# 4.0 feature. The following is an example of retrieving a list of users whose name starts with "F", in descending order:
+Most clients have support for various optional parameters, utilising C# 4.0 language feature (Visual Studio 2010 and up). The following is an example of retrieving a list of users whose name starts with "F", in descending order:
 
 ```C#
 using (var yammerClient = new Client(token))
@@ -56,8 +63,15 @@ using (var yammerClient = new Client(token))
 }
 ```
 
+## Supported Requests
+YamNet currently supports the following requests: Messages (partial), Groups, Users (partial), Relationships (partial), and Networks. 
+
+The goal by v1.0 is to reach completeness, i.e. 1:1 mapping of Yammer REST API to the library.
+
 ## Credits
 Big thanks to [jmjc95](http://www.codeplex.com/site/users/view/jmjc95) and [tuongla](http://www.codeplex.com/site/users/view/tuongla) for creating a thoughtful, open-source sample project, and using a fork-friendly Apache 2.0 license so others can reuse and adapt the original works.
+
+Also thanks to [tejacques](https://github.com/tejacques) for [.Net 3.5 AsyncBridge](https://github.com/tejacques/AsyncBridge), and [OmerMor](https://github.com/OmerMor) for [TaskParallelLibrary](http://www.nuget.org/packages/TaskParallelLibrary/), for providing useful libraries making it easier to backport YamNet to .Net 3.5. 
 
 ## Other Yammer-related .Net Resources
  * [Windows 8 App - ContractMeow](http://yammercontractmeow.codeplex.com/)

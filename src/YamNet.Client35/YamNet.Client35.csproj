@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9CC931DA-DB1C-4866-8524-8712666990C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YamNet.Client</RootNamespace>
+    <AssemblyName>YamNet.Client</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AsyncBridge.Net35">
+      <HintPath>..\..\packages\AsyncBridge.Net35.0.2.0\lib\net35-Client\AsyncBridge.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\packages\RestSharp.104.4.0\lib\net35\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Threading">
+      <HintPath>..\..\packages\TaskParallelLibrary.1.0.2856.0\lib\Net35\System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client.cs" />
+    <Compile Include="Clients\Base\ClientBase.cs" />
+    <Compile Include="Clients\Base\JsonServiceClient.cs" />
+    <Compile Include="Clients\GroupClient.cs" />
+    <Compile Include="Clients\Interfaces\IGroupClient.cs" />
+    <Compile Include="Clients\Interfaces\IMessageClient.cs" />
+    <Compile Include="Clients\Interfaces\INetworkClient.cs" />
+    <Compile Include="Clients\Interfaces\IRelationshipClient.cs" />
+    <Compile Include="Clients\Interfaces\IUserClient.cs" />
+    <Compile Include="Clients\MessageClient.cs" />
+    <Compile Include="Clients\NetworkClient.cs" />
+    <Compile Include="Clients\RelationshipClient.cs" />
+    <Compile Include="Clients\UserClient.cs" />
+    <Compile Include="DTOs\Group\Group.cs" />
+    <Compile Include="DTOs\Group\GroupStat.cs" />
+    <Compile Include="DTOs\Group\GroupUser.cs" />
+    <Compile Include="DTOs\Message\Like.cs" />
+    <Compile Include="DTOs\Message\LikedBy.cs" />
+    <Compile Include="DTOs\Message\Message.cs" />
+    <Compile Include="DTOs\Message\MessageBody.cs" />
+    <Compile Include="DTOs\Message\MessageEnvelope.cs" />
+    <Compile Include="DTOs\Message\MessageThread.cs" />
+    <Compile Include="DTOs\Meta\Meta.cs" />
+    <Compile Include="DTOs\Meta\Realtime.cs" />
+    <Compile Include="DTOs\Meta\YModule.cs" />
+    <Compile Include="DTOs\Network\Network.cs" />
+    <Compile Include="DTOs\Network\NetworkGroupCount.cs" />
+    <Compile Include="DTOs\Network\NetworkProfileFieldsConfiguration.cs" />
+    <Compile Include="DTOs\Reference\Interface\IReference.cs" />
+    <Compile Include="DTOs\Relationship\Relationship.cs" />
+    <Compile Include="DTOs\User\CompanyInfo.cs" />
+    <Compile Include="DTOs\User\SchoolInfo.cs" />
+    <Compile Include="DTOs\User\Treatments.cs" />
+    <Compile Include="DTOs\User\User.cs" />
+    <Compile Include="DTOs\User\UserBasicInfo.cs" />
+    <Compile Include="DTOs\User\UserContact.cs" />
+    <Compile Include="DTOs\User\UserEmailAddress.cs" />
+    <Compile Include="DTOs\User\UserIm.cs" />
+    <Compile Include="DTOs\User\UserPhoneNumber.cs" />
+    <Compile Include="DTOs\User\UserSettings.cs" />
+    <Compile Include="DTOs\User\UserStat.cs" />
+    <Compile Include="DTOs\User\UserWebPreferences.cs" />
+    <Compile Include="Errors\Error.cs" />
+    <Compile Include="Errors\ErrorToExceptionTranslator.cs" />
+    <Compile Include="Errors\Interfaces\IErrorToExceptionTranslator.cs" />
+    <Compile Include="Exceptions\AccountDeactivatedException.cs" />
+    <Compile Include="Exceptions\ConnectionFailureException.cs" />
+    <Compile Include="Exceptions\ForbiddenException.cs" />
+    <Compile Include="Exceptions\OfflineException.cs" />
+    <Compile Include="Exceptions\RateLimitExceededException.cs" />
+    <Compile Include="Exceptions\ServerErrorException.cs" />
+    <Compile Include="Exceptions\SSOEnabledException.cs" />
+    <Compile Include="Exceptions\TokenNotFoundException.cs" />
+    <Compile Include="Exceptions\UnauthorizedException.cs" />
+    <Compile Include="Extensions\QueryExtension.cs" />
+    <Compile Include="Extensions\RestResponseExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Net\HttpRequestObject.cs" />
+    <Compile Include="Net\HttpResponseHandler.cs" />
+    <Compile Include="Operations\BaseEnvelope.cs" />
+    <Compile Include="Operations\Interfaces\IBaseEnvelope.cs" />
+    <Compile Include="Operations\Interfaces\IResponseErrorHandler.cs" />
+    <Compile Include="Operations\ResponseErrorHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializer\Converter\PrivacyJsonConverter.cs" />
+    <Compile Include="Serializer\Interfaces\IDeserializer.cs" />
+    <Compile Include="Serializer\Interfaces\ISerializer.cs" />
+    <Compile Include="Serializer\JsonDotNetDeserializer.cs" />
+    <Compile Include="Serializer\JsonDotNetSerializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="AfterBuild" Condition="$(ConfigurationName)==Release">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="CurrentAssembly" />
+    </GetAssemblyIdentity>
+    <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)release\latest\$(ProjectName)\lib\*" />
+    <Exec Command="$(SolutionDir)nuget\NuGetPack -n $(SolutionName).Client -v %(CurrentAssembly.Version)" />
+  </Target>
+</Project>

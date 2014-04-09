@@ -191,7 +191,7 @@
       <Output TaskParameter="Assemblies" ItemName="CurrentAssembly" />
     </GetAssemblyIdentity>
     <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)release\latest\$(ProjectName)\lib\*" />
-    <Exec Command="$(SolutionDir)nuget\NuGetPack -n $(ProjectName) -v %(CurrentAssembly.Version)" />
+    <Exec Command="$(SolutionDir)nuget\NuGetPack -n $(SolutionName).Client -v %(CurrentAssembly.Version)" />
   </Target>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
