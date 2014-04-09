@@ -33,11 +33,6 @@ namespace YamNet.Client
         private RestClient client;
 
         /// <summary>
-        /// The Yammer access / bearer token.
-        /// </summary>
-        private string token;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="JsonServiceClient"/> class.
         /// </summary>
         /// <param name="token">The access token.</param>
@@ -166,7 +161,7 @@ namespace YamNet.Client
             try
             {
                 // Create the HTTP Request object based on RestSharp.RestClient
-                var request = new HttpRequestObject(this.Serializer) { AccessToken = token };
+                var request = new HttpRequestObject(this.Serializer);
                 var defaultDelay = TimeSpan.FromSeconds(10);
 
                 while (tryAgain && counter++ < Retry)
@@ -286,8 +281,12 @@ namespace YamNet.Client
         /// <param name="token">The access token.</param>
         private void Init(string token)
         {
-            this.client = new RestClient { Timeout = 6000 };
-            this.token = token;
+            this.client =
+                new RestClient
+                    {
+                        Timeout = 6000,
+                        Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer")
+                    };
         }
 
         #region Disposable

@@ -3,23 +3,33 @@
     <metadata>
         <id>YamNet.Client</id>
         <version>$version$</version>
-        <title>(Unofficial) Yammer REST API .Net Wrapper</title>
+        <title>Yammer REST API .Net Wrapper (Unofficial)</title>
         <authors>Herdy Handoko</authors>
         <owners>Herdy Handoko</owners>
         <licenseUrl>https://github.com/hhandoko/yam-dotnet/blob/master/License.txt?raw=true</licenseUrl>
         <projectUrl>https://github.com/hhandoko/yam-dotnet</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>An unofficial .Net async wrapper for Yammer REST API. This library is built using Portable Class Libraries targeting .Net 4.0+, Silverlight 5+, WP8+, Xamarin.iOS, and Xamarin.Android.</description>
+        <description>An unofficial Yammer REST API .Net (async) wrapper. This library can be used for .Net 3.5+, Silverlight 5+, WP8+, Xamarin.iOS, and Xamarin.Android projects.</description>
         <copyright>2013 - 2014 YamNet contributors</copyright>
         <language>en-AU</language>
         <tags>Yammer</tags>
         <dependencies>
-            <dependency id="Microsoft.Bcl.Async" version="1.0.165" />
-            <dependency id="Microsoft.Net.Http" version="2.2.18" />
-            <dependency id="Newtonsoft.Json" version="6.0.1" />
+            <group>
+                <dependency id="Newtonsoft.Json" version="6.0.1" />
+            </group>        
+            <group targetFramework="portable-net40+sl50+wp80+win+MonoAndroid10+MonoTouch10">
+                <dependency id="Microsoft.Bcl.Async" version="1.0.165" />
+                <dependency id="Microsoft.Net.Http" version="2.2.18" />
+            </group>
+            <group targetFramework="net35">
+                <dependency id="AsyncBridge.Net35" version="0.2.0" />
+                <dependency id="RestSharp" version="104.4.0" />
+                <dependency id="TaskParallelLibrary" version="1.0.2856.0" />
+            </group>
         </dependencies>
     </metadata>
     <files>
         <file src="..\release\latest\YamNet.Client\lib\YamNet.Client.dll" target="lib\portable-net40+sl50+wp80+win+MonoAndroid10+MonoTouch10\YamNet.Client.dll" />
+        <file src="..\release\latest\YamNet.Client35\lib\YamNet.Client.dll" target="lib\net35\YamNet.Client.dll" />
     </files>
 </package>

@@ -31,11 +31,6 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// The Yammer access / bearer token.
-        /// </summary>
-        public string AccessToken { get; set; }
-
-        /// <summary>
         /// Execute HTTP request asynchronously.
         /// </summary>
         /// <param name="client">The HTTP client.</param>
@@ -53,35 +48,27 @@ namespace YamNet.Client
             object parameters)
             where T : class
         {
-            var request = this.CreateRequestMessage(method, baseUri, uri, parameters);
+            var completion = new TaskCompletionSource<IRestResponse>();
 
-            // Add the bearer token here, to enforce same signature 
-            // for the CreateRequestMessage(...) method.
-            if (!string.IsNullOrEmpty(AccessToken))
-            {
-                request.AddHeader("Bearer", AccessToken);
-            }
+            await Task.Factory.StartNew(() =>
+                {
+                    var request = this.CreateRequestMessage(method, baseUri, uri, parameters);
 
-            var execute =
-                await Task.Factory.StartNew(() =>
-                    {
-                        var completion = new TaskCompletionSource<IRestResponse>();
-                        client.ExecuteAsync(request, response =>
+                    client.BaseUrl = baseUri.ToString();
+                    client.ExecuteAsync(request, response =>
+                        {
+                            if (response.ErrorException != null)
                             {
-                                if (response.ErrorException != null)
-                                {
-                                    completion.TrySetException(response.ErrorException);
-                                }
-                                else
-                                {
-                                    completion.TrySetResult(response);
-                                }
-                            });
+                                completion.TrySetException(response.ErrorException);
+                            }
+                            else
+                            {
+                                completion.TrySetResult(response);
+                            }
+                        });
+                });
 
-                        return completion.Task;
-                    });
-
-            return await execute;
+            return await completion.Task;
         }
 
         /// <summary>
@@ -99,8 +86,8 @@ namespace YamNet.Client
             object parameters)
         {
             // Get the full endpoint URL and create a HTTP request message
-            var endpoint = new UriBuilder(uri.IsUri() ? uri : baseUri + uri);
-            var request = new RestRequest(endpoint.Uri, method);
+            //var endpoint = new UriBuilder(uri.IsUri() ? uri : baseUri + uri);
+            var request = new RestRequest(uri, method);
             
             // Queryparams only apply to GET, 
             // and if request has body, use the correct MIME type

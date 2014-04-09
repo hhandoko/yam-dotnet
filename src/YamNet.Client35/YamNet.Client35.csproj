@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>YamNet.Client</RootNamespace>
-    <AssemblyName>YamNet.Client35</AssemblyName>
+    <AssemblyName>YamNet.Client</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -143,4 +143,11 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="AfterBuild" Condition="$(ConfigurationName)==Release">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="CurrentAssembly" />
+    </GetAssemblyIdentity>
+    <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)release\latest\$(ProjectName)\lib\*" />
+    <Exec Command="$(SolutionDir)nuget\NuGetPack -n $(SolutionName).Client -v %(CurrentAssembly.Version)" />
+  </Target>
 </Project>

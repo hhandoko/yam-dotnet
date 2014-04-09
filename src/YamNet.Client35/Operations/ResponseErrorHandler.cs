@@ -133,6 +133,11 @@ namespace YamNet.Client
     /// <summary>
     /// The ResponseErrorHandler extension.
     /// </summary>
+    /// <remarks>
+    /// Wholly unnecessary, but added to keep a similar signature with
+    /// the .Net 4+ HttpContent methods. Basically passes the string
+    /// content along in async methods.
+    /// </remarks>
     internal static class ResponseErrorHandlerExtension
     {
         /// <summary>
@@ -143,11 +148,9 @@ namespace YamNet.Client
         public async static Task<string> ReadAsStringAsync(this string content)
         {
             // Go async mad!
-            var execute =
-                await Task.Factory.StartNew(() =>
+            var completion = new TaskCompletionSource<string>();
+            await Task.Factory.StartNew(() =>
                 {
-                    var completion = new TaskCompletionSource<string>();
-
                     if (string.IsNullOrEmpty(content))
                     {
                         completion.TrySetException(new ArgumentNullException());
@@ -160,7 +163,7 @@ namespace YamNet.Client
                     return completion.Task;
                 });
 
-            return await execute;
+            return await completion.Task;
         }
 
         /// <summary>
@@ -171,11 +174,9 @@ namespace YamNet.Client
         public async static Task<byte[]> ReadAsByteArrayAsync(this string content)
         {
             // Go async mad!
-            var execute =
-                await Task.Factory.StartNew(() =>
+            var completion = new TaskCompletionSource<byte[]>();
+            await Task.Factory.StartNew(() =>
                 {
-                    var completion = new TaskCompletionSource<byte[]>();
-                    
                     if (string.IsNullOrEmpty(content))
                     {
                         completion.TrySetException(new ArgumentNullException());
@@ -188,7 +189,7 @@ namespace YamNet.Client
                     return completion.Task;
                 });
 
-            return await execute;
+            return await completion.Task;
         }
     }
 }
