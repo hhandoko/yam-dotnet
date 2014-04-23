@@ -66,6 +66,11 @@ namespace YamNet.Client
         public NetworkClient Networks { get; set; }
 
         /// <summary>
+        /// Gets or sets the search REST API endpoint
+        /// </summary>
+        public SearchClient Search { get; set; }
+
+        /// <summary>
         /// Gets or sets the REST API endpoint.
         /// </summary>
         internal string Endpoint { get; set; }
@@ -109,6 +114,11 @@ namespace YamNet.Client
             {
                 this.Networks.Client.Dispose();
             }
+
+            if (this.Search.Client != null)
+            {
+                this.Search.Client.Dispose();
+            }
         }
 
         /// <summary>
@@ -125,6 +135,7 @@ namespace YamNet.Client
             this.Groups = new GroupClient(this);
             this.Messages = new MessageClient(this);
             this.Networks = new NetworkClient(this);
+            this.Search = new SearchClient(this);
         }
     }
 }

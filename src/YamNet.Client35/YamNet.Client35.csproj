@@ -67,6 +67,7 @@
     <Compile Include="Clients\MessageClient.cs" />
     <Compile Include="Clients\NetworkClient.cs" />
     <Compile Include="Clients\RelationshipClient.cs" />
+    <Compile Include="Clients\SearchClient.cs" />
     <Compile Include="Clients\UserClient.cs" />
     <Compile Include="DTOs\Group\Group.cs" />
     <Compile Include="DTOs\Group\GroupStat.cs" />
@@ -85,6 +86,8 @@
     <Compile Include="DTOs\Network\NetworkProfileFieldsConfiguration.cs" />
     <Compile Include="DTOs\Reference\Interface\IReference.cs" />
     <Compile Include="DTOs\Relationship\Relationship.cs" />
+    <Compile Include="DTOs\Search\SearchEnvelope.cs" />
+    <Compile Include="DTOs\Search\TopicSearchResult.cs" />
     <Compile Include="DTOs\User\CompanyInfo.cs" />
     <Compile Include="DTOs\User\SchoolInfo.cs" />
     <Compile Include="DTOs\User\Treatments.cs" />
