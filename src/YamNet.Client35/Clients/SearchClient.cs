@@ -33,6 +33,9 @@ namespace YamNet.Client
 
         // TODO: Create 'messages', 'users', and 'groups' response.
         // TODO: Add integration test for topics
+        /// <param name="queryText">The text to search within topics.</param>
+        /// <param name="page">Only <see cref="numberPerPage"/> results will be returned for each page.  E.g. page = 2 will return items 21 - 30.</param>
+        /// <param name="numberPerPage">Limits the number of results per page, up to 20.</param>
         /// <summary>
         /// Get all topics in the User's netowrk that match the given search text.
         /// </summary>
