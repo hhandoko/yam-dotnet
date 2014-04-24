@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="RelationshipClient.cs" company="YamNet">
+// <copyright file="SearchClient.cs" company="YamNet">
 //   Copyright (c) 2014 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
@@ -8,7 +8,7 @@ namespace YamNet.Client
 {
     using System.Threading.Tasks;
 
-    using Config = ClientConfiguration.SearchConfig;
+    using Config = ClientConfiguration;
 
     /// <summary>
     /// Yammer search client.
@@ -40,8 +40,8 @@ namespace YamNet.Client
         /// <param name="queryText">The search query text.</param>
         /// <param name="pageNo">The page number for (paged) search results.</param>
         /// <param name="resultsPerPage">The number of search results per page, up to 20.</param>
-        /// <returns>The <see cref="Task{SearchEnvelope}"/>.</returns>
-        public async Task<SearchEnvelope> Search(string queryText, int pageNo = Config.DefaultPageNo, int resultsPerPage = Config.DefaultResultsPerPage)
+        /// <returns>The <see cref="SearchEnvelope"/>.</returns>
+        public async Task<SearchEnvelope> Search(string queryText, int pageNo = Config.DefaultPageNo, int resultsPerPage = Config.Search.DefaultResultsPerPage)
         {
             var query = new SearchQuery(queryText, pageNo, resultsPerPage);
             var url = GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
@@ -70,8 +70,8 @@ namespace YamNet.Client
             }
 
             if (resultsPerPage > 0
-                && resultsPerPage != Config.DefaultResultsPerPage
-                && resultsPerPage <= Config.MaxResultsPerPage)
+                && resultsPerPage != Config.Search.DefaultResultsPerPage
+                && resultsPerPage <= Config.Search.MaxResultsPerPage)
             {
                 Num_Per_Page = resultsPerPage;
             }
@@ -103,13 +103,8 @@ namespace YamNet.Client
         /// <summary>
         /// The SearchClient configuration.
         /// </summary>
-        internal static class SearchConfig
+        internal static class Search
         {
-            /// <summary>
-            /// The default search result page number.
-            /// </summary>
-            public const int DefaultPageNo = 1;
-
             /// <summary>
             /// The default number of results returned per page.
             /// </summary>

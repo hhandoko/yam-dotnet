@@ -9,6 +9,8 @@ namespace YamNet.Client
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Config = ClientConfiguration;
+
     /// <summary>
     /// Yammer users' client.
     /// </summary>
@@ -37,9 +39,9 @@ namespace YamNet.Client
         /// <param name="page">The page.</param>
         /// <param name="letter">The letter.</param>
         /// <param name="sort">The sort.</param>
-        /// <param name="reverse">The reverse.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<User>> Get(int page = 0, string letter = "", UserQuerySort sort = UserQuerySort.NoSort, bool reverse = false)
+        /// <param name="reverse">True to return results in reverse order.</param>
+        /// <returns>The <see cref="IQueryable{User}"/>.</returns>
+        public async Task<IQueryable<User>> Get(int page = Config.DefaultPageNo, string letter = "", UserQuerySort sort = UserQuerySort.NoSort, bool reverse = false)
         {
             var query = new UserQuery(page, letter, sort, reverse, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
@@ -54,7 +56,7 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         /// <param name="page">The page.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        public async Task<IQueryable<User>> GetByGroupId(long id, int page = 0)
+        public async Task<IQueryable<User>> GetByGroupId(long id, int page = Config.DefaultPageNo)
         {
             var query = new UserQuery(page, string.Empty, UserQuerySort.NoSort, false, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}/in_group/{1}.json", BaseUri, id), query.SerializeQueryString());
@@ -67,9 +69,9 @@ namespace YamNet.Client
         /// Get a user by his/her id.
         /// </summary>
         /// <param name="id">The id.</param>
-        /// <param name="includeFollowed">The include followed users flag.</param>
-        /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
-        /// <param name="includeGroups">The include groups membership flag.</param>
+        /// <param name="includeFollowed">True to include followed users.</param>
+        /// <param name="includeSubscribedTags">True to include subscribed tags.</param>
+        /// <param name="includeGroups">True to include group memberships.</param>
         /// <returns>The <see cref="User"/>.</returns>
         public async Task<User> GetById(long id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
@@ -84,9 +86,9 @@ namespace YamNet.Client
         /// Get a user by his/her email.
         /// </summary>
         /// <param name="email">The email.</param>
-        /// <param name="includeFollowed">The include followed users flag.</param>
-        /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
-        /// <param name="includeGroups">The include groups membership flag.</param>
+        /// <param name="includeFollowed">True to include followed users.</param>
+        /// <param name="includeSubscribedTags">True to include subscribed tags.</param>
+        /// <param name="includeGroups">True to include group memberships.</param>
         /// <returns>The <see cref="User"/>.</returns>
         public async Task<User> GetByEmail(string email, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
@@ -100,9 +102,9 @@ namespace YamNet.Client
         /// <summary>
         /// Get the current logged-in user.
         /// </summary>
-        /// <param name="includeFollowed">The include followed users flag.</param>
-        /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
-        /// <param name="includeGroups">The include groups membership flag.</param>
+        /// <param name="includeFollowed">True to include followed users.</param>
+        /// <param name="includeSubscribedTags">True to include subscribed tags.</param>
+        /// <param name="includeGroups">True to include group memberships.</param>
         /// <returns>The <see cref="User"/>.</returns>
         public async Task<User> Current(bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
@@ -147,10 +149,10 @@ namespace YamNet.Client
         /// <param name="page">The page.</param>
         /// <param name="letter">The letter.</param>
         /// <param name="sort">The sort.</param>
-        /// <param name="reverse">The reverse.</param>
-        /// <param name="includeFollowed">The include followed users flag.</param>
-        /// <param name="includeSubscribedTags">The include subscribed tags flag.</param>
-        /// <param name="includeGroups">The include group memberships flag.</param>
+        /// <param name="reverse">True to return results in reverse order.</param>
+        /// <param name="includeFollowed">True to include followed users.</param>
+        /// <param name="includeSubscribedTags">True to include subscribed tags.</param>
+        /// <param name="includeGroups">True to include group memberships.</param>
         public UserQuery(
             int page,
             string letter,
@@ -160,7 +162,8 @@ namespace YamNet.Client
             bool includeSubscribedTags,
             bool includeGroups)
         {
-            if (page > 0)
+            if (page > 0
+                && page != Config.DefaultPageNo)
             {
                 this.Page = page;
             }
