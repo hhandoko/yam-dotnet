@@ -95,7 +95,7 @@ namespace YamNet.Client
         public Uri WebUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets the URL.
+        /// Gets or sets the API URL.
         /// </summary>
         /// <value>The URL.</value>
         [JsonProperty("url")]

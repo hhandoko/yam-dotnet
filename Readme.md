@@ -74,3 +74,6 @@ Also thanks to [tejacques](https://github.com/tejacques) for [.Net 3.5 AsyncBrid
 ## Other Yammer-related .Net Resources
  * [Windows 8 App - ContractMeow](http://yammercontractmeow.codeplex.com/)
  * [Windows Phone OAuth SDK+Demo](https://github.com/yammer/windows-phone-oauth-sdk-demo)
+
+## Other Tools
+ * [Violet UML Editor](http://alexdp.free.fr/violetumleditor/page.php) to generate UML diagrams

@@ -103,6 +103,7 @@
     <Compile Include="DTOs\Topic\TopicSearchResult.cs" />
     <Compile Include="DTOs\User\CompanyInfo.cs" />
     <Compile Include="DTOs\Group\GroupUser.cs" />
+    <Compile Include="DTOs\User\UserSearchResult.cs" />
     <Compile Include="DTOs\User\UserBasicInfo.cs" />
     <Compile Include="DTOs\User\SchoolInfo.cs" />
     <Compile Include="DTOs\User\Treatments.cs" />

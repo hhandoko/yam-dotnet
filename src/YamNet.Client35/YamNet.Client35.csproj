@@ -106,6 +106,7 @@
     <Compile Include="DTOs\User\UserEmailAddress.cs" />
     <Compile Include="DTOs\User\UserIm.cs" />
     <Compile Include="DTOs\User\UserPhoneNumber.cs" />
+    <Compile Include="DTOs\User\UserSearchResult.cs" />
     <Compile Include="DTOs\User\UserSettings.cs" />
     <Compile Include="DTOs\User\UserStat.cs" />
     <Compile Include="DTOs\User\UserWebPreferences.cs" />

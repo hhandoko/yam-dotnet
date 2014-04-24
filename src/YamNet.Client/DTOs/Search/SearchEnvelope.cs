@@ -10,6 +10,7 @@ namespace YamNet.Client
 
     using Newtonsoft.Json;
 
+    // TODO: Add 'pages' and 'uploaded_files'
     /// <summary>
     /// Search API response that contains a list of messages, a list of users, 
     /// a list of topics and a list of groups that match the search query.
@@ -39,6 +40,12 @@ namespace YamNet.Client
         public SearchCount Count { get; set; }
 
         /// <summary>
+        /// Gets or sets the message search results.
+        /// </summary>
+        [JsonProperty("messages")]
+        public MessageEnvelope Messages { get; set; }
+
+        /// <summary>
         /// Gets or sets the group search results.
         /// </summary>
         [JsonProperty("groups")]
@@ -49,6 +56,12 @@ namespace YamNet.Client
         /// </summary>
         [JsonProperty("topics")]
         public TopicSearchResult[] Topics { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user search result.
+        /// </summary>
+        [JsonProperty("users")]
+        public UserSearchResult[] Users { get; set; }
 
         /// <summary>
         /// Gets or sets the search UUID / Guid.
