@@ -31,7 +31,7 @@ namespace YamNet.Client
         {
         }
 
-        // TODO: Create 'messages', 'users', and 'groups' response.
+        // TODO: Create 'messages', and 'users' response.
         // TODO: Add integration test for topics
         /// <summary>
         /// Get all topics in the User's netowrk that match the given search text.

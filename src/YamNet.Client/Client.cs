@@ -39,16 +39,6 @@ namespace YamNet.Client
 
             this.Init(token);
         }
-        
-        /// <summary>
-        /// Gets or sets the users REST API endpoint.
-        /// </summary>
-        public UserClient Users { get; set; }
-
-        /// <summary>
-        /// Gets or sets the user's relationship REST API endpoint.
-        /// </summary>
-        public RelationshipClient Relationships { get; set; }
 
         /// <summary>
         /// Gets or sets the group memberships REST API endpoint.
@@ -66,9 +56,24 @@ namespace YamNet.Client
         public NetworkClient Networks { get; set; }
 
         /// <summary>
-        /// Gets or sets the search REST API endpoint
+        /// Gets or sets the user's relationship REST API endpoint.
+        /// </summary>
+        public RelationshipClient Relationships { get; set; }
+
+        /// <summary>
+        /// Gets or sets the search REST API endpoint.
         /// </summary>
         public SearchClient Search { get; set; }
+
+        /// <summary>
+        /// Gets or sets the message topic REST API endpoint.
+        /// </summary>
+        public TopicClient Topics { get; set; }
+
+        /// <summary>
+        /// Gets or sets the users REST API endpoint.
+        /// </summary>
+        public UserClient Users { get; set; }
 
         /// <summary>
         /// Gets or sets the REST API endpoint.
@@ -90,16 +95,6 @@ namespace YamNet.Client
         /// </summary>
         public void Dispose()
         {
-            if (this.Users.Client != null)
-            {
-                this.Users.Client.Dispose();
-            }
-
-            if (this.Relationships.Client != null)
-            {
-                this.Relationships.Client.Dispose();
-            }
-
             if (this.Groups.Client != null)
             {
                 this.Groups.Client.Dispose();
@@ -115,9 +110,24 @@ namespace YamNet.Client
                 this.Networks.Client.Dispose();
             }
 
+            if (this.Relationships.Client != null)
+            {
+                this.Relationships.Client.Dispose();
+            }
+
+            if (this.Topics.Client != null)
+            {
+                this.Topics.Client.Dispose();
+            }
+
             if (this.Search.Client != null)
             {
                 this.Search.Client.Dispose();
+            }
+
+            if (this.Users.Client != null)
+            {
+                this.Users.Client.Dispose();
             }
         }
 
@@ -130,12 +140,13 @@ namespace YamNet.Client
             this.Endpoint = DefaultEndpoint;
             this.BearerToken = token;
 
-            this.Users = new UserClient(this);
-            this.Relationships = new RelationshipClient(this);
             this.Groups = new GroupClient(this);
             this.Messages = new MessageClient(this);
             this.Networks = new NetworkClient(this);
             this.Search = new SearchClient(this);
+            this.Relationships = new RelationshipClient(this);
+            this.Topics = new TopicClient(this);
+            this.Users = new UserClient(this);
         }
     }
 }

@@ -120,24 +120,24 @@ DocProject/Help/html
 # Click-Once directory
 publish/
 
-# Publish Web Output
+# Publish Web output
 *.[Pp]ublish.xml
 *.azurePubxml
 
-# NuGet executable
-!nuget/NuGet.exe
+# NuGet Package Restore folder
+.nuget/
 
-# NuGet Packages Directory
+# NuGet Packages directory
 packages/*
 !packages/[Rr]epositories.config
 !packages/build/
 
-# NuGet Manifest Directory
+# NuGet Manifest directory
 *.nupkg
 !nuget/
 !nuget/*.nuspec
 
-# Windows Azure Build Output
+# Windows Azure Build output
 csx/
 *.build.csdef
 

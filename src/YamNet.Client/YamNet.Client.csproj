@@ -63,6 +63,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Clients\Base\ClientBase.cs" />
     <Compile Include="Clients\Base\JsonServiceClient.cs" />
+    <Compile Include="Clients\Interfaces\ITopicClient.cs" />
     <Compile Include="Clients\NetworkClient.cs" />
     <Compile Include="Clients\Interfaces\INetworkClient.cs" />
     <Compile Include="Clients\Interfaces\IRelationshipClient.cs" />
@@ -73,8 +74,11 @@
     <Compile Include="Clients\Interfaces\IUserClient.cs" />
     <Compile Include="Clients\RelationshipClient.cs" />
     <Compile Include="Clients\SearchClient.cs" />
+    <Compile Include="Clients\TopicClient.cs" />
     <Compile Include="Clients\UserClient.cs" />
-    <Compile Include="DTOs\Group\Group.cs" />
+    <Compile Include="DTOs\Group\GroupBase.cs" />
+    <Compile Include="DTOs\Group\GroupSearchResult.cs" />
+    <Compile Include="DTOs\Group\GroupMembership.cs" />
     <Compile Include="DTOs\Group\GroupStat.cs" />
     <Compile Include="DTOs\Message\MessageBody.cs" />
     <Compile Include="DTOs\Message\Like.cs" />
@@ -90,8 +94,11 @@
     <Compile Include="DTOs\Network\Network.cs" />
     <Compile Include="DTOs\Reference\Interface\IReference.cs" />
     <Compile Include="DTOs\Relationship\Relationship.cs" />
+    <Compile Include="DTOs\Search\SearchCount.cs" />
     <Compile Include="DTOs\Search\SearchEnvelope.cs" />
-    <Compile Include="DTOs\Search\TopicSearchResult.cs" />
+    <Compile Include="DTOs\Topic\TopicBase.cs" />
+    <Compile Include="DTOs\Topic\Topic.cs" />
+    <Compile Include="DTOs\Topic\TopicSearchResult.cs" />
     <Compile Include="DTOs\User\CompanyInfo.cs" />
     <Compile Include="DTOs\Group\GroupUser.cs" />
     <Compile Include="DTOs\User\UserBasicInfo.cs" />

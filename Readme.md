@@ -24,9 +24,7 @@ PM> Install-Package YamNet.Client
 
 **Dependencies (PCL):**
 
-  * Microsoft.Bcl
   * Microsoft.Bcl.Async
-  * Microsoft.Bcl.Build
   * Microsoft.Net.Http
   * Newtonsoft.Json
 
@@ -64,7 +62,7 @@ using (var yammerClient = new Client(token))
 ```
 
 ## Supported Requests
-YamNet currently supports the following requests: Messages (partial), Groups, Users (partial), Relationships (partial), and Networks. 
+YamNet currently supports the following requests: Groups, Messages (partial), Networks, Relationships (partial), Search (partial), Topics, and Users (partial). 
 
 The goal by v1.0 is to reach completeness, i.e. 1:1 mapping of Yammer REST API to the library.
 
