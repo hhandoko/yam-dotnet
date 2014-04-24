@@ -6,8 +6,9 @@
 
 namespace YamNet.Client
 {
-    using System.Linq;
     using System.Threading.Tasks;
+
+    using Config = ClientConfiguration.SearchConfig;
 
     /// <summary>
     /// Yammer search client.
@@ -15,7 +16,7 @@ namespace YamNet.Client
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-search
     /// </remarks>
-    public class SearchClient : ClientBase
+    public class SearchClient : ClientBase, ISearchClient
     {
         /// <summary>
         /// The search client base uri.
@@ -34,19 +35,19 @@ namespace YamNet.Client
         // TODO: Create 'messages', and 'users' response.
         // TODO: Add integration test for topics
         /// <summary>
-        /// Get all topics in the User's netowrk that match the given search text.
+        /// Search groups, pages, topics, and users that matches the search query.
         /// </summary>
-        /// <param name="queryText">The text to search within topics.</param>
-        /// <param name="page">Only <see cref="numberPerPage"/> results will be returned for each page.  E.g. page = 2 will return items 21 - 30.</param>
-        /// <param name="numberPerPage">Limits the number of results per page, up to 20.</param>
-        /// <returns></returns>
-        public async Task<IQueryable<TopicSearchResult>> Topics(string queryText, int page = 0, int numberPerPage = 0)
+        /// <param name="queryText">The search query text.</param>
+        /// <param name="pageNo">The page number for (paged) search results.</param>
+        /// <param name="resultsPerPage">The number of search results per page, up to 20.</param>
+        /// <returns>The <see cref="Task{SearchEnvelope}"/>.</returns>
+        public async Task<SearchEnvelope> Search(string queryText, int pageNo = Config.DefaultPageNo, int resultsPerPage = Config.DefaultResultsPerPage)
         {
-            var query = new SearchQuery(queryText, page, numberPerPage);
+            var query = new SearchQuery(queryText, pageNo, resultsPerPage);
             var url = GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
             var result = await this.Client.GetAsync<SearchEnvelope>(url);
 
-            return result.Content.Topics.AsQueryable();
+            return result.Content;
         }
     }
 
@@ -58,19 +59,21 @@ namespace YamNet.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchQuery"/> class.
         /// </summary>
-        /// <param name="queryText">The text to search within topics.</param>
-        /// <param name="page">Only <see cref="numberPerPage"/> results will be returned for each page.  E.g. page = 2 will return items 21 - 30.</param>
-        /// <param name="numberPerPage">Limits the number of results per page, up to 20.</param>
-        public SearchQuery(string queryText, int page, int numberPerPage)
+        /// <param name="queryText">The query text to search.</param>
+        /// <param name="pageNo">The page number for (paged) search results.</param>
+        /// <param name="resultsPerPage">The number of search results per page, up to 20.</param>
+        public SearchQuery(string queryText, int pageNo, int resultsPerPage)
         {
-            if (page > 1)
+            if (pageNo > 0 && pageNo != Config.DefaultPageNo)
             {
-                Page = page;
+                Page = pageNo;
             }
 
-            if (numberPerPage > 1)
+            if (resultsPerPage > 0
+                && resultsPerPage != Config.DefaultResultsPerPage
+                && resultsPerPage <= Config.MaxResultsPerPage)
             {
-                Number_Per_Page = numberPerPage;
+                Num_Per_Page = resultsPerPage;
             }
 
             Search = queryText;
@@ -84,11 +87,38 @@ namespace YamNet.Client
         /// <summary>
         /// Gets or sets the number of results per page.
         /// </summary>
-        public int? Number_Per_Page { get; set; }
+        public int? Num_Per_Page { get; set; }
 
         /// <summary>
         /// Gets or sets the search query.
         /// </summary>
         public string Search { get; set; }
+    }
+
+    /// <summary>
+    /// The shared client configuration.
+    /// </summary>
+    internal static partial class ClientConfiguration
+    {
+        /// <summary>
+        /// The SearchClient configuration.
+        /// </summary>
+        internal static class SearchConfig
+        {
+            /// <summary>
+            /// The default search result page number.
+            /// </summary>
+            public const int DefaultPageNo = 1;
+
+            /// <summary>
+            /// The default number of results returned per page.
+            /// </summary>
+            public const int DefaultResultsPerPage = 20;
+
+            /// <summary>
+            /// The maximum results returned per page.
+            /// </summary>
+            public const int MaxResultsPerPage = 20;
+        }
     }
 }

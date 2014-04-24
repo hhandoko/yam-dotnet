@@ -386,7 +386,7 @@ namespace YamNet.Client
         /// Gets or sets the group memberships.
         /// </summary>
         [JsonProperty("group_memberships")]
-        public Group[] GroupMemberships { get; set; }
+        public GroupMembership[] GroupMemberships { get; set; }
         #endregion
 
         #region Graph

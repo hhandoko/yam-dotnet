@@ -63,6 +63,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Clients\Base\ClientBase.cs" />
     <Compile Include="Clients\Base\JsonServiceClient.cs" />
+    <Compile Include="Clients\Interfaces\ISearchClient.cs" />
     <Compile Include="Clients\Interfaces\ITopicClient.cs" />
     <Compile Include="Clients\NetworkClient.cs" />
     <Compile Include="Clients\Interfaces\INetworkClient.cs" />
