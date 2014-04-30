@@ -17,11 +17,6 @@ namespace YamNet.Client
     public class TopicClient : ClientBase, ITopicClient
     {
         /// <summary>
-        /// The user client base uri.
-        /// </summary>
-        private const string BaseUri = "/topics";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="TopicClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
@@ -37,10 +32,21 @@ namespace YamNet.Client
         /// <returns>The <see cref="Topic"/>.</returns>
         public async Task<Topic> GetById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", Endpoints.Topics, id));
             var result = await this.Client.GetAsync<Topic>(url);
 
             return result.Content;
         }
+    }
+
+    /// <summary>
+    /// The REST API endpoints.
+    /// </summary>
+    internal partial class Endpoints
+    {
+        /// <summary>
+        /// Topics endpoint.
+        /// </summary>
+        public const string Topics = "/topics";
     }
 }

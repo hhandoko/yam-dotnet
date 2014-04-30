@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="ClientExtensions\MessageClientUndocumented.cs" />
     <Compile Include="Clients\Base\ClientBase.cs" />
     <Compile Include="Clients\Base\JsonServiceClient.cs" />
     <Compile Include="Clients\Interfaces\ISearchClient.cs" />
@@ -142,9 +143,7 @@
     <Compile Include="Serializer\JsonDotNetSerializer.cs" />
     <Compile Include="Serializer\Converter\PrivacyJsonConverter.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClientExtensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>

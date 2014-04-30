@@ -18,11 +18,6 @@ namespace YamNet.Client
     public class NetworkClient : ClientBase, INetworkClient
     {
         /// <summary>
-        /// The network client base uri.
-        /// </summary>
-        private const string BaseUri = "/networks";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="NetworkClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
@@ -40,7 +35,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Network>> Current(bool includeSuspended = true, bool excludeOwnMessagesFromUnseen = true)
         {
             var query = new NetworkQuery(includeSuspended, excludeOwnMessagesFromUnseen);
-            var url = this.GetFinalUrl(string.Format("{0}/current.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/current.json", Endpoints.Networks), query.SerializeQueryString());
             var result = await this.Client.GetAsync<Network[]>(url);
 
             return result.Content.AsQueryable();
@@ -87,5 +82,16 @@ namespace YamNet.Client
         /// Exclude the user’s own messages from the unseen count. This is good for unread badges.
         /// </remarks>
         public bool? Exclude_Own_Messages_From_Unseen { get; set; }
+    }
+
+    /// <summary>
+    /// The REST API endpoints.
+    /// </summary>
+    internal partial class Endpoints
+    {
+        /// <summary>
+        /// Networks endpoint.
+        /// </summary>
+        public const string Networks = "/networks";
     }
 }

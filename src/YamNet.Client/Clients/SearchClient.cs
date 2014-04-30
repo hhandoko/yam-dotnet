@@ -19,11 +19,6 @@ namespace YamNet.Client
     public class SearchClient : ClientBase, ISearchClient
     {
         /// <summary>
-        /// The search client base uri.
-        /// </summary>
-        private const string BaseUri = "/search";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="SearchClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
@@ -44,7 +39,7 @@ namespace YamNet.Client
         public async Task<SearchEnvelope> Search(string queryText, int pageNo = Config.DefaultPageNo, int resultsPerPage = Config.Search.DefaultResultsPerPage)
         {
             var query = new SearchQuery(queryText, pageNo, resultsPerPage);
-            var url = GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var url = GetFinalUrl(string.Format("{0}.json", Endpoints.Search), query.SerializeQueryString());
             var result = await this.Client.GetAsync<SearchEnvelope>(url);
 
             return result.Content;
@@ -115,5 +110,16 @@ namespace YamNet.Client
             /// </summary>
             public const int MaxResultsPerPage = 20;
         }
+    }
+
+    /// <summary>
+    /// The REST API endpoints.
+    /// </summary>
+    internal partial class Endpoints
+    {
+        /// <summary>
+        /// Search endpoint.
+        /// </summary>
+        public const string Search = "/search";
     }
 }
