@@ -83,7 +83,7 @@
     <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\YamNet.Client\YamNet.Client.csproj">
+    <ProjectReference Include="..\..\main\YamNet.Client\YamNet.Client.csproj">
       <Project>{e9238175-7a4f-424b-83f4-f293672c72c6}</Project>
       <Name>YamNet.Client</Name>
     </ProjectReference>

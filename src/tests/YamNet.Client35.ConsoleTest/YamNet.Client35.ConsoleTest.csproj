@@ -54,7 +54,7 @@
     <Compile Include="Tests\UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\YamNet.Client35\YamNet.Client35.csproj">
+    <ProjectReference Include="..\..\main\YamNet.Client35\YamNet.Client35.csproj">
       <Project>{9cc931da-db1c-4866-8524-8712666990c7}</Project>
       <Name>YamNet.Client35</Name>
     </ProjectReference>
