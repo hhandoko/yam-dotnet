@@ -19,11 +19,6 @@ namespace YamNet.Client
     public class RelationshipClient : ClientBase, IRelationshipClient
     {
         /// <summary>
-        /// The user relationship base uri.
-        /// </summary>
-        private const string BaseUri = "/relationships";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="RelationshipClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
@@ -39,7 +34,7 @@ namespace YamNet.Client
         public async Task<Relationship> GetCurrent()
         {
             var query = new RelationshipQuery(null, null);
-            var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query.SerializeQueryString());
             var result = await this.Client.GetAsync<Relationship>(url);
 
             return result.Content;
@@ -53,7 +48,7 @@ namespace YamNet.Client
         public async Task<Relationship> GetById(long userId)
         {
             var query = new RelationshipQuery(userId, null);
-            var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query.SerializeQueryString());
             var result = await this.Client.GetAsync<Relationship>(url);
 
             return result.Content;
@@ -66,7 +61,7 @@ namespace YamNet.Client
         public async Task AddCurrent(Dictionary<string, RelationshipType> relations)
         {
             var query = GetRelationsQueryParams(null, relations);
-            var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query);
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query);
 
             await this.Client.PostAsync(url);
         }
@@ -79,7 +74,7 @@ namespace YamNet.Client
         public async Task AddById(long userId, Dictionary<string, RelationshipType> relations)
         {
             var query = GetRelationsQueryParams(userId, relations);
-            var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query);
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query);
             
             await this.Client.PostAsync(url);
         }
@@ -92,7 +87,7 @@ namespace YamNet.Client
         public async Task DeleteById(long userId, RelationshipType relationshipType)
         {
             var query = new RelationshipQuery(null, relationshipType);
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, userId), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", Endpoints.Relationships, userId), query.SerializeQueryString());
 
             await this.Client.DeleteAsync(url);
         }
@@ -181,5 +176,16 @@ namespace YamNet.Client
         /// Indicates the user's subordinate.
         /// </summary>
         Subordinate
+    }
+
+    /// <summary>
+    /// The REST API endpoints.
+    /// </summary>
+    internal partial class Endpoints
+    {
+        /// <summary>
+        /// Relationships endpoint.
+        /// </summary>
+        public const string Relationships = "/relationships";
     }
 }

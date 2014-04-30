@@ -20,11 +20,6 @@ namespace YamNet.Client
     public class UserClient : ClientBase, IUserClient
     {
         /// <summary>
-        /// The user client base uri.
-        /// </summary>
-        private const string BaseUri = "/users";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="UserClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
@@ -44,7 +39,7 @@ namespace YamNet.Client
         public async Task<IQueryable<User>> Get(int page = Config.DefaultPageNo, string letter = "", UserQuerySort sort = UserQuerySort.NoSort, bool reverse = false)
         {
             var query = new UserQuery(page, letter, sort, reverse, false, false, false);
-            var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Users), query.SerializeQueryString());
             var result = await this.Client.GetAsync<User[]>(url);
 
             return result.Content.AsQueryable();
@@ -59,7 +54,7 @@ namespace YamNet.Client
         public async Task<IQueryable<User>> GetByGroupId(long id, int page = Config.DefaultPageNo)
         {
             var query = new UserQuery(page, string.Empty, UserQuerySort.NoSort, false, false, false, false);
-            var url = this.GetFinalUrl(string.Format("{0}/in_group/{1}.json", BaseUri, id), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/in_group/{1}.json", Endpoints.Users, id), query.SerializeQueryString());
             var result = await this.Client.GetAsync<GroupUser>(url);
 
             return result.Content.Users.AsQueryable();
@@ -76,7 +71,7 @@ namespace YamNet.Client
         public async Task<User> GetById(long id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", Endpoints.Users, id), query.SerializeQueryString());
             var result = await this.Client.GetAsync<User>(url);
 
             return result.Content;
@@ -93,7 +88,7 @@ namespace YamNet.Client
         public async Task<User> GetByEmail(string email, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
-            var url = this.GetFinalUrl(string.Format("{0}/by_email.json?email={1}", BaseUri, email), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/by_email.json?email={1}", Endpoints.Users, email), query.SerializeQueryString());
             var result = await this.Client.GetAsync<User[]>(url);
 
             return result.Content.FirstOrDefault();
@@ -109,7 +104,7 @@ namespace YamNet.Client
         public async Task<User> Current(bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
-            var url = this.GetFinalUrl(string.Format("{0}/current.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/current.json", Endpoints.Users), query.SerializeQueryString());
             var result = await this.Client.GetAsync<User>(url);
 
             return result.Content;
@@ -121,7 +116,7 @@ namespace YamNet.Client
         /// <param name="id">The id.</param>
         public async Task SuspendById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json", Endpoints.Users, id));
 
             await this.Client.DeleteAsync(url);
         }
@@ -132,7 +127,7 @@ namespace YamNet.Client
         /// <param name="id">The id.</param>
         public async Task DeleteById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/{1}.json?delete=true", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}/{1}.json?delete=true", Endpoints.Users, id));
 
             await this.Client.DeleteAsync(url);
         }
@@ -275,5 +270,16 @@ namespace YamNet.Client
         /// Sort by the number of total followers.
         /// </summary>
         Followers
+    }
+
+    /// <summary>
+    /// The REST API endpoints.
+    /// </summary>
+    internal partial class Endpoints
+    {
+        /// <summary>
+        /// Users endpoint.
+        /// </summary>
+        public const string Users = "/users";
     }
 }

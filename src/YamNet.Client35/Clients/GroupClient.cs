@@ -17,11 +17,6 @@ namespace YamNet.Client
     public class GroupClient : ClientBase, IGroupClient
     {
         /// <summary>
-        /// The group membership client base uri.
-        /// </summary>
-        private const string BaseUri = "/group_memberships";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="GroupClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
@@ -36,7 +31,7 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         public async Task JoinById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", Endpoints.Groups, id));
 
             await this.Client.PostAsync(url);
         }
@@ -47,9 +42,20 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         public async Task LeaveById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", Endpoints.Groups, id));
 
             await this.Client.DeleteAsync(url);
         }
+    }
+
+    /// <summary>
+    /// The REST API endpoints.
+    /// </summary>
+    internal partial class Endpoints
+    {
+        /// <summary>
+        /// Group membership endpoint.
+        /// </summary>
+        public const string Groups = "/group_memberships";
     }
 }

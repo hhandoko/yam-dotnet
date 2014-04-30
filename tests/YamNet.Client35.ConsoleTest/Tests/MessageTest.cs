@@ -82,6 +82,16 @@ namespace YamNet.Client.ConsoleTest
                 Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
                 i++;
             }
+
+            Console.WriteLine("\n{0}. (UNDOC) Get first five messages from one of user's group", j++);
+            var currentUser = client.Users.Current(includeGroups: true, includeFollowed: true).Result;
+            var firstGroupId = currentUser.GroupMemberships.First().Id;
+            i = 1;
+            foreach (var message in client.Messages.GetByGroup(firstGroupId).Result.Take(5))
+            {
+                Console.WriteLine("   {0} - {1}", i, message.MessageBody.Plain.ConsoleTrim(Chars));
+                i++;
+            }
         }
     }
 }

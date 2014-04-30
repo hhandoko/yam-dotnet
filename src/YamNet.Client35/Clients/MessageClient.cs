@@ -20,11 +20,6 @@ namespace YamNet.Client
     public class MessageClient : ClientBase, IMessageClient
     {
         /// <summary>
-        /// The messages client base uri.
-        /// </summary>
-        private const string BaseUri = "/messages";
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="MessageClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
@@ -44,7 +39,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Message>> GetAll(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
-            var url = this.GetFinalUrl(string.Format("{0}.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
             return result.Content.Messages.AsQueryable();
@@ -60,7 +55,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Message>> GetFeed(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
-            var url = this.GetFinalUrl(string.Format("{0}/my_feed.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/my_feed.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
             return result.Content.Messages.AsQueryable();
@@ -76,7 +71,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Message>> GetTop(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
-            var url = this.GetFinalUrl(string.Format("{0}/algo.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/algo.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
             return result.Content.Messages.AsQueryable();
@@ -92,7 +87,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Message>> GetFollowing(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
-            var url = this.GetFinalUrl(string.Format("{0}/following.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/following.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
             return result.Content.Messages.AsQueryable();
@@ -108,7 +103,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Message>> GetSent(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
-            var url = this.GetFinalUrl(string.Format("{0}/sent.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/sent.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
             return result.Content.Messages.AsQueryable();
@@ -124,7 +119,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Message>> GetPrivate(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
-            var url = this.GetFinalUrl(string.Format("{0}/private.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/private.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
             return result.Content.Messages.AsQueryable();
@@ -140,7 +135,7 @@ namespace YamNet.Client
         public async Task<IQueryable<Message>> GetReceived(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
-            var url = this.GetFinalUrl(string.Format("{0}/received.json", BaseUri), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}/received.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
             return result.Content.Messages.AsQueryable();
@@ -152,7 +147,7 @@ namespace YamNet.Client
         /// <param name="id">The message id to like.</param>
         public async Task LikeById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", Endpoints.Messages, id));
 
             await this.Client.PostAsync(url);
         }
@@ -163,7 +158,7 @@ namespace YamNet.Client
         /// <param name="id">The message id to unlike.</param>
         public async Task UnlikeById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", Endpoints.Messages, id));
 
             await this.Client.DeleteAsync(url);
         }
@@ -174,7 +169,7 @@ namespace YamNet.Client
         /// <param name="id">The message id.</param>
         public async Task DeleteById(long id)
         {
-            var url = this.GetFinalUrl(string.Format("{0}/{1}", BaseUri, id));
+            var url = this.GetFinalUrl(string.Format("{0}/{1}", Endpoints.Messages, id));
 
             await this.Client.DeleteAsync(url);
         }
@@ -191,7 +186,12 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="threaded">The message thread option.</param>
-        public MessageQuery(int limit, MessageQueryTrim trim, MessageQueryThread threaded)
+        /// <param name="excludeOwnMessages"></param>
+        /// <param name="includeCounts"></param>
+        public MessageQuery(
+            int limit,
+            MessageQueryTrim trim,
+            MessageQueryThread threaded)
         {
             if (limit > 0
                 && limit != Config.Message.DefaultLimit)
@@ -327,6 +327,17 @@ namespace YamNet.Client
         /// Return all messages in the thread.
         /// </summary>
         Extended
+    }
+
+    /// <summary>
+    /// The REST API endpoints.
+    /// </summary>
+    internal partial class Endpoints
+    {
+        /// <summary>
+        /// Messages endpoint.
+        /// </summary>
+        public const string Messages = "/messages";
     }
 
     /// <summary>

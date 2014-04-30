@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="ClientExtensions\MessageClientUndocumented.cs" />
     <Compile Include="Clients\Base\ClientBase.cs" />
     <Compile Include="Clients\Base\JsonServiceClient.cs" />
     <Compile Include="Clients\GroupClient.cs" />
