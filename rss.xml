@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>YamNet</title>
+    <link>http://hhandoko.github.io/yam-dotnet</link>
+    <description>RSS feed for YamNet project updates</description>
+    <copyright>Copyright (c) YamNet contributors 2014</copyright>
+    <pubDate>Wed, 30 Apr 2014 06:00:00 -0000</pubDate>
+    <item>
+      <title>Welcome to the YamNet Project</title>
+      <link>http://hhandoko.github.io/yam-dotnet/blog/2014/04/30/welcome-to-yam-dotnet.html</link>
+      <description>&lt;p&gt;Welcome! YamNet is an unofficial, opinionated, Yammer REST API .NET (async) wrapper based on the the CodePlex &lt;a href=&quot;http://yammercontractmeow.codeplex.com/&quot;&gt;ContractMeow&lt;/a&gt; project. The goal is to provide a ready-to-use client library available via NuGet.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 30 Apr 2014 06:00:00 -0000</pubDate>
+      <guid>http://hhandoko.github.io/yam-dotnet/blog/2014/04/30/welcome-to-yam-dotnet.html</guid>
+      <dc:date>2014-04-30T06:00:00Z</dc:date>
+    </item>
+    <dc:date>2014-04-30T06:00:00Z</dc:date>
+  </channel>
+</rss>

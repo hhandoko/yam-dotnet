@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>YamNet</title>
+    
+    <link rel="alternate" type="application/rss+xml" title="YamNet RSS Feed" href="/yam-dotnet/rss.xml" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/yam-dotnet/assets/lib/bootstrap-lumen/3.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="/yam-dotnet/assets/lib/font-awesome/4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/yam-dotnet/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Montserrat' >
+    
+    <!-- Fav and Touch icons -->
+    <link href="/yam-dotnet/assets/img/favicons/favicon_144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+    <link href="/yam-dotnet/assets/img/favicons/favicon_114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+    <link href="/yam-dotnet/assets/img/favicons/favicon_72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+    <link href="/yam-dotnet/assets/img/favicons/favicon_57x57.png" rel="apple-touch-icon-precomposed">
+    <link href="/yam-dotnet/assets/img/favicons/favicon.png" rel="icon" type="image/x-icon">
+    <!--[if IE]>
+        <link href="/yam-dotnet/assets/img/favicons/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/yam-dotnet/">
+                    <img src="/yam-dotnet/assets/img/logos/yamnet_logo_36x36.png" alt="YamNet logo" title="YamNet logo" width="36px" height="36px" />
+                    <span>YamNet</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/yam-dotnet/">Home</a></li>
+                    <li><a href="/yam-dotnet/blog">Blog</a></li>
+                    <li><a href="#">Documentation (TBA)</a></li>
+                    <li><a href="#">Developer's Guide (TBA)</a></li>
+                    <li><a href="#">Specifications (TBA)</a></li>
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </div>
+    </div>
+        
+    <!-- Jumbotron splash! -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>Yammer .NET Client</h1>
+        <p>Welcome! YamNet is an unofficial, opinionated, Yammer REST API .NET (async) wrapper. The goal is to provide a ready-to-use client library available via NuGet, enabling .NET developers to start working with Yammer data quickly.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    </div>
+</div><!-- /.jumbotron -->
+
+<div class="container">
+    <div class="row yn-benefits">
+        <div class="col-md-4">
+            <div class="yn-panel">
+                <h3><i class="fa fa-lightbulb-o"></i> Simple</h3>
+                <p>Easy to use, easy to understand. Let YamNet take care the bulk of the ceremonial stuff, enabling you to focus on writing nice, clean, readable (async) code. The results are available as strongly-typed DTOs.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="yn-panel">
+                <h3><i class="fa fa-desktop"></i> Multi-Platform</h3>
+                <p>Taking advantage of Portable Class Library, YamNet is available for use in a wide array of projects, including: .NET 4+, Silverlight 5+, Windows Phone 8+, Xamarin.iOS, and Xamarin.Android. Also available is the .NET 3.5 backport.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="yn-panel">
+                <h3><i class="fa fa-random"></i> Async / Await</h3>
+                <p>Improve responsiveness and scalability. Keep your UI responsive while retrieving data, and enable better scaling for your server-side solution through reduced memory / thread usage, and non-blocking operations.</p>
+            </div>
+        </div>
+    </div><!-- /.row -->
+    
+    <div class="row yn-install">
+        <div class="col-md-6">
+            <div class="yn-panel">
+                <p>Get up and running quickly</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="yn-panel">
+                <pre>PM> Install-Package YamNet.Client</pre>
+            </div>
+        </div>
+    </div><!-- /.row -->
+    
+    <div class="row yn-updates">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="yn-panel">
+                <h3>Latest Posts</h3>
+                <ul>
+                
+                    <li>
+                        <span class="date">30 Apr 2014</span>
+                        <a href="/yam-dotnet/blog/2014/04/30/welcome-to-yam-dotnet.html">Welcome to the YamNet Project</a>
+                    </li>
+                
+                </ul>
+            </div>
+        </div>
+    </div><!-- /.row -->
+</div><!-- /.container -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>Copyright &copy; 2014 YamNet contributors</p>
+            </div>
+        </footer>
+        </div>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/yam-dotnet/assets/lib/bootstrap/3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

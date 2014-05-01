@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome to the YamNet Project</title>
+    
+    <link rel="alternate" type="application/rss+xml" title="YamNet RSS Feed" href="/yam-dotnet/rss.xml" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/yam-dotnet/assets/lib/bootstrap-lumen/3.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="/yam-dotnet/assets/lib/font-awesome/4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/yam-dotnet/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Montserrat' >
+    
+    <!-- Fav and Touch icons -->
+    <link href="/yam-dotnet/assets/img/favicons/favicon_144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+    <link href="/yam-dotnet/assets/img/favicons/favicon_114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+    <link href="/yam-dotnet/assets/img/favicons/favicon_72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+    <link href="/yam-dotnet/assets/img/favicons/favicon_57x57.png" rel="apple-touch-icon-precomposed">
+    <link href="/yam-dotnet/assets/img/favicons/favicon.png" rel="icon" type="image/x-icon">
+    <!--[if IE]>
+        <link href="/yam-dotnet/assets/img/favicons/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/yam-dotnet/">
+                    <img src="/yam-dotnet/assets/img/logos/yamnet_logo_36x36.png" alt="YamNet logo" title="YamNet logo" width="36px" height="36px" />
+                    <span>YamNet</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/yam-dotnet/">Home</a></li>
+                    <li><a href="/yam-dotnet/blog">Blog</a></li>
+                    <li><a href="#">Documentation (TBA)</a></li>
+                    <li><a href="#">Developer's Guide (TBA)</a></li>
+                    <li><a href="#">Specifications (TBA)</a></li>
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </div>
+    </div>
+        
+    <div class="container">    
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <div class="blog-post">
+                <h2 class="blog-post-title"><a href="/yam-dotnet">Welcome to the YamNet Project</a></h2>
+                <p class="blog-post-meta">30 Apr 2014</p>
+                <p>Welcome! YamNet is an unofficial, opinionated, Yammer REST API .NET (async) wrapper based on the the CodePlex <a href="http://yammercontractmeow.codeplex.com/">ContractMeow</a> project. The goal is to provide a ready-to-use client library available via NuGet.</p>
+
+<p>This project started due to the lack of an up-to-date Yammer REST API .NET wrapper. Most of the initial code was based on the excellent and comprehensive <a href="http://yammercontractmeow.codeplex.com/">ContractMeow</a> project. Big thanks to <a href="http://www.codeplex.com/site/users/view/jmjc95">jmjc95</a> and <a href="http://www.codeplex.com/site/users/view/tuongla">tuongla</a>.</p>
+
+<p>The original use case was for the library to help retrieve Yammer data for server-side processing (e.g. analytics and administrative tasks). However, through the use of PCL classes, it can also be reused in mobile projects (via Xamarin.iOS and Xamarin.Android) and Silverlight projects.</p>
+
+<p>At this stage, the project only covers the REST API methods and not the OAuth negotiation. The assumption is that the API &#39;access_token&#39; has been retrieved to be used in instantiating the Client.</p>
+
+<p>I hope you will find this project useful. Feedback and pull request(s) welcome :)</p>
+
+            </div><!-- /.blog-post -->
+
+            <div class="blog-comments">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'yam-dotnet'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>YamNet is an unofficial Yammer REST API .Net (async) wrapper based on the the CodePlex <a href="http://yammercontractmeow.codeplex.com/">ContractMeow</a> project. The goal is to provide a ready-to-use client library available via NuGet.</p>
+            </div>
+            <!--
+            <div class="sidebar-module">
+                <h4>Archives</h4>
+                <ol class="list-unstyled">
+                  <li><a href="#">January 2014</a></li>
+                  <li><a href="#">December 2013</a></li>
+                  <li><a href="#">November 2013</a></li>
+                  <li><a href="#">October 2013</a></li>
+                  <li><a href="#">September 2013</a></li>
+                  <li><a href="#">August 2013</a></li>
+                  <li><a href="#">July 2013</a></li>
+                  <li><a href="#">June 2013</a></li>
+                  <li><a href="#">May 2013</a></li>
+                  <li><a href="#">April 2013</a></li>
+                  <li><a href="#">March 2013</a></li>
+                  <li><a href="#">February 2013</a></li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Elsewhere</h4>
+                <ol class="list-unstyled">
+                  <li><a href="#">GitHub</a></li>
+                  <li><a href="#">Twitter</a></li>
+                  <li><a href="#">Facebook</a></li>
+            </ol>
+            </div>
+            -->
+        </div><!-- /.blog-sidebar -->
+    </div><!-- /.row -->
+</div><!-- /.container -->
+
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>Copyright &copy; 2014 YamNet contributors</p>
+            </div>
+        </footer>
+        </div>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/yam-dotnet/assets/lib/bootstrap/3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
