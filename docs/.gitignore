@@ -1,0 +1,7 @@
+## Ignore Jekyll output / generated site,
+## based on Twitter Bootstrap's .gitignore.
+## Source:  https://github.com/twbs/bootstrap/blob/master/.gitignore
+## Updated: 21 February 2014
+site_publish
+_site
+.ruby-version

@@ -1,0 +1,33 @@
+﻿/* TEAM */
+
+    Developer  : Herdy Handoko
+    Contact    : herdy.handoko [at] gmail.com
+    Twitter    : @_hhandoko
+    LinkedIn   : http://linkedin.com/in/herdy.handoko
+    From       : Perth, Western Australia, Australia
+
+
+
+/* SITE */
+
+    Current ver: 0.3.2.0
+    Last update: 2014/04/30
+    Language   : English
+    Doctype    : HTML5
+
+
+    
+/* TOOLS AND FX */
+
+    Fonts      : - Montserrat (google.com/fonts/specimen/Montserrat)    -- SIL Open Font 1.1 license
+    Frameworks : - Jekyll (jekyllrb.com)                                -- MIT license
+                 - Jekyll RSS generator (github.com/agelber/jekyll-rss) -- MIT license
+                 - Twitter Bootstrap (getbootstrap.com)                 -- MIT license
+                 - Twitter Bootstrap Lumen theme (bootswatch.com/lumen) -- MIT license
+    Icons      : - Font Awesome (fortawesome.github.io/Font-Awesome/)   -- MIT license and SIL Open Font 1.1 license
+    Images     : - Tiny Grid by Atle Mo (subtlepatterns.com/tiny-grid)  -- CC BY-SA 3.0 license
+    Tools      : - Inkscape (inkscape.org)
+                 - Koala (koala-app.com)
+                 - MarkdownPad Pro (markdownpad.com)
+                 - Paint.NET (getpaint.net)
+                 - Violet UML Editor (alexdp.free.fr/violetumleditor/page.php)

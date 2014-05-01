@@ -1,0 +1,45 @@
+## -----------------------------------------------------------------------
+## <copyright file="_config.yml" company="YamNet">
+##   Copyright (c) YamNet contributors 2014
+## </copyright>
+## -----------------------------------------------------------------------
+
+## Jekyll Configuration --------------------------------------------------
+## Site Information
+name:           YamNet
+baseurl:        /yam-dotnet
+url:            http://hhandoko.github.io
+
+## Dependencies
+markdown:       redcarpet
+pygments:       true
+
+## Global Configuration
+source:         ./src
+destination:    ./release
+timezone:       Australia/Perth
+encoding:       UTF-8
+
+## Serve Command Options
+port:           9001
+
+## Other Configurations
+permalink:      /blog/:year/:month/:day/:title.html
+
+## RSS Feed Generator Settings -------------------------------------------
+description:    RSS feed for YamNet project updates 
+author:         Herdy Handoko
+copyright:      Copyright (c) YamNet contributors 2014
+rss_path:
+rss_name:
+rss_post_limit: 50
+
+## Sitemap Generator Settings --------------------------------------------
+sitemap:
+    file: "/sitemap.xml"
+    exclude:
+        - "/rss.xml"
+    include_posts:
+        - "/index.html"
+    change_frequency_name: "change_frequency"
+    priority_name: "priority"
