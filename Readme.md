@@ -49,7 +49,7 @@ using (var yammerClient = new Client(token))
 }
 ```
 
-**Note:** For usage in ASP.Net applications, it is recommended to chain the method with ```ConfigureAwait(false)``` to prevent async deadlock. More information is available on the following StackOverflow article: [An async/await example that causes a deadlock](http://stackoverflow.com/a/15022170).
+**Note:** For usage in ASP.Net applications, it is recommended to chain the method with `ConfigureAwait(false)` to prevent async deadlock. More information is available on the following StackOverflow article: [An async/await example that causes a deadlock](http://stackoverflow.com/a/15022170).
 
 Most clients have support for various optional parameters, utilising C# 4.0 language feature (Visual Studio 2010 and up). The following is an example of retrieving a list of users whose name starts with "F", in descending order:
 
@@ -62,16 +62,27 @@ using (var yammerClient = new Client(token))
 ```
 
 ## Supported Requests
-YamNet currently supports the following requests: Groups, Messages (partial), Networks, Relationships (partial), Search (partial), Topics, and Users (partial). 
+YamNet currently supports the following requests: Groups, Invitations, Messages (partial), Networks, Relationships (partial), Search (partial), Topics, and Users (partial). 
 
 The goal by v1.0 is to reach completeness, i.e. 1:1 mapping of Yammer REST API to the library.
 
 ## Undocumented Requests
-YamNet provides some support for Yammer requests that are not documented on the official REST API, but are known to be used by the Yammer web application itself through inspection via tools such as IE or Chrome network monitor, FireBug, Fiddler, etc. These undocumented methods can be found in separate classes under ```/ClientExtensions```.
+YamNet provides some support for Yammer requests that are not documented on the official REST API, but are known to be used by the Yammer web application itself through inspection via tools such as IE or Chrome network monitor, FireBug, Fiddler, etc. These undocumented methods can be found in separate classes under `/ClientExtensions`.
 
 Currently there are no additional setup required in order to use them. However, in the future they may be separated into a different assembly and NuGet package (e.g. YamNet.Client.Undocumented).
 
 **Use it with caution. As these APIs may be subject to change without notice, and may break your application.**
+
+## Contributors
+Please refer to the following [page](/blob/master/Contributors.md) for a complete list of all contributors.
+
+## Contributing
+Pull requests shall be made against `develop` branch, which will be reviewed for merging into the `master` branch.
+
+## Copyright and License
+  * Code and documentation copyright YamNet [contributors](/blob/master/Contributors.md).
+  * Code released under [BSD3 license](/blob/master/License.txt).
+  * Documentation released under [Creative Commons license](/blob/master/LicenseDocs.txt).
 
 ## Credits
 Big thanks to [jmjc95](http://www.codeplex.com/site/users/view/jmjc95) and [tuongla](http://www.codeplex.com/site/users/view/tuongla) for creating a thoughtful, open-source sample project, and using a fork-friendly Apache 2.0 license so others can reuse and adapt the original works.
