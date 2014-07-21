@@ -58,6 +58,7 @@ namespace YamNet.Client
         /// Add a relationship to the current user.
         /// </summary>
         /// <param name="relations">The relations.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task AddCurrent(Dictionary<string, RelationshipType> relations)
         {
             var query = GetRelationsQueryParams(null, relations);
@@ -71,6 +72,7 @@ namespace YamNet.Client
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relations">The relations.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task AddById(long userId, Dictionary<string, RelationshipType> relations)
         {
             var query = GetRelationsQueryParams(userId, relations);
@@ -84,6 +86,7 @@ namespace YamNet.Client
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relationshipType">The relationship type.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task DeleteById(long userId, RelationshipType relationshipType)
         {
             var query = new RelationshipQuery(null, relationshipType);

@@ -65,12 +65,14 @@ namespace YamNet.Client
         /// Suspend a user by his/her id (i.e. soft-delete).
         /// </summary>
         /// <param name="id">The id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task SuspendById(long id);
 
         /// <summary>
         /// Delete a user by his/her id (i.e. hard / permanent deletion).
         /// </summary>
         /// <param name="id">The id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task DeleteById(long id);
     }
 }

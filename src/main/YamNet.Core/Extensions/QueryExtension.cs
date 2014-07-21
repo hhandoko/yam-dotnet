@@ -7,6 +7,7 @@
 namespace YamNet.Client
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -36,6 +37,21 @@ namespace YamNet.Client
                     Uri.EscapeDataString(p.GetValue(obj, null)
                         .ToString()
                         .ToLowerInvariant()));
+
+            return string.Join("&", properties.ToArray());
+        }
+
+        /// <summary>
+        /// Serialise the string dictionary into querystring.
+        /// </summary>
+        /// <param name="dictionary">The dictionary to serialise.</param>
+        /// <returns>The <see cref="string"/>.</returns>
+        public static string SerializeQueryString(this Dictionary<string, string> dictionary)
+        {
+            var properties =
+                dictionary.Select(p =>
+                        string.Format("{0}={1}", p.Key, p.Value))
+                    .ToList();
 
             return string.Join("&", properties.ToArray());
         }

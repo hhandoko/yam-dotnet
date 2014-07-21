@@ -18,12 +18,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\INetworkClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\IRelationshipClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\ISearchClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\IInvitationClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\ITopicClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\IUserClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\MessageClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\NetworkClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\RelationshipClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\SearchClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Clients\InvitationClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\TopicClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\UserClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\ClientConfiguration.cs" />

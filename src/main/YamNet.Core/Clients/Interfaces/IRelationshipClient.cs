@@ -31,6 +31,7 @@ namespace YamNet.Client
         /// Add a relationship to the current user.
         /// </summary>
         /// <param name="relations">The relations.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task AddCurrent(Dictionary<string, RelationshipType> relations);
 
         /// <summary>
@@ -38,6 +39,7 @@ namespace YamNet.Client
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relations">The relations.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task AddById(long userId, Dictionary<string, RelationshipType> relations);
 
         /// <summary>
@@ -45,6 +47,7 @@ namespace YamNet.Client
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relationshipType">The relationship type.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task DeleteById(long userId, RelationshipType relationshipType);
     }
 }

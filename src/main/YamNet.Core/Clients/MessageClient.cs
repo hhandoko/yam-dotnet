@@ -145,6 +145,7 @@ namespace YamNet.Client
         /// Marks the specified message as liked by the current user.
         /// </summary>
         /// <param name="id">The message id to like.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task LikeById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", Endpoints.Messages, id));
@@ -156,6 +157,7 @@ namespace YamNet.Client
         /// Removes the like mark from the specified message.
         /// </summary>
         /// <param name="id">The message id to unlike.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task UnlikeById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}/liked_by/current.json?message_id={1}", Endpoints.Messages, id));
@@ -167,6 +169,7 @@ namespace YamNet.Client
         /// Remove a message by its id. The message must be owned by the current user.
         /// </summary>
         /// <param name="id">The message id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task DeleteById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}/{1}", Endpoints.Messages, id));

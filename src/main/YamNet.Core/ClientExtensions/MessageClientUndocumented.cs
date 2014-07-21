@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace YamNet.Client
+namespace YamNet.Client.Undocumented
 {
     using System.Linq;
     using System.Threading.Tasks;

@@ -114,6 +114,7 @@ namespace YamNet.Client
         /// Suspend a user by his/her id (i.e. soft-delete).
         /// </summary>
         /// <param name="id">The id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task SuspendById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json", Endpoints.Users, id));
@@ -125,6 +126,7 @@ namespace YamNet.Client
         /// Delete a user by his/her id (i.e. hard / permanent deletion).
         /// </summary>
         /// <param name="id">The id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task DeleteById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json?delete=true", Endpoints.Users, id));

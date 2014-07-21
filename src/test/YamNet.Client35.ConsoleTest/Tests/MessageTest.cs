@@ -9,6 +9,8 @@ namespace YamNet.Client.ConsoleTest
     using System;
     using System.Linq;
 
+    using YamNet.Client.Undocumented;
+
     /// <summary>
     /// The user message test.
     /// </summary>

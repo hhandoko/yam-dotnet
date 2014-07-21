@@ -29,6 +29,7 @@ namespace YamNet.Client
         /// Join the group specified by the numeric Id.
         /// </summary>
         /// <param name="id">The group id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task JoinById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", Endpoints.Groups, id));
@@ -40,6 +41,7 @@ namespace YamNet.Client
         /// Leave the group specified by the numeric Id.
         /// </summary>
         /// <param name="id">The group id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task LeaveById(long id)
         {
             var url = this.GetFinalUrl(string.Format("{0}.json?group_id={1}", Endpoints.Groups, id));

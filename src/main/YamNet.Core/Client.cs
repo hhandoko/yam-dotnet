@@ -41,39 +41,44 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Gets or sets the group memberships REST API endpoint.
+        /// Gets the group memberships REST API endpoint.
         /// </summary>
-        public GroupClient Groups { get; set; }
+        public GroupClient Groups { get; private set; }
+
+        /// <summary>
+        /// Gets the invitations REST API endpoint.
+        /// </summary>
+        public InvitationClient Invitations { get; private set; }
         
         /// <summary>
-        /// Gets or sets the messages REST API endpoint.
+        /// Gets the messages REST API endpoint.
         /// </summary>
-        public MessageClient Messages { get; set; }
+        public MessageClient Messages { get; private set; }
 
         /// <summary>
-        /// Gets or sets the network REST API endpoint.
+        /// Gets the network REST API endpoint.
         /// </summary>
-        public NetworkClient Networks { get; set; }
+        public NetworkClient Networks { get; private set; }
 
         /// <summary>
-        /// Gets or sets the user's relationship REST API endpoint.
+        /// Gets the user's relationship REST API endpoint.
         /// </summary>
-        public RelationshipClient Relationships { get; set; }
+        public RelationshipClient Relationships { get; private set; }
 
         /// <summary>
-        /// Gets or sets the search REST API endpoint.
+        /// Gets the search REST API endpoint.
         /// </summary>
-        public SearchClient Search { get; set; }
+        public SearchClient Search { get; private set; }
 
         /// <summary>
-        /// Gets or sets the message topic REST API endpoint.
+        /// Gets the message topic REST API endpoint.
         /// </summary>
-        public TopicClient Topics { get; set; }
+        public TopicClient Topics { get; private set; }
 
         /// <summary>
-        /// Gets or sets the users REST API endpoint.
+        /// Gets the users REST API endpoint.
         /// </summary>
-        public UserClient Users { get; set; }
+        public UserClient Users { get; private set; }
 
         /// <summary>
         /// Gets or sets the REST API endpoint.
@@ -100,6 +105,11 @@ namespace YamNet.Client
                 this.Groups.Client.Dispose();
             }
 
+            if (this.Invitations.Client != null)
+            {
+                this.Invitations.Client.Dispose();
+            }
+
             if (this.Messages.Client != null)
             {
                 this.Messages.Client.Dispose();
@@ -115,14 +125,14 @@ namespace YamNet.Client
                 this.Relationships.Client.Dispose();
             }
 
-            if (this.Topics.Client != null)
-            {
-                this.Topics.Client.Dispose();
-            }
-
             if (this.Search.Client != null)
             {
                 this.Search.Client.Dispose();
+            }
+
+            if (this.Topics.Client != null)
+            {
+                this.Topics.Client.Dispose();
             }
 
             if (this.Users.Client != null)
@@ -141,10 +151,11 @@ namespace YamNet.Client
             this.BearerToken = token;
 
             this.Groups = new GroupClient(this);
+            this.Invitations = new InvitationClient(this);
             this.Messages = new MessageClient(this);
             this.Networks = new NetworkClient(this);
-            this.Search = new SearchClient(this);
             this.Relationships = new RelationshipClient(this);
+            this.Search = new SearchClient(this);
             this.Topics = new TopicClient(this);
             this.Users = new UserClient(this);
         }
