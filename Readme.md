@@ -74,15 +74,15 @@ Currently there are no additional setup required in order to use them. However, 
 **Use it with caution. As these APIs may be subject to change without notice, and may break your application.**
 
 ## Contributors
-Please refer to the following [page](/blob/master/Contributors.md) for a complete list of all contributors.
+Please refer to the following [page](/Contributors.md) for a complete list of all contributors.
 
 ## Contributing
 Pull requests shall be made against `develop` branch, which will be reviewed for merging into the `master` branch.
 
 ## Copyright and License
-  * Code and documentation copyright YamNet [contributors](/blob/master/Contributors.md).
-  * Code released under [BSD3 license](/blob/master/License.txt).
-  * Documentation released under [Creative Commons license](/blob/master/LicenseDocs.txt).
+  * Code and documentation copyright YamNet [contributors](/Contributors.md).
+  * Code released under [BSD3 license](/License.txt).
+  * Documentation released under [Creative Commons license](/LicenseDocs.txt).
 
 ## Credits
 Big thanks to [jmjc95](http://www.codeplex.com/site/users/view/jmjc95) and [tuongla](http://www.codeplex.com/site/users/view/tuongla) for creating a thoughtful, open-source sample project, and using a fork-friendly Apache 2.0 license so others can reuse and adapt the original works.
