@@ -23,6 +23,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\IUserClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\MessageClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\NetworkClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Clients\SubscriptionClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Clients\NotificationClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\RelationshipClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\SearchClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\InvitationClient.cs" />
@@ -86,5 +88,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\Interfaces\ISerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\JsonDotNetDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\JsonDotNetSerializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)DTOs\Notification\" />
   </ItemGroup>
 </Project>
