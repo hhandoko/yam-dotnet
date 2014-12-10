@@ -22,13 +22,13 @@ namespace YamNet.Client
         [JsonProperty("messages")]
         public Message[] Messages { get; set; }
 
-//        /// <summary>
-//        /// Gets or sets the references.
-//        /// </summary>
-//        /// <value>The references.</value>
-//        [JsonProperty("references")]
-//        [JsonConverter(typeof(ReferenceJsonConverter))]
-//        public IReference[] References { get; set; }
+        /// <summary>
+        /// Gets or sets the references.
+        /// </summary>
+        /// <value>The references.</value>
+        [JsonProperty("references")]
+        [JsonConverter(typeof(ReferenceJsonConverter))]
+        public IReference[] References { get; set; }
 
         /// <summary>
         /// Gets or sets the meta.

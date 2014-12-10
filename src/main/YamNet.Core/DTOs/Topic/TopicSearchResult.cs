@@ -29,7 +29,7 @@ namespace YamNet.Client
     ///     }
     /// ]
     /// </remarks>
-    public sealed class TopicSearchResult : TopicBase
+    public sealed class TopicSearchResult : Topic
     {
     }
 }

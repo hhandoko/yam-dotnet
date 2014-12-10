@@ -76,7 +76,7 @@ namespace YamNet.Client
         /// Gets or sets the id.
         /// </summary>
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets or sets the account activation date + time.

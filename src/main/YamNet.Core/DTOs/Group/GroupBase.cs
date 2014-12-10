@@ -13,7 +13,7 @@ namespace YamNet.Client
     /// <summary>
     /// The group (base) DTO.
     /// </summary>
-    public abstract class GroupBase
+    public class GroupBase
     {
         #region Details
         /// <summary>
@@ -36,10 +36,12 @@ namespace YamNet.Client
         #endregion
 
         #region Options / Configuration
-        // TODO: Deprecated? 2014/04/24
         /// <summary>
         /// Gets or sets the value indicating whether the group is public.
         /// </summary>
+        /// <remarks>
+        /// Referenced in GroupReference DTO.
+        /// </remarks>
         [JsonProperty("privacy")]
         [JsonConverter(typeof(PrivacyJsonConverter))]
         public bool IsPublic { get; set; }

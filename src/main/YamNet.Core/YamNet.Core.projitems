@@ -38,22 +38,36 @@
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Group\GroupUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\Like.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\LikedBy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\MessageBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\MessageBasicInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\Message.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\MessageBody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\MessageEnvelope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\MessageThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Message\ThreadStats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Meta\Meta.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Meta\Realtime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Meta\YModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\Network.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\NetworkGroupCount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\NetworkProfileFieldsConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Participant\Participant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\SharedThreadReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\TagReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\ConversationReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\GroupReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\Interface\IReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\MessageReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\ReferenceBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\ThreadReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\TopicReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\UserReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Relationship\Relationship.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Search\SearchCount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Search\SearchEnvelope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Topic\Topic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Topic\TopicBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Topic\TopicBasicInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Topic\TopicSearchResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\User\CompanyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\User\SchoolInfo.cs" />
@@ -84,12 +98,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Operations\BaseEnvelope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Operations\Interfaces\IBaseEnvelope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\Converter\PrivacyJsonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serializer\Converter\ReferenceJsonConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\Interfaces\IDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\Interfaces\ISerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\JsonDotNetDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer\JsonDotNetSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)DTOs\Tag\" />
     <Folder Include="$(MSBuildThisFileDirectory)DTOs\Notification\" />
   </ItemGroup>
 </Project>

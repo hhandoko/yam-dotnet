@@ -6,6 +6,8 @@
 
 namespace YamNet.Client
 {
+    using Newtonsoft.Json;
+
     /// <summary>
     /// The message topic.
     /// </summary>
@@ -28,7 +30,14 @@ namespace YamNet.Client
     ///     }
     /// ]
     /// </remarks>
-    public sealed class Topic : TopicBase
+    public class Topic : TopicBasicInfo
     {
+        /// <summary>
+        /// Gets or sets the references.
+        /// </summary>
+        /// <value>The references.</value>
+        [JsonProperty("references")]
+        [JsonConverter(typeof(ReferenceJsonConverter))]
+        public IReference[] References { get; set; }
     }
 }
