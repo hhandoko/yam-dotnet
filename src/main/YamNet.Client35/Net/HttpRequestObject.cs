@@ -54,7 +54,7 @@ namespace YamNet.Client
                 {
                     var request = this.CreateRequestMessage(method, baseUri, uri, parameters);
 
-                    client.BaseUrl = baseUri.ToString();
+                    client.BaseUrl = baseUri;
                     client.ExecuteAsync(request, response =>
                         {
                             if (response.ErrorException != null)
