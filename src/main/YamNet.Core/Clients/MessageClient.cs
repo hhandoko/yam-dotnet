@@ -12,19 +12,18 @@ namespace YamNet.Client
 
     /// <summary>
     /// Yammer messages client.
+    /// Allows viewing and manipulating user's messages.
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-messages
     /// </remarks>
-    public class MessageClient
-        : ClientBase, IMessageClient
+    public class MessageClient : ClientBase, IMessageClient
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public MessageClient(Client client)
-            : base(client)
+        public MessageClient(Client client) : base(client)
         {
         }
 
@@ -37,7 +36,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetAll(
-            int limit = Config.Message.DefaultLimit,
+            int limit = Config.Message.QueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -56,7 +55,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetFeed(
-            int limit = Config.Message.DefaultLimit,
+            int limit = Config.Message.QueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -75,7 +74,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetTop(
-            int limit = Config.Message.DefaultLimit,
+            int limit = Config.Message.QueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -94,7 +93,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetFollowing(
-            int limit = Config.Message.DefaultLimit,
+            int limit = Config.Message.QueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -113,7 +112,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetSent(
-            int limit = Config.Message.DefaultLimit,
+            int limit = Config.Message.QueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -132,7 +131,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetPrivate(
-            int limit = Config.Message.DefaultLimit,
+            int limit = Config.Message.QueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -151,7 +150,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetReceived(
-            int limit = Config.Message.DefaultLimit,
+            int limit = Config.Message.QueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -210,15 +209,12 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="threaded">The message thread option.</param>
-        /// <param name="excludeOwnMessages"></param>
-        /// <param name="includeCounts"></param>
         public MessageQuery(
             int limit,
             MessageQueryTrim trim,
             MessageQueryThread threaded)
         {
-            if (limit > 0
-                && limit != Config.Message.DefaultLimit)
+            if (limit > 0 && limit != Config.Message.QueryResponseLimit)
             {
                 this.Limit = limit;
             }
@@ -375,9 +371,9 @@ namespace YamNet.Client
         internal static class Message
         {
             /// <summary>
-            /// The default query limit.
+            /// The default query response total limit.
             /// </summary>
-            public const int DefaultLimit = 0;
+            public const int QueryResponseLimit = 0;
         }
     }
 }

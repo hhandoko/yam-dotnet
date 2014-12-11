@@ -10,6 +10,8 @@ namespace YamNet.Client
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Config = ClientConfiguration;
+
     /// <summary>
     /// Yammer invitations client.
     /// Sends an email invitation to a user who has not yet joined the current user’s yammer network.
@@ -36,8 +38,6 @@ namespace YamNet.Client
         /// <returns>The <see cref="Task"/>.</returns>
         public async Task Invite(string[] emails)
         {
-            const int Limit = 20;
-
             var counter = 1;
             var total = emails.Count();
             var invitees = new Dictionary<string, string>();
@@ -47,7 +47,7 @@ namespace YamNet.Client
             {
                 invitees.Add(string.Format("email{0}", counter), emails[i]);
 
-                if (counter == Limit || i + 1 == total)
+                if (i + 1 == total || counter == Config.Invitation.PerRequestEmailLimit)
                 {
                     var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Invitations), invitees.SerializeQueryString());
                     await this.Client.PostAsync(url);
@@ -72,5 +72,22 @@ namespace YamNet.Client
         /// Invitations endpoint.
         /// </summary>
         public const string Invitations = "/invitations";
+    }
+
+    /// <summary>
+    /// The shared client configuration.
+    /// </summary>
+    internal static partial class ClientConfiguration
+    {
+        /// <summary>
+        /// The InvitationClient configuration.
+        /// </summary>
+        internal static class Invitation
+        {
+            /// <summary>
+            /// The default per-request email parameter limit.
+            /// </summary>
+            public const int PerRequestEmailLimit = 20;
+        }
     }
 }
