@@ -78,21 +78,31 @@ namespace YamNet.Client
         Task<MessageEnvelope> GetReceived(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
+        /// Get all messages by a topic ID.
+        /// </summary>
+        /// <param name="topicId">The topic ID.</param>
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetByTopicId(long topicId);
+
+        /// <summary>
         /// Marks the specified message as liked by the current user.
         /// </summary>
         /// <param name="id">The message id to like.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task LikeById(long id);
 
         /// <summary>
         /// Removes the like mark from the specified message.
         /// </summary>
         /// <param name="id">The message id to unlike.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task UnlikeById(long id);
         
         /// <summary>
         /// Remove a message by its id. The message must be owned by the current user.
         /// </summary>
         /// <param name="id">The message id.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         Task DeleteById(long id);
     }
 }

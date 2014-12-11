@@ -2,7 +2,8 @@
   * **BREAKING CHANGE:**
     * Updated return type for `Message` client to `MessageEnvelope` from `IQueryable<Message>`.
     * Updated `RelationshipClient` parameter to accept `Relation[]` from `Dictionary<string, RelationshipType>`.
-  * Added `References` type to `MessageResponse` ([#2](https://github.com/hhandoko/yam-dotnet/issues/2)).
+  * Added `References` type to `MessageEnvelope` ([#2](https://github.com/hhandoko/yam-dotnet/issues/2)).
+  * Added `Page` type to `SearchEnvelope`.
   * Added `Notification` client. 
 
 ## 0.4 - <small>2014/07/21</small>

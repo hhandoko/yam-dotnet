@@ -12,6 +12,7 @@ namespace YamNet.Client
 
     /// <summary>
     /// Yammer user's subscription client.
+    /// Manage subscriptions to topics, threads, and users.
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-notifications
@@ -22,8 +23,7 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="SubscriptionClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public SubscriptionClient(Client client)
-            : base(client)
+        public SubscriptionClient(Client client) : base(client)
         {
         }
     }

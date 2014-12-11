@@ -20,8 +20,7 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="TopicClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public TopicClient(Client client)
-            : base(client)
+        public TopicClient(Client client) : base(client)
         {
         }
 

@@ -162,6 +162,19 @@ namespace YamNet.Client
         }
 
         /// <summary>
+        /// Get all messages by a topic ID.
+        /// </summary>
+        /// <param name="topicId">The topic ID.</param>
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetByTopicId(long topicId)
+        {
+            var url = this.GetFinalUrl(string.Format("{0}/about_topic/{1}.json", Endpoints.Messages, topicId));
+            var result = await this.Client.GetAsync<MessageEnvelope>(url);
+
+            return result.Content;
+        }
+
+        /// <summary>
         /// Marks the specified message as liked by the current user.
         /// </summary>
         /// <param name="id">The message id to like.</param>

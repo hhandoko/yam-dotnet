@@ -13,6 +13,7 @@ namespace YamNet.Client
 
     /// <summary>
     /// Yammer users' client.
+    /// Perform user management i.e. retrieve, create, update, and suspend Yammer users.
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-users
@@ -23,8 +24,7 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="UserClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public UserClient(Client client)
-            : base(client)
+        public UserClient(Client client) : base(client)
         {
         }
 
