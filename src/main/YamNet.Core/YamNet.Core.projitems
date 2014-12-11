@@ -51,6 +51,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\Network.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\NetworkGroupCount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\NetworkProfileFieldsConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Notification\NotificationEnvelope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Participant\Participant.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\SharedThreadReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\TagReference.cs" />
@@ -106,6 +107,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)DTOs\Tag\" />
-    <Folder Include="$(MSBuildThisFileDirectory)DTOs\Notification\" />
   </ItemGroup>
 </Project>

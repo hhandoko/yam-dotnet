@@ -10,6 +10,7 @@ namespace YamNet.Client
 
     /// <summary>
     /// Yammer user's notification client.
+    /// Get the notifications feed for the current user.
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-notifications
@@ -17,23 +18,21 @@ namespace YamNet.Client
     public class NotificationClient : ClientBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelationshipClient"/> class.
+        /// Initializes a new instance of the <see cref="NotificationClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public NotificationClient(Client client)
-            : base(client)
+        public NotificationClient(Client client) : base(client)
         {
         }
 
         /// <summary>
         /// Get current user's relationship.
         /// </summary>
-        /// <returns>The <see cref="Relationship"/>.</returns>
-        public async Task<Relationship> Get()
+        /// <returns>The <see cref="NotificationEnvelope"/>.</returns>
+        public async Task<NotificationEnvelope> Get()
         {
-            var query = new RelationshipQuery(null, null);
-            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<Relationship>(url);
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Notifications));
+            var result = await this.Client.GetAsync<NotificationEnvelope>(url);
 
             return result.Content;
         }
