@@ -12,6 +12,7 @@ namespace YamNet.Client
 
     /// <summary>
     /// Yammer search client.
+    /// The search resource will return a list of messages, users, topics and groups that match the user’s search query.
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-search
@@ -22,8 +23,7 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="SearchClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public SearchClient(Client client)
-            : base(client)
+        public SearchClient(Client client) : base(client)
         {
         }
 
@@ -57,21 +57,24 @@ namespace YamNet.Client
         /// <param name="queryText">The query text to search.</param>
         /// <param name="pageNo">The page number for (paged) search results.</param>
         /// <param name="resultsPerPage">The number of search results per page, up to 20.</param>
-        public SearchQuery(string queryText, int pageNo, int resultsPerPage)
+        public SearchQuery(
+            string queryText,
+            int pageNo,
+            int resultsPerPage)
         {
             if (pageNo > 0 && pageNo != Config.DefaultPageNo)
             {
-                Page = pageNo;
+                this.Page = pageNo;
             }
 
             if (resultsPerPage > 0
                 && resultsPerPage != Config.Search.DefaultResultsPerPage
-                && resultsPerPage <= Config.Search.MaxResultsPerPage)
+                && resultsPerPage <= Config.Search.ResultsPerPageLimit)
             {
-                Num_Per_Page = resultsPerPage;
+                this.Num_Per_Page = resultsPerPage;
             }
 
-            Search = queryText;
+            this.Search = queryText;
         }
 
         /// <summary>
@@ -106,9 +109,9 @@ namespace YamNet.Client
             public const int DefaultResultsPerPage = 20;
 
             /// <summary>
-            /// The maximum results returned per page.
+            /// The maximum results returned per-page.
             /// </summary>
-            public const int MaxResultsPerPage = 20;
+            public const int ResultsPerPageLimit = 20;
         }
     }
 

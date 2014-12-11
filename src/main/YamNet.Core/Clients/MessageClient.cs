@@ -36,7 +36,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetAll(
-            int limit = Config.Message.QueryResponseLimit,
+            int limit = Config.Message.DefaultQueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -55,7 +55,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetFeed(
-            int limit = Config.Message.QueryResponseLimit,
+            int limit = Config.Message.DefaultQueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -74,7 +74,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetTop(
-            int limit = Config.Message.QueryResponseLimit,
+            int limit = Config.Message.DefaultQueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -93,7 +93,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetFollowing(
-            int limit = Config.Message.QueryResponseLimit,
+            int limit = Config.Message.DefaultQueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -112,7 +112,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetSent(
-            int limit = Config.Message.QueryResponseLimit,
+            int limit = Config.Message.DefaultQueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -131,7 +131,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetPrivate(
-            int limit = Config.Message.QueryResponseLimit,
+            int limit = Config.Message.DefaultQueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -150,7 +150,7 @@ namespace YamNet.Client
         /// <param name="thread">The thread options.</param>
         /// <returns>The <see cref="MessageEnvelope"/>.</returns>
         public async Task<MessageEnvelope> GetReceived(
-            int limit = Config.Message.QueryResponseLimit,
+            int limit = Config.Message.DefaultQueryResponseLimit,
             MessageQueryTrim trim = null,
             MessageQueryThread thread = MessageQueryThread.NoThread)
         {
@@ -214,7 +214,7 @@ namespace YamNet.Client
             MessageQueryTrim trim,
             MessageQueryThread threaded)
         {
-            if (limit > 0 && limit != Config.Message.QueryResponseLimit)
+            if (limit > 0 && limit != Config.Message.DefaultQueryResponseLimit)
             {
                 this.Limit = limit;
             }
@@ -373,7 +373,7 @@ namespace YamNet.Client
             /// <summary>
             /// The default query response total limit.
             /// </summary>
-            public const int QueryResponseLimit = 0;
+            public const int DefaultQueryResponseLimit = 0;
         }
     }
 }

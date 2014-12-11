@@ -360,7 +360,7 @@ namespace YamNet.Client
         /// Gets or sets the home network id.
         /// </summary>
         [JsonProperty("network_id")]
-        public int NetworkId { get; set; }
+        public long NetworkId { get; set; }
 
         /// <summary>
         /// Gets or sets the home network name.

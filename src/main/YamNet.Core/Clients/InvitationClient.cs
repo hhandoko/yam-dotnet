@@ -47,7 +47,7 @@ namespace YamNet.Client
             {
                 invitees.Add(string.Format("email{0}", counter), emails[i]);
 
-                if (i + 1 == total || counter == Config.Invitation.PerRequestEmailLimit)
+                if (i + 1 == total || counter == Config.Invitation.EmailsPerRequestLimit)
                 {
                     var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Invitations), invitees.SerializeQueryString());
                     await this.Client.PostAsync(url);
@@ -85,9 +85,9 @@ namespace YamNet.Client
         internal static class Invitation
         {
             /// <summary>
-            /// The default per-request email parameter limit.
+            /// The total number pf emails parameter limit accepted per-request.
             /// </summary>
-            public const int PerRequestEmailLimit = 20;
+            public const int EmailsPerRequestLimit = 20;
         }
     }
 }

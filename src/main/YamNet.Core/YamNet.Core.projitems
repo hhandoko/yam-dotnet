@@ -52,6 +52,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\NetworkGroupCount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Network\NetworkProfileFieldsConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Notification\NotificationEnvelope.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Page\Page.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Page\PageStat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Page\PageVersion.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Participant\Participant.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\SharedThreadReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\TagReference.cs" />
@@ -63,7 +66,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\ThreadReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\TopicReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Reference\UserReference.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Relationship\Relationship.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DTOs\Relationship\RelationshipEnvelope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Search\SearchCount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Search\SearchEnvelope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\Topic\Topic.cs" />

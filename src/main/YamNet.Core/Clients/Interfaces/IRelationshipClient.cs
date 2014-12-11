@@ -16,15 +16,15 @@ namespace YamNet.Client
         /// <summary>
         /// Get current user's relationship.
         /// </summary>
-        /// <returns>The <see cref="Relationship"/>.</returns>
-        Task<Relationship> GetCurrent();
+        /// <returns>The <see cref="RelationshipEnvelope"/>.</returns>
+        Task<RelationshipEnvelope> GetCurrent();
 
         /// <summary>
         /// Get other user's relationship by their id.
         /// </summary>
         /// <param name="userId">The user id.</param>
-        /// <returns>The <see cref="Relationship"/>.</returns>
-        Task<Relationship> GetById(long userId);
+        /// <returns>The <see cref="RelationshipEnvelope"/>.</returns>
+        Task<RelationshipEnvelope> GetById(long userId);
 
         /// <summary>
         /// Add a relationship to the current user.

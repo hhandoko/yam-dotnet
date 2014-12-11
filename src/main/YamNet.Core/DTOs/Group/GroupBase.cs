@@ -37,7 +37,7 @@ namespace YamNet.Client
 
         #region Options / Configuration
         /// <summary>
-        /// Gets or sets the value indicating whether the group is public.
+        /// Gets or sets a value indicating whether the group is public.
         /// </summary>
         /// <remarks>
         /// Referenced in GroupReference DTO.

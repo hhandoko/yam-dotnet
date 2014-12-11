@@ -29,11 +29,11 @@ namespace YamNet.Client
         /// <summary>
         /// Get current user's relationship.
         /// </summary>
-        /// <returns>The <see cref="Relationship"/>.</returns>
-        public async Task<Relationship> GetCurrent()
+        /// <returns>The <see cref="RelationshipEnvelope"/>.</returns>
+        public async Task<RelationshipEnvelope> GetCurrent()
         {
             var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships));
-            var result = await this.Client.GetAsync<Relationship>(url);
+            var result = await this.Client.GetAsync<RelationshipEnvelope>(url);
 
             return result.Content;
         }
@@ -42,12 +42,12 @@ namespace YamNet.Client
         /// Get other user's relationship by their id.
         /// </summary>
         /// <param name="userId">The user id.</param>
-        /// <returns>The <see cref="Relationship"/>.</returns>
-        public async Task<Relationship> GetById(long userId)
+        /// <returns>The <see cref="RelationshipEnvelope"/>.</returns>
+        public async Task<RelationshipEnvelope> GetById(long userId)
         {
             var query = new RelationshipQuery(userId, null);
             var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<Relationship>(url);
+            var result = await this.Client.GetAsync<RelationshipEnvelope>(url);
 
             return result.Content;
         }

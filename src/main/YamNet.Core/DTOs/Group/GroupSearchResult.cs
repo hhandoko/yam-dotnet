@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Group.cs" company="YamNet">
+// <copyright file="GroupSearchResult.cs" company="YamNet">
 //   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------

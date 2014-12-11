@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Relationship.cs" company="YamNet">
+// <copyright file="RelationshipEnvelope.cs" company="YamNet">
 //   Copyright (c) 2014 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
@@ -41,7 +41,7 @@ namespace YamNet.Client
     ///     colleagues: [ ]
     /// }
     /// </remarks>
-    public sealed class Relationship
+    public sealed class RelationshipEnvelope
     {
         /// <summary>
         /// Gets or sets the user's superiors.
