@@ -26,9 +26,9 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Join the group specified by the numeric Id.
+        /// Join the group specified by the numeric string ID.
         /// </summary>
-        /// <param name="id">The group id.</param>
+        /// <param name="id">The group id that the user is joining or leaving.</param>
         /// <returns>The <see cref="Task"/>.</returns>
         public async Task JoinById(long id)
         {
@@ -38,9 +38,9 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Leave the group specified by the numeric Id.
+        /// Leave the group specified by the numeric string ID.
         /// </summary>
-        /// <param name="id">The group id.</param>
+        /// <param name="id">The group id that the user is joining or leaving.</param>
         /// <returns>The <see cref="Task"/>.</returns>
         public async Task LeaveById(long id)
         {

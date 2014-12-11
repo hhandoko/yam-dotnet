@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GroupClient.cs" company="YamNet">
+// <copyright file="NetworkClient.cs" company="YamNet">
 //   Copyright (c) 2013 YamNet contributors
 // </copyright>
 // -----------------------------------------------------------------------
@@ -32,7 +32,9 @@ namespace YamNet.Client
         /// <param name="includeSuspended">The option to include the network the user is suspended in.</param>
         /// <param name="excludeOwnMessagesFromUnseen">The option to exclude the user's own messages from the unseen count.</param>
         /// <returns>The <see cref="Network"/>.</returns>
-        public async Task<IQueryable<Network>> Current(bool includeSuspended = true, bool excludeOwnMessagesFromUnseen = true)
+        public async Task<IQueryable<Network>> Current(
+            bool includeSuspended = true,
+            bool excludeOwnMessagesFromUnseen = true)
         {
             var query = new NetworkQuery(includeSuspended, excludeOwnMessagesFromUnseen);
             var url = this.GetFinalUrl(string.Format("{0}/current.json", Endpoints.Networks), query.SerializeQueryString());
@@ -48,7 +50,7 @@ namespace YamNet.Client
     internal class NetworkQuery
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserQuery"/> class.
+        /// Initializes a new instance of the <see cref="NetworkQuery"/> class.
         /// </summary>
         /// <param name="includeSuspended">The option to include the network the user is suspended in.</param>
         /// <param name="excludeOwnMessagesFromUnseen">The option to exclude the user's own messages from the unseen count.</param>

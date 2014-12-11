@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - NuGet", "0 - NuGet", "{23B6E925-68E7-4B48-BAFB-0644A8723C84}"
 EndProject
@@ -41,10 +41,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{03616E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{4CD11A85-F8A6-4E25-A7BA-C07ED79E3D8C}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "YamNet.CoreTest", "src\YamNet.CoreTest\YamNet.CoreTest.shproj", "{A153A52C-3054-436E-8BE4-86CDF571E3F1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\main\YamNet.Core\YamNet.Core.projitems*{67969ee9-4f3f-47a2-8be8-8afe2979ba07}*SharedItemsImports = 13
 		src\main\YamNet.Core\YamNet.Core.projitems*{9cc931da-db1c-4866-8524-8712666990c7}*SharedItemsImports = 4
+		src\YamNet.CoreTest\YamNet.CoreTest.projitems*{cabaccec-ae68-413e-a784-b12fabb1f49d}*SharedItemsImports = 4
+		src\YamNet.CoreTest\YamNet.CoreTest.projitems*{a153a52c-3054-436e-8be4-86cdf571e3f1}*SharedItemsImports = 13
+		src\YamNet.CoreTest\YamNet.CoreTest.projitems*{d87938f7-edff-4fec-9ca7-79c7db85b80c}*SharedItemsImports = 4
 		src\main\YamNet.Core\YamNet.Core.projitems*{e9238175-7a4f-424b-83f4-f293672c72c6}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,5 +87,6 @@ Global
 		{67969EE9-4F3F-47A2-8BE8-8AFE2979BA07} = {03616E08-545E-403D-8E49-9EE2CF99D14D}
 		{03616E08-545E-403D-8E49-9EE2CF99D14D} = {F7F6989B-D530-4CCD-AB04-F1959A8F3E1B}
 		{4CD11A85-F8A6-4E25-A7BA-C07ED79E3D8C} = {6AFF12CE-383A-498F-81F2-0DBE78A55321}
+		{A153A52C-3054-436E-8BE4-86CDF571E3F1} = {4CD11A85-F8A6-4E25-A7BA-C07ED79E3D8C}
 	EndGlobalSection
 EndGlobal
