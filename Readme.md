@@ -1,5 +1,8 @@
 YamNet is an unofficial, opinionated, Yammer REST API .NET (async) wrapper based on the the CodePlex [ContractMeow](http://yammercontractmeow.codeplex.com/) project. The goal is to provide a ready-to-use client library available via NuGet.
 
+## Breaking Changes
+  * 0.5: `MessageClient` return type updated to `MessageResponse` from `IQueryable<Message>`
+
 ## Prerequisites and Installation
 YamNet is available as a .NET 3.5 and Portable Class Library (PCL) binaries, which makes it available for the following build targets:
 

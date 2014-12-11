@@ -6,7 +6,6 @@
 
 namespace YamNet.Client
 {
-    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -21,8 +20,8 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        Task<IQueryable<Message>> GetAll(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetAll(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
         /// Get the User's feed based on the selection made between "Following" and "Top" conversation.
@@ -30,8 +29,8 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        Task<IQueryable<Message>> GetFeed(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetFeed(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
         /// Get the algorithmic feed that corresponds to "Top" conversation.
@@ -39,8 +38,8 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        Task<IQueryable<Message>> GetTop(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetTop(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
         /// Get the "Following" feed which is conversations involving people, groups and topics that the user is following.
@@ -48,8 +47,8 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        Task<IQueryable<Message>> GetFollowing(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetFollowing(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
         /// Get all messages sent by the User. 
@@ -57,8 +56,8 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        Task<IQueryable<Message>> GetSent(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetSent(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
         /// Get all private messages received by the User.
@@ -66,8 +65,8 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        Task<IQueryable<Message>> GetPrivate(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetPrivate(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
         /// Get all messages received by the User.
@@ -75,8 +74,8 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        Task<IQueryable<Message>> GetReceived(int limit, MessageQueryTrim trim, MessageQueryThread thread);
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        Task<MessageEnvelope> GetReceived(int limit, MessageQueryTrim trim, MessageQueryThread thread);
 
         /// <summary>
         /// Marks the specified message as liked by the current user.

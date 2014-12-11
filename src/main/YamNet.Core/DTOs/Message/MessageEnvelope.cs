@@ -15,6 +15,15 @@ namespace YamNet.Client
     /// </summary>
     public sealed class MessageEnvelope
     {
+        // TODO: add `external_references` object
+
+        /// <summary>
+        /// Gets or sets the threaded messages.
+        /// </summary>
+        /// <value>The threaded messages.</value>
+        [JsonProperty("threaded_extended")]
+        public MessageThread MessageThreads { get; set; }
+
         /// <summary>
         /// Gets or sets the messages.
         /// </summary>
@@ -36,12 +45,5 @@ namespace YamNet.Client
         /// <value>The meta.</value>
         [JsonProperty("meta")]
         public Meta Meta { get; set; }
-
-        /// <summary>
-        /// Gets or sets the threaded messages.
-        /// </summary>
-        /// <value>The threaded messages.</value>
-        [JsonProperty("threaded_extended")]
-        public MessageThread MessageThreads { get; set; }
     }
 }

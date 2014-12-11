@@ -6,7 +6,6 @@
 
 namespace YamNet.Client
 {
-    using System.Linq;
     using System.Threading.Tasks;
 
     using Config = ClientConfiguration;
@@ -17,7 +16,8 @@ namespace YamNet.Client
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-messages
     /// </remarks>
-    public class MessageClient : ClientBase, IMessageClient
+    public class MessageClient
+        : ClientBase, IMessageClient
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageClient"/> class.
@@ -35,14 +35,17 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<Message>> GetAll(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetAll(
+            int limit = Config.Message.DefaultLimit,
+            MessageQueryTrim trim = null,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
-            return result.Content.Messages.AsQueryable();
+            return result.Content;
         }
 
         /// <summary>
@@ -51,14 +54,17 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<Message>> GetFeed(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetFeed(
+            int limit = Config.Message.DefaultLimit,
+            MessageQueryTrim trim = null,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}/my_feed.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
-            return result.Content.Messages.AsQueryable();
+            return result.Content;
         }
 
         /// <summary>
@@ -67,14 +73,17 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<Message>> GetTop(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetTop(
+            int limit = Config.Message.DefaultLimit,
+            MessageQueryTrim trim = null,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}/algo.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
-            return result.Content.Messages.AsQueryable();
+            return result.Content;
         }
 
         /// <summary>
@@ -83,14 +92,17 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<Message>> GetFollowing(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetFollowing(
+            int limit = Config.Message.DefaultLimit,
+            MessageQueryTrim trim = null,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}/following.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
-            return result.Content.Messages.AsQueryable();
+            return result.Content;
         }
 
         /// <summary>
@@ -99,14 +111,17 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<Message>> GetSent(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetSent(
+            int limit = Config.Message.DefaultLimit,
+            MessageQueryTrim trim = null,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}/sent.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
-            return result.Content.Messages.AsQueryable();
+            return result.Content;
         }
 
         /// <summary>
@@ -115,14 +130,17 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<Message>> GetPrivate(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetPrivate(
+            int limit = Config.Message.DefaultLimit,
+            MessageQueryTrim trim = null,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}/private.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
-            return result.Content.Messages.AsQueryable();
+            return result.Content;
         }
 
         /// <summary>
@@ -131,14 +149,17 @@ namespace YamNet.Client
         /// <param name="limit">The returned message limit.</param>
         /// <param name="trim">The returned message trim / limit options.</param>
         /// <param name="thread">The thread options.</param>
-        /// <returns>The <see cref="IQueryable"/>.</returns>
-        public async Task<IQueryable<Message>> GetReceived(int limit = Config.Message.DefaultLimit, MessageQueryTrim trim = null, MessageQueryThread thread = MessageQueryThread.NoThread)
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public async Task<MessageEnvelope> GetReceived(
+            int limit = Config.Message.DefaultLimit,
+            MessageQueryTrim trim = null,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
         {
             var query = new MessageQuery(limit, trim, thread);
             var url = this.GetFinalUrl(string.Format("{0}/received.json", Endpoints.Messages), query.SerializeQueryString());
             var result = await this.Client.GetAsync<MessageEnvelope>(url);
 
-            return result.Content.Messages.AsQueryable();
+            return result.Content;
         }
 
         /// <summary>

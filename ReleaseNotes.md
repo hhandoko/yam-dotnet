@@ -1,5 +1,7 @@
 ## 0.5 - In Progress
-  * TBA
+  * **BREAKING CHANGE:**
+    * Updated return type for `Message` client to `MessageResponse` (formerly called `MessageEnvelope`).
+  * Added `References` type to `MessageResponse` ([#2](https://github.com/hhandoko/yam-dotnet/issues/2)). 
 
 ## 0.4 - <small>2014/07/21</small>
   * Created accompanying HTML docs site with [Jekyll](http://jekyllrb.com), hosted on [GitHub pages](https://pages.github.com/).
