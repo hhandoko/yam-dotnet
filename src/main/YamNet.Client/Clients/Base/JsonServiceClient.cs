@@ -18,13 +18,8 @@ namespace YamNet.Client
     /// <summary>
     /// The JSON web service client.
     /// </summary>
-    public class JsonServiceClient : IDisposable
+    public partial class JsonServiceClient
     {
-        /// <summary>
-        /// Denotes whether client has been disposed.
-        /// </summary>
-        private bool disposed;
-
         /// <summary>
         /// The http client.
         /// </summary>
@@ -39,50 +34,22 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="JsonServiceClient"/> class.
         /// </summary>
         /// <param name="token">The access token.</param>
-        public JsonServiceClient(string token)
-        {
-            this.Init(token);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonServiceClient"/> class.
-        /// </summary>
-        /// <param name="token">The access token.</param>
         /// <param name="proxy">The proxy.</param>
         /// <param name="credentials">The credentials.</param>
         public JsonServiceClient(string token, IWebProxy proxy, ICredentials credentials)
         {
-            this.handler = new HttpClientHandler
-            {
-                UseProxy = true,
-                Proxy = proxy,
-                UseDefaultCredentials = false,
-                Credentials = credentials,
-                PreAuthenticate = true
-            };
+            this.handler =
+                new HttpClientHandler
+                    {
+                        UseProxy = true,
+                        Proxy = proxy,
+                        UseDefaultCredentials = false,
+                        Credentials = credentials,
+                        PreAuthenticate = true
+                    };
 
             this.Init(token);
         }
-
-        /// <summary>
-        /// Gets or sets the serializer.
-        /// </summary>
-        public ISerializer Serializer { get; set; }
-
-        /// <summary>
-        /// Gets or sets the deserializer.
-        /// </summary>
-        public IDeserializer Deserializer { get; set; }
-
-        /// <summary>
-        /// Gets or sets the response error handler.
-        /// </summary>
-        public IResponseErrorHandler ResponseErrorHandler { get; set; }
-
-        /// <summary>
-        /// Gets or sets the URI / URL endpoint.
-        /// </summary>
-        internal Uri Endpoint { get; set; }
 
         /// <summary>
         /// Post via async.

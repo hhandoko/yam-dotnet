@@ -20,26 +20,12 @@ namespace YamNet.Client
     /// <summary>
     /// The JSON web service client.
     /// </summary>
-    public class JsonServiceClient : IDisposable
+    public partial class JsonServiceClient
     {
-        /// <summary>
-        /// Denotes whether client has been disposed.
-        /// </summary>
-        private bool disposed;
-
         /// <summary>
         /// The http client.
         /// </summary>
         private RestClient client;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonServiceClient"/> class.
-        /// </summary>
-        /// <param name="token">The access token.</param>
-        public JsonServiceClient(string token)
-        {
-            this.Init(token);
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonServiceClient"/> class.
@@ -54,26 +40,6 @@ namespace YamNet.Client
             this.client.Proxy = proxy;
             this.client.Proxy.Credentials = credentials;
         }
-
-        /// <summary>
-        /// Gets or sets the serializer.
-        /// </summary>
-        public ISerializer Serializer { get; set; }
-
-        /// <summary>
-        /// Gets or sets the deserializer.
-        /// </summary>
-        public IDeserializer Deserializer { get; set; }
-
-        /// <summary>
-        /// Gets or sets the response error handler.
-        /// </summary>
-        public IResponseErrorHandler ResponseErrorHandler { get; set; }
-
-        /// <summary>
-        /// Gets or sets the URI / URL endpoint.
-        /// </summary>
-        internal Uri Endpoint { get; set; }
 
         /// <summary>
         /// Post via async.

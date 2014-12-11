@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Client.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientExtensions\MessageClientUndocumented.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Base\ClientBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Clients\Base\JsonServiceClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\GroupClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\IGroupClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Clients\Interfaces\IMessageClient.cs" />
