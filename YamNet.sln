@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Sources", "2 - Sources"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Tests", "3 - Tests", "{6AFF12CE-383A-498F-81F2-0DBE78A55321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client", "src\main\YamNet.Client\YamNet.Client.csproj", "{E9238175-7A4F-424B-83F4-F293672C72C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client", "src\YamNet.Client\YamNet.Client.csproj", "{E9238175-7A4F-424B-83F4-F293672C72C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client.ConsoleTest", "src\test\YamNet.Client.ConsoleTest\YamNet.Client.ConsoleTest.csproj", "{D87938F7-EDFF-4FEC-9CA7-79C7DB85B80C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client.ConsoleTest", "tests\YamNet.Client.ConsoleTest\YamNet.Client.ConsoleTest.csproj", "{D87938F7-EDFF-4FEC-9CA7-79C7DB85B80C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{BE88B17E-5276-4F49-9B92-284C60D9DB6F}"
 	ProjectSection(SolutionItems) = preProject
@@ -31,11 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{BE88B17E
 		nuget\NuGetPack.cmd = nuget\NuGetPack.cmd
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client35", "src\main\YamNet.Client35\YamNet.Client35.csproj", "{9CC931DA-DB1C-4866-8524-8712666990C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client35", "src\YamNet.Client35\YamNet.Client35.csproj", "{9CC931DA-DB1C-4866-8524-8712666990C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client35.ConsoleTest", "src\test\YamNet.Client35.ConsoleTest\YamNet.Client35.ConsoleTest.csproj", "{CABACCEC-AE68-413E-A784-B12FABB1F49D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client35.ConsoleTest", "tests\YamNet.Client35.ConsoleTest\YamNet.Client35.ConsoleTest.csproj", "{CABACCEC-AE68-413E-A784-B12FABB1F49D}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "YamNet.Core", "src\main\YamNet.Core\YamNet.Core.shproj", "{67969EE9-4F3F-47A2-8BE8-8AFE2979BA07}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "YamNet.Core", "src\YamNet.Core\YamNet.Core.shproj", "{67969EE9-4F3F-47A2-8BE8-8AFE2979BA07}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{03616E08-545E-403D-8E49-9EE2CF99D14D}"
 EndProject
@@ -43,14 +43,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{4CD11A
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "YamNet.CoreTest", "src\YamNet.CoreTest\YamNet.CoreTest.shproj", "{A153A52C-3054-436E-8BE4-86CDF571E3F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client40", "src\YamNet.Client40\YamNet.Client40.csproj", "{074B3770-EDC5-406D-AA01-8D8B045DAD8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamNet.Client45", "src\YamNet.Client45\YamNet.Client45.csproj", "{409F98DF-C38F-4D8D-91B0-4F0FA2215F22}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "YamNet.Core.ClrV4", "src\YamNet.Core.ClrV4\YamNet.Core.ClrV4.shproj", "{1F955E89-3BFB-469F-8925-729A08F99E53}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "YamNet.Core.ClrV2", "src\YamNet.Core.ClrV2\YamNet.Core.ClrV2.shproj", "{75021645-34ED-4BCC-9DAE-8A3A901878A4}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		src\main\YamNet.Core\YamNet.Core.projitems*{67969ee9-4f3f-47a2-8be8-8afe2979ba07}*SharedItemsImports = 13
-		src\main\YamNet.Core\YamNet.Core.projitems*{9cc931da-db1c-4866-8524-8712666990c7}*SharedItemsImports = 4
+		src\YamNet.Core\YamNet.Core.projitems*{67969ee9-4f3f-47a2-8be8-8afe2979ba07}*SharedItemsImports = 13
+		src\YamNet.Core.ClrV2\YamNet.Core.ClrV2.projitems*{9cc931da-db1c-4866-8524-8712666990c7}*SharedItemsImports = 4
+		src\YamNet.Core\YamNet.Core.projitems*{9cc931da-db1c-4866-8524-8712666990c7}*SharedItemsImports = 4
+		src\YamNet.Core.ClrV2\YamNet.Core.ClrV2.projitems*{75021645-34ed-4bcc-9dae-8a3a901878a4}*SharedItemsImports = 13
+		src\YamNet.Core.ClrV4\YamNet.Core.ClrV4.projitems*{409f98df-c38f-4d8d-91b0-4f0fa2215f22}*SharedItemsImports = 4
+		src\YamNet.Core\YamNet.Core.projitems*{409f98df-c38f-4d8d-91b0-4f0fa2215f22}*SharedItemsImports = 4
 		src\YamNet.CoreTest\YamNet.CoreTest.projitems*{cabaccec-ae68-413e-a784-b12fabb1f49d}*SharedItemsImports = 4
 		src\YamNet.CoreTest\YamNet.CoreTest.projitems*{a153a52c-3054-436e-8be4-86cdf571e3f1}*SharedItemsImports = 13
 		src\YamNet.CoreTest\YamNet.CoreTest.projitems*{d87938f7-edff-4fec-9ca7-79c7db85b80c}*SharedItemsImports = 4
-		src\main\YamNet.Core\YamNet.Core.projitems*{e9238175-7a4f-424b-83f4-f293672c72c6}*SharedItemsImports = 4
+		src\YamNet.Core.ClrV4\YamNet.Core.ClrV4.projitems*{1f955e89-3bfb-469f-8925-729a08f99e53}*SharedItemsImports = 13
+		src\YamNet.Core.ClrV4\YamNet.Core.ClrV4.projitems*{e9238175-7a4f-424b-83f4-f293672c72c6}*SharedItemsImports = 4
+		src\YamNet.Core\YamNet.Core.projitems*{e9238175-7a4f-424b-83f4-f293672c72c6}*SharedItemsImports = 4
+		src\YamNet.Core.ClrV4\YamNet.Core.ClrV4.projitems*{074b3770-edc5-406d-aa01-8d8b045dad8a}*SharedItemsImports = 4
+		src\YamNet.Core\YamNet.Core.projitems*{074b3770-edc5-406d-aa01-8d8b045dad8a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +89,14 @@ Global
 		{CABACCEC-AE68-413E-A784-B12FABB1F49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CABACCEC-AE68-413E-A784-B12FABB1F49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CABACCEC-AE68-413E-A784-B12FABB1F49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{074B3770-EDC5-406D-AA01-8D8B045DAD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{074B3770-EDC5-406D-AA01-8D8B045DAD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{074B3770-EDC5-406D-AA01-8D8B045DAD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{074B3770-EDC5-406D-AA01-8D8B045DAD8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{409F98DF-C38F-4D8D-91B0-4F0FA2215F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{409F98DF-C38F-4D8D-91B0-4F0FA2215F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{409F98DF-C38F-4D8D-91B0-4F0FA2215F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{409F98DF-C38F-4D8D-91B0-4F0FA2215F22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,5 +112,9 @@ Global
 		{03616E08-545E-403D-8E49-9EE2CF99D14D} = {F7F6989B-D530-4CCD-AB04-F1959A8F3E1B}
 		{4CD11A85-F8A6-4E25-A7BA-C07ED79E3D8C} = {6AFF12CE-383A-498F-81F2-0DBE78A55321}
 		{A153A52C-3054-436E-8BE4-86CDF571E3F1} = {4CD11A85-F8A6-4E25-A7BA-C07ED79E3D8C}
+		{074B3770-EDC5-406D-AA01-8D8B045DAD8A} = {F7F6989B-D530-4CCD-AB04-F1959A8F3E1B}
+		{409F98DF-C38F-4D8D-91B0-4F0FA2215F22} = {F7F6989B-D530-4CCD-AB04-F1959A8F3E1B}
+		{1F955E89-3BFB-469F-8925-729A08F99E53} = {03616E08-545E-403D-8E49-9EE2CF99D14D}
+		{75021645-34ED-4BCC-9DAE-8A3A901878A4} = {03616E08-545E-403D-8E49-9EE2CF99D14D}
 	EndGlobalSection
 EndGlobal

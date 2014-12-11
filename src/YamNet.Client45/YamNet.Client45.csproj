@@ -4,20 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D87938F7-EDFF-4FEC-9CA7-79C7DB85B80C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{409F98DF-C38F-4D8D-91B0-4F0FA2215F22}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YamNet.Client.ConsoleTest</RootNamespace>
-    <AssemblyName>YamNet.Client.ConsoleTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>YamNet.Client45</RootNamespace>
+    <AssemblyName>YamNet.Client45</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>6c3baf3d</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,34 +32,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <Private>True</Private>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Xml.Linq" />
@@ -73,30 +66,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utilities\LoadingSpinner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\main\YamNet.Client\YamNet.Client.csproj">
-      <Project>{e9238175-7a4f-424b-83f4-f293672c72c6}</Project>
-      <Name>YamNet.Client</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="..\..\YamNet.CoreTest\YamNet.CoreTest.projitems" Label="Shared" Condition="Exists('..\..\YamNet.CoreTest\YamNet.CoreTest.projitems')" />
+  <Import Project="..\main\YamNet.Core\YamNet.Core.projitems" Label="Shared" Condition="Exists('..\main\YamNet.Core\YamNet.Core.projitems')" />
+  <Import Project="..\YamNet.Core.ClrV4\YamNet.Core.ClrV4.projitems" Label="Shared" Condition="Exists('..\YamNet.Core.ClrV4\YamNet.Core.ClrV4.projitems')" />
+  <Import Project="..\YamNet.Core\YamNet.Core.projitems" Label="Shared" Condition="Exists('..\YamNet.Core\YamNet.Core.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -105,4 +89,12 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="AfterBuild" Condition="$(ConfigurationName)==Release">
+    <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)release\latest\$(ProjectName)\lib\*" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
 </Project>
