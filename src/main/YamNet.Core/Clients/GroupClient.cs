@@ -10,6 +10,7 @@ namespace YamNet.Client
 
     /// <summary>
     /// Yammer group membership client.
+    /// Allow current user to join or leave a specified group
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-groups
@@ -20,8 +21,7 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="GroupClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public GroupClient(Client client)
-            : base(client)
+        public GroupClient(Client client) : base(client)
         {
         }
 

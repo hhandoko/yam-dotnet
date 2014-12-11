@@ -12,6 +12,9 @@ namespace YamNet.Client
 
     /// <summary>
     /// Yammer invitations client.
+    /// Sends an email invitation to a user who has not yet joined the current user’s yammer network.
+    /// If the current user is a verified admin in a paid yammer network, users with external email domains can be added.
+    /// If the current user is not, only email addresses for official company domains will be allowed.
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/#rest-invitations
@@ -22,15 +25,14 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="InvitationClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public InvitationClient(Client client)
-            : base(client)
+        public InvitationClient(Client client) : base(client)
         {
         }
 
         /// <summary>
         /// Invite user(s) to the current user's Yammer network.
         /// </summary>
-        /// <param name="emails">The email(s).</param>
+        /// <param name="emails">The email address of the user being invited. This can be specified multiple times to invite multiple users.</param>
         /// <returns>The <see cref="Task"/>.</returns>
         public async Task Invite(string[] emails)
         {
