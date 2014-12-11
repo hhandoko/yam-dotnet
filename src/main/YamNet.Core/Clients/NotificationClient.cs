@@ -26,7 +26,7 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Get current user's relationship.
+        /// Get current user's notifications.
         /// </summary>
         /// <returns>The <see cref="NotificationEnvelope"/>.</returns>
         public async Task<NotificationEnvelope> Get()

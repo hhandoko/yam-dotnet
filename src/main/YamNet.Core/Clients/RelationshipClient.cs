@@ -6,12 +6,12 @@
 
 namespace YamNet.Client
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
     /// Yammer user's relationship / org chart client.
+    /// Manipulate the Yammer Org Chart.
     /// </summary>
     /// <remarks>
     /// REST API documentation: https://developer.yammer.com/restapi/
@@ -22,8 +22,7 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="RelationshipClient"/> class.
         /// </summary>
         /// <param name="client">The client.</param>
-        public RelationshipClient(Client client)
-            : base(client)
+        public RelationshipClient(Client client) : base(client)
         {
         }
 
@@ -33,15 +32,14 @@ namespace YamNet.Client
         /// <returns>The <see cref="Relationship"/>.</returns>
         public async Task<Relationship> GetCurrent()
         {
-            var query = new RelationshipQuery(null, null);
-            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query.SerializeQueryString());
+            var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships));
             var result = await this.Client.GetAsync<Relationship>(url);
 
             return result.Content;
         }
 
         /// <summary>
-        /// Get the user's relationship given the id.
+        /// Get other user's relationship by their id.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <returns>The <see cref="Relationship"/>.</returns>
@@ -59,7 +57,7 @@ namespace YamNet.Client
         /// </summary>
         /// <param name="relations">The relations.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public async Task AddCurrent(Dictionary<string, RelationshipType> relations)
+        public async Task AddCurrent(Relation[] relations)
         {
             var query = GetRelationsQueryParams(null, relations);
             var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query);
@@ -68,12 +66,12 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Add a relationship by the user id.
+        /// Add a relationship to other user by their id.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relations">The relations.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public async Task AddById(long userId, Dictionary<string, RelationshipType> relations)
+        public async Task AddById(long userId, Relation[] relations)
         {
             var query = GetRelationsQueryParams(userId, relations);
             var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Relationships), query);
@@ -82,7 +80,7 @@ namespace YamNet.Client
         }
 
         /// <summary>
-        /// Delete a relationship by the relation's user id.
+        /// Delete a relationship from the current user by the relation's user id.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relationshipType">The relationship type.</param>
@@ -101,12 +99,12 @@ namespace YamNet.Client
         /// <param name="userId">The user id.</param>
         /// <param name="relations">The relations.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        private static string GetRelationsQueryParams(long? userId, Dictionary<string, RelationshipType> relations)
+        private static string GetRelationsQueryParams(long? userId, Relation[] relations)
         {
             var queryParams = string.Empty;
             
-            var relationsKeyValue = relations.Select(x => string.Format("{0}={1}", x.Value.ToString().ToLowerInvariant(), x.Key)).ToArray();
-            var relationsQueryParams = string.Join("&", relationsKeyValue);
+            var relationsStringArray = relations.Select(x => string.Format("{0}={1}", x.Relationship.ToString().ToLowerInvariant(), x.UserId)).ToArray();
+            var relationsQueryParams = string.Join("&", relationsStringArray);
 
             if (userId != null)
             {
@@ -133,19 +131,19 @@ namespace YamNet.Client
         /// Initializes a new instance of the <see cref="RelationshipQuery"/> class.
         /// </summary>
         /// <param name="userId">The user id.</param>
-        /// <param name="type">The relationship type.</param>
+        /// <param name="relationship">The relationship type.</param>
         public RelationshipQuery(
             long? userId,
-            RelationshipType? type)
+            RelationshipType? relationship)
         {
             if (userId != null)
             {
                 this.User_Id = userId;
             }
 
-            if (type != null)
+            if (relationship != null)
             {
-                this.Type = type;
+                this.Type = relationship;
             }
         }
 
@@ -158,6 +156,33 @@ namespace YamNet.Client
         /// Gets or sets the relationship type.
         /// </summary>
         public RelationshipType? Type { get; set; }
+    }
+
+    /// <summary>
+    /// The user's relation.
+    /// </summary>
+    public class Relation
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Relation"/> class.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="relationship">The relationship type.</param>
+        public Relation(long userId, RelationshipType relationship)
+        {
+            this.UserId = userId;
+            this.Relationship = relationship;
+        }
+
+        /// <summary>
+        /// Gets or sets the user id.
+        /// </summary>
+        public long UserId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the relationship type.
+        /// </summary>
+        public RelationshipType Relationship { get; set; }
     }
 
     /// <summary>

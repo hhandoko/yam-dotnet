@@ -6,7 +6,6 @@
 
 namespace YamNet.Client
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -21,7 +20,7 @@ namespace YamNet.Client
         Task<Relationship> GetCurrent();
 
         /// <summary>
-        /// Get the user's relationship given the id.
+        /// Get other user's relationship by their id.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <returns>The <see cref="Relationship"/>.</returns>
@@ -32,18 +31,18 @@ namespace YamNet.Client
         /// </summary>
         /// <param name="relations">The relations.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        Task AddCurrent(Dictionary<string, RelationshipType> relations);
+        Task AddCurrent(Relation[] relations);
 
         /// <summary>
-        /// Add a relationship by the user id.
+        /// Add a relationship to other user by their id.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relations">The relations.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        Task AddById(long userId, Dictionary<string, RelationshipType> relations);
+        Task AddById(long userId, Relation[] relations);
 
         /// <summary>
-        /// Delete a relationship by the relation's user id.
+        /// Delete a relationship from the current user by the relation's user id.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="relationshipType">The relationship type.</param>
