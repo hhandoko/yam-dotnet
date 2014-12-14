@@ -9,7 +9,7 @@ namespace YamNet.Client
     /// <summary>
     /// The Object Graph type info.
     /// </summary>
-    internal interface ITypeInfo
+    interface ITypeInfo
     {
         /// <summary>
         /// Gets or sets the OG object type.

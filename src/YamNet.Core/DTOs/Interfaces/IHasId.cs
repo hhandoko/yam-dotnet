@@ -10,7 +10,7 @@ namespace YamNet.Client
     /// Has an ID.
     /// </summary>
     /// <typeparam name="TId">The ID type.</typeparam>
-    internal interface IHasId<TId>
+    interface IHasId<TId>
     {
         /// <summary>
         /// Gets or sets the ID.

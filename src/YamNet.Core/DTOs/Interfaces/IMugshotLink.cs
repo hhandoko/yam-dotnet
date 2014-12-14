@@ -11,7 +11,7 @@ namespace YamNet.Client
     /// <summary>
     /// The mugshot links.
     /// </summary>
-    internal interface IMugshotLink
+    interface IMugshotLink
     {
         /// <summary>
         /// Gets or sets the mugshot url.

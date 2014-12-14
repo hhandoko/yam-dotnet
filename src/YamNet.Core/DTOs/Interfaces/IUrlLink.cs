@@ -11,7 +11,7 @@ namespace YamNet.Client
     /// <summary>
     /// The web and API links.
     /// </summary>
-    internal interface IUrlLink
+    interface IUrlLink
     {
         /// <summary>
         /// Gets or sets the API URL link.
