@@ -2,9 +2,12 @@
   * **BREAKING CHANGE:**
     * Updated return type for `Message` client to `MessageEnvelope` from `IQueryable<Message>`.
     * Updated `RelationshipClient` parameter to accept `Relation[]` from `Dictionary<string, RelationshipType>`.
+    * Top-level `User` DTO classes has been renamed for consistency.
   * Added `References` type to `MessageEnvelope` ([#2](https://github.com/hhandoko/yam-dotnet/issues/2)).
   * Added `Page` type to `SearchEnvelope`.
-  * Added `Notification` client. 
+  * Added `Notification` client.
+  * Added `GetAllBookmarked()` in `Message` client (undocumented).
+  * Added `GetAllLiked()` in `Message` client (undocumented).
 
 ## 0.4 - <small>2014/07/21</small>
   * Created accompanying HTML docs site with [Jekyll](http://jekyllrb.com), hosted on [GitHub pages](https://pages.github.com/).

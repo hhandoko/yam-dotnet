@@ -4,6 +4,7 @@ YamNet is an unofficial, opinionated, Yammer REST API .NET (async) wrapper based
   * **0.5**
     * `MessageClient` return type updated to `MessageEnvelope` from `IQueryable<Message>`
     * `RelationshipClient` now accepts `Relation[]` as a parameter from `Dictionary<string, RelationshipType>`
+    * Top-level `User` DTO classes has been renamed for consistency (`UserFullInfo` extends `User` extends `UserBasicInfo`).
 
 ## Prerequisites and Installation
 YamNet is available as a .NET 3.5 and Portable Class Library (PCL) binaries, which makes it available for the following build targets:
@@ -104,7 +105,9 @@ Big thanks to [jmjc95](http://www.codeplex.com/site/users/view/jmjc95) and [tuon
 Also thanks to [tejacques](https://github.com/tejacques) for [.Net 3.5 AsyncBridge](https://github.com/tejacques/AsyncBridge), and [OmerMor](https://github.com/OmerMor) for [TaskParallelLibrary](http://www.nuget.org/packages/TaskParallelLibrary/), for providing useful libraries making it easier to backport YamNet to .NET 3.5. 
 
 ## Other Yammer-related .Net Resources
+ * [Yammer .NET SDK](https://github.com/yammer/dotnet-yammersdk)
  * [Windows 8 App - ContractMeow](http://yammercontractmeow.codeplex.com/)
+ * [Windows 8.1 + Windows Phone 8 Sample with Yammer SDK](https://yammersdk.codeplex.com/)
  * [Windows Phone OAuth SDK+Demo](https://github.com/yammer/windows-phone-oauth-sdk-demo)
 
 ## Other Tools
