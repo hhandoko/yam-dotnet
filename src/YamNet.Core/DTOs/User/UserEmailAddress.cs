@@ -9,7 +9,7 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The user email address.
+    /// The user's email address.
     /// </summary>
     public sealed class UserEmailAddress
     {

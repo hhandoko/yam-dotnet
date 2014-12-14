@@ -9,7 +9,7 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The user phone number.
+    /// The user's phone number.
     /// </summary>
     public sealed class UserPhoneNumber
     {

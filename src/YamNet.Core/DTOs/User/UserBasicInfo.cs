@@ -13,14 +13,61 @@ namespace YamNet.Client
     /// <summary>
     /// The user.
     /// </summary>
+    /// <remarks>
+    /// DTO last checked     : 2014/12/14
+    /// Sample last retrieved: 2014/12/14
+    /// 
+    /// GET: https://www.yammer.com/api/v1/messages.json
+    /// references: [
+    ///     {
+    ///         type: "user",
+    ///         id: 123456789,
+    ///         name: "joebloggs",
+    ///         state: "active",
+    ///         full_name: "Joe Bloggs",
+    ///         job_title: "Employee",
+    ///         network_id: 12345,
+    ///         mugshot_url: "https://mug0.assets-yammer.com/mugshot/images/48x48/no_photo.png",
+    ///         mugshot_url_template: "https://mug0.assets-yammer.com/mugshot/images/{width}x{height}/no_photo.png",
+    ///         url: "https://www.yammer.com/api/v1/users/123456789",
+    ///         web_url: "https://www.yammer.com/somenetwork.com/users/joebloggs",
+    ///         activated_at: "2012/01/01 00:21:58 +0000",
+    ///         stats: {
+    ///             following: 1,
+    ///             followers: 1,
+    ///             updates: 0
+    ///         }
+    ///     }
+    /// ]
+    /// </remarks>
     public class UserBasicInfo
+        : IHasId<long>, ITypeInfo, IMugshotLink, IUrlLink
     {
-        #region Details
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the ID.
+        /// </summary>
+        [JsonProperty("id")]
+        public long Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the object graph type.
+        /// </summary>
+        // TODO: Map to an enumeration
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the username.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the account state / status.
+        /// </summary>
+        // TODO: Map to an enumeration
+        [JsonProperty("state")]
+        public string State { get; set; }
 
         /// <summary>
         /// Gets or sets the full name.
@@ -33,9 +80,14 @@ namespace YamNet.Client
         /// </summary>
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
-        #endregion
 
-        #region Mugshots
+        /// <summary>
+        /// Gets or sets the home network ID the user belongs to.
+        /// </summary>
+        [JsonProperty("network_id")]
+        public long NetworkId { get; set; }
+
+        #region Mugshot Links
         /// <summary>
         /// Gets or sets the mugshot url.
         /// </summary>
@@ -63,21 +115,6 @@ namespace YamNet.Client
         public Uri WebUrl { get; set; }
         #endregion
 
-        #region Statistics
-        /// <summary>
-        /// Gets or sets the user statistics.
-        /// </summary>
-        [JsonProperty("stats")]
-        public UserStat Stats { get; set; }
-        #endregion
-
-        #region System
-        /// <summary>
-        /// Gets or sets the id.
-        /// </summary>
-        [JsonProperty("id")]
-        public long Id { get; set; }
-
         /// <summary>
         /// Gets or sets the account activation date + time.
         /// </summary>
@@ -85,19 +122,9 @@ namespace YamNet.Client
         public DateTimeOffset? ActivatedAt { get; set; }
 
         /// <summary>
-        /// Gets or sets the account state / status.
+        /// Gets or sets the user statistics.
         /// </summary>
-        [JsonProperty("state")]
-        public string State { get; set; } // TODO: Map to an enumeration
-
-        /// <summary>
-        /// Gets or sets the account type.
-        /// </summary>
-        /// <remarks>
-        /// Used in User REST API with include_followed_users parameter.
-        /// </remarks>
-        [JsonProperty("type")]
-        public string Type { get; set; } // TODO: Map to an enumeration
-        #endregion
+        [JsonProperty("stats")]
+        public UserStat Stats { get; set; }
     }
 }

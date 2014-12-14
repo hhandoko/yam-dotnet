@@ -36,11 +36,11 @@ namespace YamNet.Client
         /// <param name="sort">The sort.</param>
         /// <param name="reverse">True to return results in reverse order.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        public async Task<IQueryable<User>> Get(int page = Config.DefaultPageNo, string letter = "", UserQuerySort sort = UserQuerySort.NoSort, bool reverse = false)
+        public async Task<IQueryable<UserFullInfo>> Get(int page = Config.DefaultPageNo, string letter = "", UserQuerySort sort = UserQuerySort.NoSort, bool reverse = false)
         {
             var query = new UserQuery(page, letter, sort, reverse, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}.json", Endpoints.Users), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<User[]>(url);
+            var result = await this.Client.GetAsync<UserFullInfo[]>(url);
 
             return result.Content.AsQueryable();
         }
@@ -51,7 +51,7 @@ namespace YamNet.Client
         /// <param name="id">The group id.</param>
         /// <param name="page">The page.</param>
         /// <returns>The <see cref="IQueryable{User}"/>.</returns>
-        public async Task<IQueryable<User>> GetByGroupId(long id, int page = Config.DefaultPageNo)
+        public async Task<IQueryable<UserFullInfo>> GetByGroupId(long id, int page = Config.DefaultPageNo)
         {
             var query = new UserQuery(page, string.Empty, UserQuerySort.NoSort, false, false, false, false);
             var url = this.GetFinalUrl(string.Format("{0}/in_group/{1}.json", Endpoints.Users, id), query.SerializeQueryString());
@@ -68,11 +68,11 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">True to include subscribed tags.</param>
         /// <param name="includeGroups">True to include group memberships.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        public async Task<User> GetById(long id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
+        public async Task<UserFullInfo> GetById(long id, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/{1}.json", Endpoints.Users, id), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<User>(url);
+            var result = await this.Client.GetAsync<UserFullInfo>(url);
 
             return result.Content;
         }
@@ -85,11 +85,11 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">True to include subscribed tags.</param>
         /// <param name="includeGroups">True to include group memberships.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        public async Task<User> GetByEmail(string email, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
+        public async Task<UserFullInfo> GetByEmail(string email, bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/by_email.json?email={1}", Endpoints.Users, email), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<User[]>(url);
+            var result = await this.Client.GetAsync<UserFullInfo[]>(url);
 
             return result.Content.FirstOrDefault();
         }
@@ -101,11 +101,11 @@ namespace YamNet.Client
         /// <param name="includeSubscribedTags">True to include subscribed tags.</param>
         /// <param name="includeGroups">True to include group memberships.</param>
         /// <returns>The <see cref="User"/>.</returns>
-        public async Task<User> Current(bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
+        public async Task<UserFullInfo> Current(bool includeFollowed = false, bool includeSubscribedTags = false, bool includeGroups = false)
         {
             var query = new UserQuery(0, string.Empty, UserQuerySort.NoSort, false, includeFollowed, includeSubscribedTags, includeGroups);
             var url = this.GetFinalUrl(string.Format("{0}/current.json", Endpoints.Users), query.SerializeQueryString());
-            var result = await this.Client.GetAsync<User>(url);
+            var result = await this.Client.GetAsync<UserFullInfo>(url);
 
             return result.Content;
         }

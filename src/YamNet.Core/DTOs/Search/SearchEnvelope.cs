@@ -62,7 +62,7 @@ namespace YamNet.Client
         /// Gets or sets the user search results.
         /// </summary>
         [JsonProperty("users")]
-        public UserSearchResult[] Users { get; set; }
+        public User[] Users { get; set; }
 
         /// <summary>
         /// Gets or sets the pages search results.

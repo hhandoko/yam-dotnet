@@ -43,7 +43,7 @@ namespace YamNet.Client
         /// Gets or sets the users.
         /// </summary>
         [JsonProperty("users")]
-        public User[] Users { get; set; }
+        public UserFullInfo[] Users { get; set; }
 
         /// <summary>
         /// Gets or sets the value indicating whether more users is available.

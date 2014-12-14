@@ -9,7 +9,7 @@ namespace YamNet.Client
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The user instant messaging (IM) contact details.
+    /// The user's instant messaging (IM) contact details.
     /// </summary>
     public sealed class UserIm
     {

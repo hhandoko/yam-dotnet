@@ -47,18 +47,18 @@ namespace YamNet.Client
         /// Gets or sets the user's superiors.
         /// </summary>
         [JsonProperty("superiors")]
-        public User[] Superiors { get; set; }
+        public UserFullInfo[] Superiors { get; set; }
 
         /// <summary>
         /// Gets or sets the user's colleagues.
         /// </summary>
         [JsonProperty("colleagues")]
-        public User[] Colleagues { get; set; }
+        public UserFullInfo[] Colleagues { get; set; }
 
         /// <summary>
         /// Gets or sets the user's subordinates.
         /// </summary>
         [JsonProperty("subordinates")]
-        public User[] Subordinates { get; set; }
+        public UserFullInfo[] Subordinates { get; set; }
     }
 }
