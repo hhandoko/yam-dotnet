@@ -34,5 +34,45 @@ namespace YamNet.Client.Undocumented
 
             return result.Content;
         }
+
+        /// <summary>
+        /// Get all bookmarked messages.
+        /// </summary>
+        /// <remarks>
+        /// UNDOCUMENTED. Use at your own risk.
+        /// </remarks>
+        /// <param name="client">The message client.</param>
+        /// <param name="thread">The message thread option.</param>
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public static async Task<MessageEnvelope> GetAllBookmarked(
+            this MessageClient client,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
+        {
+            var query = new MessageQuery(0, null, thread);
+            var url = client.GetFinalUrl(string.Format("{0}/bookmarked_by.json", Endpoints.Messages), query.SerializeQueryString());
+            var result = await client.Client.GetAsync<MessageEnvelope>(url);
+
+            return result.Content;
+        }
+
+        /// <summary>
+        /// Get all messages liked by the user.
+        /// </summary>
+        /// <remarks>
+        /// UNDOCUMENTED. Use at your own risk.
+        /// </remarks>
+        /// <param name="client">The message client.</param>
+        /// <param name="thread">The message thread option.</param>
+        /// <returns>The <see cref="MessageEnvelope"/>.</returns>
+        public static async Task<MessageEnvelope> GetAllLiked(
+            this MessageClient client,
+            MessageQueryThread thread = MessageQueryThread.NoThread)
+        {
+            var query = new MessageQuery(0, null, thread);
+            var url = client.GetFinalUrl(string.Format("{0}/liked_by.json", Endpoints.Messages), query.SerializeQueryString());
+            var result = await client.Client.GetAsync<MessageEnvelope>(url);
+
+            return result.Content;
+        }
     }
 }
