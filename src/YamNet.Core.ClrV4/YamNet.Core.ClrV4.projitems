@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1f955e89-3bfb-469f-8925-729a08f99e53</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>YamNet.Core.ClrV4</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Clients\Base\JsonServiceClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\HttpRequestObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\HttpResponseHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Operations\Interfaces\IResponseErrorHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Operations\ResponseErrorHandler.cs" />
+  </ItemGroup>
+</Project>
