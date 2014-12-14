@@ -61,6 +61,7 @@
   </ItemGroup>
   <Import Project="..\..\YamNet.CoreTest\YamNet.CoreTest.projitems" Label="Shared" Condition="Exists('..\..\YamNet.CoreTest\YamNet.CoreTest.projitems')" />
   <Import Project="..\..\src\YamNet.CoreTest\YamNet.CoreTest.projitems" Label="Shared" Condition="Exists('..\..\src\YamNet.CoreTest\YamNet.CoreTest.projitems')" />
+  <Import Project="..\YamNet.CoreTest\YamNet.CoreTest.projitems" Label="Shared" Condition="Exists('..\YamNet.CoreTest\YamNet.CoreTest.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

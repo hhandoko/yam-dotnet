@@ -7,8 +7,8 @@
     <ProjectGuid>{409F98DF-C38F-4D8D-91B0-4F0FA2215F22}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YamNet.Client45</RootNamespace>
-    <AssemblyName>YamNet.Client45</AssemblyName>
+    <RootNamespace>YamNet.Client</RootNamespace>
+    <AssemblyName>YamNet.Client</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>

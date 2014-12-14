@@ -1,4 +1,7 @@
-## 0.5 - In Progress
+## 0.6 - In Progress
+  * TBA
+
+## 0.5 - <small>2014/12/14</small>
   * **BREAKING CHANGE:**
     * Updated return type for `Message` client to `MessageEnvelope` from `IQueryable<Message>`.
     * Updated `RelationshipClient` parameter to accept `Relation[]` from `Dictionary<string, RelationshipType>`.
