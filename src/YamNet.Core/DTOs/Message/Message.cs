@@ -6,9 +6,8 @@
 
 namespace YamNet.Client
 {
-    using System;
-
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
     /// The message DTO.
@@ -38,6 +37,12 @@ namespace YamNet.Client
         public string ClientType { get; set; }
 
         /// <summary>
+        /// Gets or sets the group created id
+        /// </summary>
+        [JsonProperty("group_created_id")]
+        public long? GroupCreatedId { get; set; }
+
+        /// <summary>
         /// Gets or sets the liked by.
         /// </summary>
         /// <value>The liked by.</value>
@@ -48,11 +53,11 @@ namespace YamNet.Client
         /// Gets or sets the attachments.
         /// </summary>
         /// <value>The attachments.</value>
-//        [JsonProperty("attachments")]
-//        [JsonConverter(typeof(AttachmentJsonConverter))]
-//        public IAttachment[] Attachments { get; set; }
+        //        [JsonProperty("attachments")]
+        //        [JsonConverter(typeof(AttachmentJsonConverter))]
+        //        public IAttachment[] Attachments { get; set; }
 
-//        [JsonProperty("title")]
-//        public string Title { get; set; }
+        //        [JsonProperty("title")]
+        //        public string Title { get; set; }
     }
 }
